@@ -1,0 +1,2 @@
+# CeCO
+Common eCommerce Ontology
