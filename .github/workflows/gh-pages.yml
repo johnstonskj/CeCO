@@ -36,7 +36,7 @@ jobs:
         run: mdbook build ${{ env.BOOK_FOLDER }} && mdbook test ${{ env.BOOK_FOLDER }}
 
       - name: Copy Ontologies to Book
-        run: cp -R ${{ env.OWL_FOLDER }}/2026 ${{ env.BUILD_FOLDER }}/v/
+        run: cp -R ${{ env.OWL_FOLDER }}/2026 ${{ env.BUILD_FOLDER }}/v/2026/
 
       - name: Deploy to pages
         uses: JamesIves/github-pages-deploy-action@4.1.7
