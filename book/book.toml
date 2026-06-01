@@ -1,0 +1,25 @@
+[book]
+title = "Common eCommerce Ontology"
+authors = ["Simon Johnston <johnstonskj@gmail.com>"]
+src = "src"
+language = "en"
+
+[build]
+build-dir = "output"
+create-missing = true
+
+[output.html]
+git-repository-url = "https://github.com/johnstonskj/ceco"
+additional-css = ["src/ceco.css"]
+additional-js = ["src/sparql.js", "src/turtle.js", "src/custom.js"]
+mathjax-support = false
+
+[output.html.fold] 
+enable = true
+level = 2
+
+[output.html.playpen]
+line-numbers = true
+
+[output.html.search]
+use-boolean-and = true
