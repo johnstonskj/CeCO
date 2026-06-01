@@ -9,7 +9,8 @@ on:
 env:
   BOOK_FOLDER: "book"
   BUILD_FOLDER: "book/output"
-  OWL_FOLDER: "protege"
+  OWL_SRC_FOLDER: "protege/release"
+  OWL_TGT_FOLDER: "book/output/v/"
 
 jobs:
   build:
@@ -34,6 +35,11 @@ jobs:
 
       - name: Build and test book
         run: mdbook build ${{ env.BOOK_FOLDER }} && mdbook test ${{ env.BOOK_FOLDER }}
+
+      - name: Deploy Owl files
+        run: |
+          mkdir -p ${{ env.OWL_TGT_FOLDER }}
+          cp -r ${{ env.OWL_SRC_FOLDER }} ${{ env.OWL_TGT_FOLDER }}/
 
       - name: Deploy to pages
         uses: JamesIves/github-pages-deploy-action@4.1.7

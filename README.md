@@ -2,6 +2,10 @@
 
 Common eCommerce Ontology
 
+[![Apache-2.0 License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![MIT License](https://img.shields.io/badge/license-mit-118811.svg)](https://opensource.org/license/mit)
+[![mdbook to Pages](https://github.com/johnstonskj/CeCO/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/johnstonskj/CeCO/actions/workflows/gh-pages.yml)
+
 ## Background
 
 TBD
