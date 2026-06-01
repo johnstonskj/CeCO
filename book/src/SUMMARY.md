@@ -1,9 +1,9 @@
 # Summary
 
 - [Introduction](./introduction.md)
-- [Tools & Methods](./framework/index.md)
-  - [Conceptual: CmapTools](./framework/cmaptools.md)
+- [Tools and Methods](./framework/index.md)
   - [Domains and Views](./framework/domains.md)
+  - [Conceptual: CmapTools](./framework/cmaptools.md)
   - [Detailed: Protege and OWL](./framework/protege.md)
   - [OWL Guidelines](./framework/owl_guidelines.md)
 - [Foundation](./foundation/index.md)
