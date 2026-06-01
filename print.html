@@ -187,17 +187,49 @@ business-to-business site. While this vocabulary may also cover other cases,
 or at least some of it's domains may be reusable in other areas it was
 decided to keep a fixed scope so as to keep the problem bounded, even if
 already large!</p>
+<p><img src="./introduction.svg" alt="Ontology Overview" /></p>
+<p><span class="figure caption">Ontology Overview</span></p>
+<p>The figure above shows each of the different ontologies, one for each domain
+plus the foundation and their dependencies. Each domain has a color used in
+the diagrams throughout the rest of the book that helps show the</p>
 <h2 id="organization-of-this-book"><a class="header" href="#organization-of-this-book">Organization of this book</a></h2>
+<p>Part one of the book outlines the framework used to describe the ontology
+itself, the conceptual framework as well as the tools used, and the process
+by which these tools are applied. Part two is the Foundation ontology, the
+<em>upper ontology</em> which is not really commerce oriented in any way but provides
+a small kernel of terms that help provide cross-cutting semantics often by
+way of <em>aspects</em> that are added in as necessary. Finally, part three describes
+each of the commerce domains in detail.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tools-and-methods"><a class="header" href="#tools-and-methods">Tools and Methods</a></h1>
+<p>To manage the size of this exercise we organize the content along two distinct
+and orthogonal axis; one is purely hierarchical allowing a breakdown into
+managable sized scopes, the other is a refinement across abstraction layers.</p>
 <h2 id="organizational-dimensions"><a class="header" href="#organizational-dimensions">Organizational Dimensions</a></h2>
+<p>See <a href="framework/./organization.html">Domains and Views</a>.</p>
 <h3 id="domains"><a class="header" href="#domains">Domains</a></h3>
 <h3 id="views"><a class="header" href="#views">Views</a></h3>
 <h2 id="semantic-dimensions"><a class="header" href="#semantic-dimensions">Semantic Dimensions</a></h2>
+<p>You will find that the body of this book, parts two and three, are described
+using a mix of images and formal language.</p>
 <h3 id="concept-maps"><a class="header" href="#concept-maps">Concept Maps</a></h3>
-<h3 id="owl-ontologies-protegé"><a class="header" href="#owl-ontologies-protegé">OWL Ontologies (Protegé)</a></h3>
+<p>The images are semantic maps using
+<a href="https://cmap.ihmc.us">Cmap Tools</a> suite, and provide a useful high-level way
+to capture the concepts used in our ontologies. The tools are light-weight and
+so are powerful for use in workshop environments capturing ideas in fast paced
+back and forth exchanges.</p>
+<p>See <a href="framework/./cmaptools.html">Conceptual: CmapTools</a>.</p>
+<h3 id="owl-ontologies-protégé"><a class="header" href="#owl-ontologies-protégé">OWL Ontologies (Protégé)</a></h3>
+<p>The formal text is <a href="https://www.w3.org/TR/turtle/">Turtle</a> a serialization of
+the <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>,
+<a href="https://www.w3.org/TR/rdf11-schema/">RDF Schema</a> and
+<a href="https://www.w3.org/TR/owl2-overview/">OWL</a> semantic web standards commonly
+used in the development of knowledge graphs and ontologies.</p>
+<p>For the development of the OWL ontologies we use the excellent
+<a href="https://protege.stanford.edu">Protégé</a> tool.</p>
+<p>See <a href="framework/./protege.html">Detailed: Protégé and OWL</a> and <a href="framework/./owl_guidelines.html">OWL Guidelines</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="domains-and-views"><a class="header" href="#domains-and-views">Domains and Views</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="conceptual-cmaptools"><a class="header" href="#conceptual-cmaptools">Conceptual: CmapTools</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="detailed-protege-and-owl"><a class="header" href="#detailed-protege-and-owl">Detailed: Protege and OWL</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="detailed-protégé-and-owl"><a class="header" href="#detailed-protégé-and-owl">Detailed: Protégé and OWL</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="owl-guidelines"><a class="header" href="#owl-guidelines">OWL Guidelines</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="foundation"><a class="header" href="#foundation">Foundation</a></h1>
 <p>The CeCO Foundation is a domain-independent set of core concepts providing simple
