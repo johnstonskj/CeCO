@@ -9,6 +9,9 @@ build-dir = "output"
 create-missing = true
 
 [output.html]
+# site-url = "https://ceco.one"
+# cname = "ceco.one"
+site-url = "https://simonkjohnston.life/CeCO"
 git-repository-url = "https://github.com/johnstonskj/ceco"
 additional-css = ["src/ceco.css"]
 additional-js = ["src/sparql.js", "src/turtle.js", "src/custom.js"]

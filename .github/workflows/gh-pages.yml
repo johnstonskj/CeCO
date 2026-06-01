@@ -8,6 +8,8 @@ on:
 
 env:
   BOOK_FOLDER: "book"
+  BUILD_FOLDER: "book/output"
+  OWL_FOLDER: "protege"
 
 jobs:
   build:
@@ -33,8 +35,11 @@ jobs:
       - name: Build and test book
         run: mdbook build ${{ env.BOOK_FOLDER }} && mdbook test ${{ env.BOOK_FOLDER }}
 
+      - name: Copy Ontologies to Book
+        run: cp -R ${{ env.OWL_FOLDER }}/2026 ${{ env.BUILD_FOLDER }}/v/
+
       - name: Deploy to pages
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
-          folder: ${{ env.BOOK_FOLDER }}/output
+          folder: ${{ env.BUILD_FOLDER }}

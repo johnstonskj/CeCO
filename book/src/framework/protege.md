@@ -1,1 +1,1 @@
-# Detailed: Protege and OWL
+# Detailed: Protégé and OWL

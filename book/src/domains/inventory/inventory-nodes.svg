@@ -13,7 +13,7 @@
      viewBox="0 0 716 228"
      >
 <title></title>
-<desc>Creator: FreeHEP Graphics2D Driver Producer: org.freehep.graphicsio.svg.SVGGraphics2D Revision Source:  Date: Monday, June 1, 2026 7:54:04 AM PDT</desc>
+<desc>Creator: FreeHEP Graphics2D Driver Producer: org.freehep.graphicsio.svg.SVGGraphics2D Revision Source:  Date: Monday, June 1, 2026 11:27:44 AM PDT</desc>
 <g stroke-linejoin="miter" stroke-dashoffset="0" stroke-dasharray="none" stroke-width="1" stroke-miterlimit="10" stroke-linecap="square">
 <g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#ffffff">
   <path d="M 0 0 L 716 0 L 716 228 L 0 228 L 0 0 z"/>
@@ -289,7 +289,7 @@
 </g> <!-- drawing style -->
 </g> <!-- transform -->
 <g transform="matrix(1, 0, 0, 1, -278, -88)">
-<g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#c8ffc8">
+<g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#96c800">
   <path d="M 682.03515625 96.8505859375 L 682.03515625 111.1494140625 C 682.03515625 115.29154968623095 685.393020626269 118.6494140625 689.53515625 118.6494140625 L 738.46484375 118.6494140625 C 742.606979373731 118.6494140625 745.96484375 115.29154968623095 745.96484375 111.1494140625 L 745.96484375 96.8505859375 C 745.96484375 92.70845031376905 742.606979373731 89.3505859375 738.46484375 89.3505859375 L 689.53515625 89.3505859375 C 685.393020626269 89.3505859375 682.03515625 92.70845031376905 682.03515625 96.8505859375 z"/>
 </g> <!-- drawing style -->
 </g> <!-- transform -->

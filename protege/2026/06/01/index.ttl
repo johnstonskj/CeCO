@@ -1,0 +1,426 @@
+@prefix : <urn:webprotege:ontology:ec50023c-fe59-419a-acc8-042cab1cb9c2#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <urn:webprotege:ontology:ec50023c-fe59-419a-acc8-042cab1cb9c2#> .
+
+<https://ceco.github.io/ontology/foundation/> rdf:type owl:Ontology ;
+                                               owl:imports <http://www.w3.org/2004/02/skos/core> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://webprotege.stanford.edu/effectiveTimeSpan
+<http://webprotege.stanford.edu/effectiveTimeSpan> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf <http://webprotege.stanford.edu/temporalProperty> ;
+                                                   rdfs:range <http://webprotege.stanford.edu/TimeSpan> ;
+                                                   skos:prefLabel "effective time span"@en .
+
+
+###  http://webprotege.stanford.edu/endTime
+<http://webprotege.stanford.edu/endTime> rdf:type owl:ObjectProperty ;
+                                         rdfs:subPropertyOf <http://webprotege.stanford.edu/temporalProperty> ;
+                                         rdfs:range <http://webprotege.stanford.edu/PointInTime> ;
+                                         skos:prefLabel "end time"@en .
+
+
+###  http://webprotege.stanford.edu/isReferenceTo
+<http://webprotege.stanford.edu/isReferenceTo> rdf:type owl:ObjectProperty ;
+                                               rdfs:subPropertyOf <http://webprotege.stanford.edu/referentialProperty> ;
+                                               owl:inverseOf <http://webprotege.stanford.edu/isReferencedBy> ;
+                                               rdfs:domain <http://webprotege.stanford.edu/Reference> ;
+                                               rdfs:range <http://webprotege.stanford.edu/Referent> ;
+                                               skos:prefLabel "is reference to"@en .
+
+
+###  http://webprotege.stanford.edu/isReferencedBy
+<http://webprotege.stanford.edu/isReferencedBy> rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf <http://webprotege.stanford.edu/referentialProperty> ;
+                                                rdfs:domain <http://webprotege.stanford.edu/Referent> ;
+                                                rdfs:range <http://webprotege.stanford.edu/Reference> ;
+                                                skos:prefLabel "is referenced by"@en .
+
+
+###  http://webprotege.stanford.edu/narrowerClassification
+<http://webprotege.stanford.edu/narrowerClassification> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf <https://ceco.github.io/ontology/classificationProperty> ;
+                                                        owl:inverseOf <http://webprotege.stanford.edu/narrowerClassification> ;
+                                                        rdf:type owl:TransitiveProperty ;
+                                                        rdfs:domain <http://webprotege.stanford.edu/Classifier> ;
+                                                        rdfs:range <http://webprotege.stanford.edu/Classifier> ;
+                                                        skos:altLabel "super class of" ;
+                                                        skos:prefLabel "narrower classification"@en .
+
+
+###  http://webprotege.stanford.edu/participant
+<http://webprotege.stanford.edu/participant> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf <http://webprotege.stanford.edu/roleProperty> ;
+                                             owl:inverseOf <http://webprotege.stanford.edu/participatesIn> ;
+                                             rdfs:range <http://webprotege.stanford.edu/Referent> ;
+                                             skos:prefLabel "participant"@en .
+
+
+###  http://webprotege.stanford.edu/participatesIn
+<http://webprotege.stanford.edu/participatesIn> rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf <http://webprotege.stanford.edu/roleProperty> ;
+                                                rdfs:domain <http://webprotege.stanford.edu/Referent> ;
+                                                skos:prefLabel "participates in"@en .
+
+
+###  http://webprotege.stanford.edu/referentialProperty
+<http://webprotege.stanford.edu/referentialProperty> rdf:type owl:ObjectProperty ;
+                                                     rdfs:subPropertyOf owl:topObjectProperty ;
+                                                     skos:prefLabel "referential property"@en .
+
+
+###  http://webprotege.stanford.edu/roleProperty
+<http://webprotege.stanford.edu/roleProperty> rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                              skos:prefLabel "role property"@en .
+
+
+###  http://webprotege.stanford.edu/startTime
+<http://webprotege.stanford.edu/startTime> rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf <http://webprotege.stanford.edu/temporalProperty> ;
+                                           rdfs:range <http://webprotege.stanford.edu/PointInTime> ;
+                                           skos:prefLabel "start time"@en .
+
+
+###  http://webprotege.stanford.edu/temporalProperty
+<http://webprotege.stanford.edu/temporalProperty> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  rdfs:range <http://webprotege.stanford.edu/TemporalReference> ;
+                                                  skos:prefLabel "temporal property"@en .
+
+
+###  https://ceco.github.io/ontology/broaderClassification
+<https://ceco.github.io/ontology/broaderClassification> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf <https://ceco.github.io/ontology/classificationProperty> ;
+                                                        owl:inverseOf <https://ceco.github.io/ontology/broaderClassification> ;
+                                                        rdf:type owl:TransitiveProperty ;
+                                                        rdfs:domain <http://webprotege.stanford.edu/Classifier> ;
+                                                        rdfs:range <http://webprotege.stanford.edu/Classifier> ;
+                                                        skos:altLabel "sub class of" ;
+                                                        skos:prefLabel "broader classification"@en .
+
+
+###  https://ceco.github.io/ontology/classificationProperty
+<https://ceco.github.io/ontology/classificationProperty> rdf:type owl:ObjectProperty ;
+                                                         rdfs:subPropertyOf owl:topObjectProperty ;
+                                                         skos:prefLabel "classification property"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/codependentWith
+:codependentWith rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :mereologicalProperty ;
+                 skos:prefLabel "co-dependent with"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/dependentUpon
+:dependentUpon rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :mereologicalProperty ;
+               skos:prefLabel "dependent upon"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/hasDependent
+:hasDependent rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :mereologicalProperty ;
+              skos:prefLabel "has dependent"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/hasDependentPart
+:hasDependentPart rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasPart ;
+                  owl:inverseOf :isDependentPartOf ;
+                  owl:propertyDisjointWith :hasIndependentPart ;
+                  skos:prefLabel "has dependent part"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/hasIndependentPart
+:hasIndependentPart rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasPart ;
+                    owl:inverseOf :isIndependentPartOf ;
+                    skos:prefLabel "has independent part"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :mereologicalProperty ;
+         owl:propertyDisjointWith :isPartOf ;
+         skos:prefLabel "has part"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/isDependentPartOf
+:isDependentPartOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :isPartOf ;
+                   owl:propertyDisjointWith :isIndependentPartOf ;
+                   skos:prefLabel "is dependent part of"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/isIndependentPartOf
+:isIndependentPartOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :isPartOf ;
+                     skos:prefLabel "is independent part of"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :mereologicalProperty ;
+          skos:prefLabel "is part of"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/mereologicalProperty
+:mereologicalProperty rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdfs:domain :Entity ;
+                      rdfs:range :Entity ;
+                      rdfs:comment "mereological property"@en ;
+                      skos:prefLabel "mereological property"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://webprotege.stanford.edu/Agreement
+<http://webprotege.stanford.edu/Agreement> rdf:type owl:Class ;
+                                           rdfs:subClassOf :Entity ;
+                                           skos:prefLabel "Agreement"@en .
+
+
+###  http://webprotege.stanford.edu/ClassificationScheme
+<http://webprotege.stanford.edu/ClassificationScheme> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://webprotege.stanford.edu/Scheme> ;
+                                                      skos:prefLabel "Classification Scheme"@en .
+
+
+###  http://webprotege.stanford.edu/Classifier
+<http://webprotege.stanford.edu/Classifier> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://webprotege.stanford.edu/Reference> ;
+                                            skos:prefLabel "Classifier"@en .
+
+
+###  http://webprotege.stanford.edu/IdentificationScheme
+<http://webprotege.stanford.edu/IdentificationScheme> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://webprotege.stanford.edu/Scheme> ;
+                                                      skos:prefLabel "Identification Scheme"@en .
+
+
+###  http://webprotege.stanford.edu/Identifier
+<http://webprotege.stanford.edu/Identifier> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://webprotege.stanford.edu/Reference> ;
+                                            skos:prefLabel "Identifier"@en .
+
+
+###  http://webprotege.stanford.edu/PointInTime
+<http://webprotege.stanford.edu/PointInTime> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://webprotege.stanford.edu/TemporalReference> ;
+                                             owl:disjointWith <http://webprotege.stanford.edu/TimeSpan> ;
+                                             skos:prefLabel "Point In Time"@en .
+
+
+###  http://webprotege.stanford.edu/Reference
+<http://webprotege.stanford.edu/Reference> rdf:type owl:Class ;
+                                           owl:disjointWith <http://webprotege.stanford.edu/Referent> ;
+                                           skos:prefLabel "Reference"@en .
+
+
+###  http://webprotege.stanford.edu/Referent
+<http://webprotege.stanford.edu/Referent> rdf:type owl:Class ;
+                                          rdfs:label "Referent"@en .
+
+
+###  http://webprotege.stanford.edu/Scheme
+<http://webprotege.stanford.edu/Scheme> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://webprotege.stanford.edu/Agreement> ;
+                                        skos:prefLabel "Scheme"@en .
+
+
+###  http://webprotege.stanford.edu/TemporalReference
+<http://webprotege.stanford.edu/TemporalReference> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://webprotege.stanford.edu/Reference> ;
+                                                   skos:prefLabel "Temporal Reference"@en .
+
+
+###  http://webprotege.stanford.edu/TimeSpan
+<http://webprotege.stanford.edu/TimeSpan> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://webprotege.stanford.edu/TemporalReference> ;
+                                          skos:prefLabel "Time Span"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/Agency
+:Agency rdf:type owl:Class ;
+        rdfs:subClassOf :Form .
+
+
+###  https://ceco.github.io/ontology/foundation/Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :Agency .
+
+
+###  https://ceco.github.io/ontology/foundation/Atomic
+:Atomic rdf:type owl:Class ;
+        rdfs:subClassOf :Structure ;
+        owl:disjointWith :Composite .
+
+
+###  https://ceco.github.io/ontology/foundation/Composite
+:Composite rdf:type owl:Class ;
+           rdfs:subClassOf :Structure .
+
+
+###  https://ceco.github.io/ontology/foundation/ContractualAgreement
+:ContractualAgreement rdf:type owl:Class ;
+                      rdfs:subClassOf <http://webprotege.stanford.edu/Agreement> ;
+                      skos:prefLabel "Contractual Agreement"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/Delegate
+:Delegate rdf:type owl:Class ;
+          rdfs:subClassOf :Agency .
+
+
+###  https://ceco.github.io/ontology/foundation/Dependency
+:Dependency rdf:type owl:Class ;
+            rdfs:subClassOf :Form .
+
+
+###  https://ceco.github.io/ontology/foundation/Dependent
+:Dependent rdf:type owl:Class ;
+           rdfs:subClassOf :Dependency ;
+           owl:disjointWith :Independent .
+
+
+###  https://ceco.github.io/ontology/foundation/Entity
+:Entity rdf:type owl:Class ;
+        rdfs:subClassOf <http://webprotege.stanford.edu/Referent> .
+
+
+###  https://ceco.github.io/ontology/foundation/Form
+:Form rdf:type owl:Class .
+
+
+###  https://ceco.github.io/ontology/foundation/Group
+:Group rdf:type owl:Class ;
+       rdfs:subClassOf <http://webprotege.stanford.edu/Referent> ,
+                       :Composite ;
+       skos:prefLabel "Group"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/HierarchicalGroup
+:HierarchicalGroup rdf:type owl:Class ;
+                   rdfs:subClassOf :Group ;
+                   skos:prefLabel "Hierarchical Group"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/Independent
+:Independent rdf:type owl:Class ;
+             rdfs:subClassOf :Dependency .
+
+
+###  https://ceco.github.io/ontology/foundation/JuridicalPerson
+:JuridicalPerson rdf:type owl:Class ;
+                 rdfs:subClassOf :LegalEntity ;
+                 owl:disjointWith :NaturalPerson ;
+                 skos:prefLabel "Juridical Person"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/Jurisdiction
+:Jurisdiction rdf:type owl:Class ;
+              rdfs:subClassOf :SpatialRegion ;
+              skos:prefLabel "Jurisdiction"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/LegalEntity
+:LegalEntity rdf:type owl:Class ;
+             rdfs:subClassOf :Agent ,
+                             :Entity ;
+             skos:prefLabel "Legal Entity"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/NaturalPerson
+:NaturalPerson rdf:type owl:Class ;
+               rdfs:subClassOf :Atomic ,
+                               :Independent ,
+                               :LegalEntity ;
+               skos:prefLabel "Natural Person"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/SpatialExtent
+:SpatialExtent rdf:type owl:Class ;
+               rdfs:subClassOf :SpatialReference .
+
+
+###  https://ceco.github.io/ontology/foundation/SpatialLocation
+:SpatialLocation rdf:type owl:Class ;
+                 rdfs:subClassOf :SpatialReference .
+
+
+###  https://ceco.github.io/ontology/foundation/SpatialObject
+:SpatialObject rdf:type owl:Class ;
+               rdfs:subClassOf :SpatialReference .
+
+
+###  https://ceco.github.io/ontology/foundation/SpatialReference
+:SpatialReference rdf:type owl:Class ;
+                  rdfs:subClassOf <http://webprotege.stanford.edu/Reference> ;
+                  skos:prefLabel "Spatial Reference"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/SpatialReferenceScheme
+:SpatialReferenceScheme rdf:type owl:Class ;
+                        rdfs:subClassOf <http://webprotege.stanford.edu/Scheme> ;
+                        skos:prefLabel "Spatial Reference Scheme"@en .
+
+
+###  https://ceco.github.io/ontology/foundation/SpatialRegion
+:SpatialRegion rdf:type owl:Class ;
+               rdfs:subClassOf :SpatialReference .
+
+
+###  https://ceco.github.io/ontology/foundation/Structure
+:Structure rdf:type owl:Class ;
+           rdfs:subClassOf :Form .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :SpatialExtent
+                :SpatialLocation
+                :SpatialObject
+                :SpatialRegion
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointProperties ;
+  owl:members ( :codependentWith
+                :dependentUpon
+                :hasDependent
+                :hasPart
+                :isPartOf
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

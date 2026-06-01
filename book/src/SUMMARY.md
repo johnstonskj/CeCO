@@ -2,9 +2,9 @@
 
 - [Introduction](./introduction.md)
 - [Tools and Methods](./framework/index.md)
-  - [Domains and Views](./framework/domains.md)
+  - [Domains and Views](./framework/organization.md)
   - [Conceptual: CmapTools](./framework/cmaptools.md)
-  - [Detailed: Protege and OWL](./framework/protege.md)
+  - [Detailed: Protégé and OWL](./framework/protege.md)
   - [OWL Guidelines](./framework/owl_guidelines.md)
 - [Foundation](./foundation/index.md)
   - [Core](./foundation/core/index.md)
