@@ -184,44 +184,95 @@
 <p><span class="figure caption">Agreements</span></p>
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
 <h3 id="agreement"><a class="header" href="#agreement">Agreement</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>An agreement is a mutual arrangement between two or more <em>parties</em> agreeing
+on certain <em>outcomes</em> or duties within certain <em>conditions</em>.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Agreement a rdfs:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Agreement"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
 <h3 id="condition"><a class="header" href="#condition">Condition</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A condition is some restriction on one or more party, or on the environment
+the parties act within for the duration of the agreement.</p>
+</blockquote>
 <pre><code class="language-turtle">fnd:Condition a rdfs:Class ;
-  dfs:subClassOf fnd:DependentThing ;
+  rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Condition"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="outcome"><a class="header" href="#outcome">Outcome</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Some expected future state, some created artifact or financial instrument,
+or some performed action.</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:Outcome a rdfs:Class ;
+  dfs:subClassOf fnd:DependentThing ;
+  skos:prefLabel "Outcome"@en ;
+  skos:definition "..."@en .
 </code></pre>
 <h3 id="party"><a class="header" href="#party">Party</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A participant within the agreement having some role to perform.</p>
+</blockquote>
 <pre><code class="language-turtle">fnd:Party a rdfs:Class ;
   dfs:subClassOf fnd:Reference ;
   skos:prefLabel "Party"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
-<h3 id="includes-party"><a class="header" href="#includes-party">includes Party</a></h3>
+<h3 id="a-party-to"><a class="header" href="#a-party-to">a party to</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Denotes that this party plays a role within the related agreement.</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:aPartyTo a rdfs:Property ;
+  owl:inverseOf includesParty ;
+  rdfs:domain fnd:Party ;
+  rdfs:range fnd:Agreement ;
+  skos:prefLabel "a party to"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="includes-party"><a class="header" href="#includes-party">includes party</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>This agreement includes this party.</p>
+</blockquote>
 <pre><code class="language-turtle">fnd:includesParty a rdfs:Property ;
+owl:inverseOf aPartyTo ;
   rdfs:domain fnd:Agreement ;
   rdfs:range fnd:Party ;
-  skos:prefLabel "includesParty"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "includes party"@en ;
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="has-condition"><a class="header" href="#has-condition">has Condition</a></h3>
+<h3 id="has-condition"><a class="header" href="#has-condition">has condition</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>This agreement includes this condition.</p>
+</blockquote>
 <pre><code class="language-turtle">fnd:hasCondition a rdfs:Property ;
   rdfs:domain fnd:Agreement ;
   rdfs:range fnd:Condition ;
-  skos:prefLabel "hasCondition"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "has condition"@en ;
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="effective-timespan"><a class="header" href="#effective-timespan">effective Timespan</a></h3>
+<h3 id="effective-timespan"><a class="header" href="#effective-timespan">effective timespan</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>This agreement is valid for the associated time span.</p>
+</blockquote>
 <pre><code class="language-turtle">fnd:effectiveTimespan a rdfs:Property ;
   rdfs:domain fnd:Agreement ;
   rdfs:range fnd:TemporalSpanReference ;
-  skos:prefLabel "effectiveTimespan"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "effective timespan"@en ;
+  skos:definition "..."@en .
 </code></pre>
 
                     </main>

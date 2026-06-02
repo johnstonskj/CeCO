@@ -185,86 +185,115 @@
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
 <p>TBD</p>
 <h3 id="artifact"><a class="header" href="#artifact">Artifact</a></h3>
+<p>Definition:</p>
+<blockquote>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Artifact a rdfs:Class ;
   dfs:subClassOf fnd:Referent ;
   skos:prefLabel "Artifact"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="dependent-artifact"><a class="header" href="#dependent-artifact">Dependent Artifact</a></h3>
+<h3 id="dependent-artifact"><a class="header" href="#dependent-artifact">Dependent artifact</a></h3>
+<p>Definition:</p>
+<blockquote>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:DependentArtifact a rdfs:Class ;
   dfs:subClassOf fnd:DependentThing, fnd:Artifact ;
-  skos:prefLabel "DependentArtifact"@en ;
+  skos:prefLabel "Dependent artifact"@en ;
   skos:definition ""@en .
 </code></pre>
+<p>Definition:</p>
+<blockquote>
+</blockquote>
+<p>OWL:</p>
 <h3 id="document"><a class="header" href="#document">Document</a></h3>
+<p>Definition:</p>
+<blockquote>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Document a rdfs:Class ;
   dfs:subClassOf fnd:Artifact ;
   skos:prefLabel "Document"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="independent-artifact"><a class="header" href="#independent-artifact">Independent Artifact</a></h3>
+<h3 id="independent-artifact"><a class="header" href="#independent-artifact">Independent artifact</a></h3>
+<p>Definition:</p>
+<blockquote>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:IndependentArtifact a rdfs:Class ;
   dfs:subClassOf fnd:IndependentThing, fnd:Artifact ;
-  skos:prefLabel "IndependentArtifact"@en ;
+  skos:prefLabel "Independent artifact"@en ;
   skos:definition ""@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
 <p><img src="./artifact-properties.svg" alt="Artifact Properties" /></p>
-<h3 id="author"><a class="header" href="#author">author</a></h3>
-<pre><code class="language-turtle">fnd:author a rdfs:Property ;
+<h3 id="artifact-property"><a class="header" href="#artifact-property">artifact property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A property on some <em>thing</em> whose value is an artifact.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:artifactProperty a rdfs:Property ;
+  rdfs:domain fnd:Thing ;
+  rdfs:range fnd:Artifact ;
+  skos:prefLabel "artifact property"@en ;
+  skos:definition "A property on some *thing* whose value is an artifact."@en ;
+  skos:example "The property `author`, as a sub-property, is a relation from a party to an artifact.".
+</code></pre>
+<h3 id="party-property-of-artifact"><a class="header" href="#party-property-of-artifact">party property of artifact</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A property of an artifact whose value is a party.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:partyPropertyOfArtifact a rdfs:Property ;
+  rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Party ;
-  skos:prefLabel "author"@en ;
+  skos:prefLabel "A property of an artifact whose value is a party."@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="editor"><a class="header" href="#editor">editor</a></h3>
-<pre><code class="language-turtle">fnd:author a rdfs:Property ;
+<h3 id="property-of-artifact"><a class="header" href="#property-of-artifact">property of artifact</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A property of an artifact, the type of which is unknown.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:propertyOfArtifact a rdfs:Property ;
   rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "author"@en ;
-  skos:definition ""@en .
+  rdfs:range fnd:Thing ;
+  skos:prefLabel "property of artifact"@en ;
+  skos:definition "A property of an artifact, the type of which is unknown."@en .
 </code></pre>
-<h3 id="issued"><a class="header" href="#issued">issued</a></h3>
-<pre><code class="language-turtle">fnd:issued a rdfs:Property ;
+<h3 id="temporal-event-property-of-artifact"><a class="header" href="#temporal-event-property-of-artifact">temporal event property of artifact</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A property of an artifact whose value is a point in time (temporal event).</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:temporalEventPropertyOfArtifact a rdfs:Property ;
+  rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "issued"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "temporal event property of artifact"@en ;
+  skos:definition "A property of an artifact whose value is a point in time (temporal event)."@en .
 </code></pre>
-<h3 id="owner"><a class="header" href="#owner">owner</a></h3>
-<pre><code class="language-turtle">fnd:owner a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "owner"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="published"><a class="header" href="#published">published</a></h3>
-<pre><code class="language-turtle">fnd:published a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "published"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="publisher"><a class="header" href="#publisher">publisher</a></h3>
-<pre><code class="language-turtle">fnd:publisher a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "publisher"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="reviewer"><a class="header" href="#reviewer">reviewer</a></h3>
-<pre><code class="language-turtle">fnd:reviewer a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "reviewer"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="valid"><a class="header" href="#valid">valid</a></h3>
-<pre><code class="language-turtle">fnd:valid a rdfs:Property ;
+<h3 id="temporal-span-property-of-artifact"><a class="header" href="#temporal-span-property-of-artifact">temporal span property of artifact</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A property of an artifact whose value is a span in time (temporal span).</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:temporalSpanPropertyOfArtifact a rdfs:Property ;
+  rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalSpan ;
-  skos:prefLabel "valid"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "temporal span property of artifact"@en ;
+  skos:definition "A property of an artifact whose value is a span in time (temporal span)."@en ;
+  skos:example "A sub-class of this property may be `validityDuration` for artifacts that expire.".
 </code></pre>
 
                     </main>

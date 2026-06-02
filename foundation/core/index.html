@@ -183,72 +183,122 @@
 <p><img src="./core.svg" alt="Core Classes" /></p>
 <p><span class="figure caption">Foundation Core</span></p>
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
-<h3 id="functional-reference"><a class="header" href="#functional-reference">Functional Reference</a></h3>
+<h3 id="functional-reference"><a class="header" href="#functional-reference">Functional reference</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A reference that <em>uniquely</em> identifies it's referent. It implies that when
+used as an object property that property should be a subtype of
+<code>owl:FunctionalProperty</code>.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:FunctionalReference a rdfs:Class ;
   rdfs:subClassOf fnd:Reference ;
-  skos:prefLabel "Functional Reference"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "Functional reference"@en ;
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="physical-thing"><a class="header" href="#physical-thing">Physical Thing</a></h3>
+<h3 id="physical-thing"><a class="header" href="#physical-thing">Physical thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A <em>thing</em> that has a physical form, it has mass and dimensions.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:PhysicalThing a rdfs:Class ;
   rdfs:subClassOf fnd:Referent ;
-  skos:prefLabel "PhysicalThing"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "Physical thing"@en ;
+  skos:definition "..."@en .
 </code></pre>
 <h3 id="reference"><a class="header" href="#reference">Reference</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A label used to <em>refer to</em> a <em>thing</em>, distinct from a <em>thing</em> itself.
+Reference is <code>owl:DisjointWith</code> Referent.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Reference a rdfs:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Referent ;
   skos:prefLabel "Reference"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
 <h3 id="referent"><a class="header" href="#referent">Referent</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>An <em>actual thing</em> which exists regardless and independent of any particular
+labels used to describe, name, or identify it. It <strong>is</strong> the <em>thing</em>.
+Referent is <code>owl:DisjointWith</code> Reference.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Referent a rdfs:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Reference ;
   skos:prefLabel "Referent"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
 <h3 id="thing"><a class="header" href="#thing">Thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A <em>thing</em> is.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Thing a rdfs:Class ;
   rdfs:subClassOf owl:Thing ;
   skos:prefLabel "Thing"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
-<h3 id="has-reference"><a class="header" href="#has-reference">has Reference</a></h3>
+<h3 id="has-reference"><a class="header" href="#has-reference">has reference</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Denotes that a <em>referent</em> has one or more <em>references</em>.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:hasReference a rdfs:Property ;
   owl:inverseOf fnd:refersTo ;
   rdfs:domain fnd:Referent ;
   rdfs:range fnd:Reference ;
-  skos:prefLabel "hasReference"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "has reference"@en ;
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="has-unique-reference"><a class="header" href="#has-unique-reference">has Unique Reference</a></h3>
+<h3 id="has-unique-reference"><a class="header" href="#has-unique-reference">has unique reference</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Denotes the case that a <em>referent</em> has a uniquely identifying reference.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:hasUniqueReference a rdfs:Property ;
   rdfs:subPropertyOf hasReference ;
   owl:inverseOf fnd:uniquelyRefersTo ;
   rdfs:domain fnd:Referent ;
   rdfs:range fnd:FunctionalReference ;
-  skos:prefLabel "hasUniqueReference"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "has unique reference"@en ;
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="refers-to"><a class="header" href="#refers-to">refers To</a></h3>
+<h3 id="refers-to"><a class="header" href="#refers-to">refers to</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Denotes a the <em>referent</em> that a <em>reference</em> describes.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:refersTo a rdfs:Property ;
   owl:inverseOf fnd:hasReference ;
   rdfs:domain fnd:Reference ;
   rdfs:range fnd:Referent ;
-  skos:prefLabel "refersTo"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "refers to"@en ;
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="uniquely-refer-to"><a class="header" href="#uniquely-refer-to">uniquely Refer To</a></h3>
+<h3 id="uniquely-refers-to"><a class="header" href="#uniquely-refers-to">uniquely refers to</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Denotes a the <em>referent</em> that a <em>functional reference</em> uniquely describes.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:uniquelyRefersTo a owl:FunctionalProperty ;
   rdfs:subPropertyOf fnd:refersTo ;
   owl:inverseOf fnd:hasUniqueReference ;
   rdfs:domain fnd:FunctionalReference ;
   rdfs:range fnd:Referent ;
-  skos:prefLabel "uniquelyRefersTo"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "uniquely refers to"@en ;
+  skos:definition "..."@en .
 </code></pre>
 
                     </main>

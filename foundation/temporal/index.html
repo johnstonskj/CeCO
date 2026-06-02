@@ -183,46 +183,76 @@
 <p><img src="./temporal-aspects.svg" alt="Temporal Aspects" /></p>
 <p><span class="figure caption">Temporal Aspects</span></p>
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
-<h3 id="temporal-reference"><a class="header" href="#temporal-reference">Temporal Reference</a></h3>
+<h3 id="temporal-reference"><a class="header" href="#temporal-reference">Temporal reference</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:TemporalReference a rdfs:Class ;
   rdfs:subClassOf fnd:Reference ;
-  skos:prefLabel "TemporalReference"@en ;
+  skos:prefLabel "Temporal reference"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="temporal-event"><a class="header" href="#temporal-event">Temporal Event</a></h3>
+<h3 id="temporal-event"><a class="header" href="#temporal-event">Temporal event</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:TemporalEvent a rdfs:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
-  skos:prefLabel "TemporalEvent"@en ;
+  skos:prefLabel "Temporal event"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="temporal-span"><a class="header" href="#temporal-span">Temporal Span</a></h3>
+<h3 id="temporal-span"><a class="header" href="#temporal-span">Temporal span</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:TemporalSpan a rdfs:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
-  skos:prefLabel "TemporalSpan"@en ;
+  skos:prefLabel "Temporal span"@en ;
   skos:definition ""@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
-<h3 id="temporal-property"><a class="header" href="#temporal-property">temporal Property</a></h3>
+<h3 id="temporal-property"><a class="header" href="#temporal-property">temporal property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:temporalProperty a rdfs:Property ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:TemporalReference ;
-  skos:prefLabel "temporalProperty"@en ;
+  skos:prefLabel "temporal property"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="temporal-span-start-event"><a class="header" href="#temporal-span-start-event">temporal Span Start Event</a></h3>
+<h3 id="temporal-span-start-event"><a class="header" href="#temporal-span-start-event">temporal span start event</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:temporalSpanStartEvent a rdfs:Property ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "temporalSpanStartEvent"@en ;
+  skos:prefLabel "temporal span start event"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="temporal-span-end-event"><a class="header" href="#temporal-span-end-event">temporal Span End Event</a></h3>
+<h3 id="temporal-span-end-event"><a class="header" href="#temporal-span-end-event">temporal span end event</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:temporalSpanEndEvent a rdfs:Property ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "temporalSpanEndEvent"@en ;
+  skos:prefLabel "temporal span end event"@en ;
   skos:definition ""@en .
 </code></pre>
 

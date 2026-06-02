@@ -191,6 +191,30 @@ already large!</p>
 <p>The figure above shows each of the different ontologies, one for each domain
 plus the foundation and their dependencies. Each domain has a color used in
 the diagrams throughout the rest of the book that helps show the</p>
+<h2 id="background"><a class="header" href="#background">Background</a></h2>
+<p>The resulting Ontology has been used in various forms for various tasks since
+2020 growing and adding domains as necessary. Some domains are still sketchy,
+some probably only have a subset of views, and so the complete set of domains
+is likely incomplete for some time.</p>
+<p>Some of these use-cases include:</p>
+<ol>
+<li>By including among the Class and property definitions
+<a href="https://www.w3.org/TR/skos-reference/">SKOS Simple Knowledge Organization System (SKOS)</a>
+concept definitions so that as well as an ontology the same resource also
+defines a Thesaurus that can more easily be rendered for purely human
+usage.</li>
+<li>By building domain-specific syntaxes over RDF/OWL we enable more <em>ergonomic</em>
+tools that integrate with the ontology without having to understand the
+details of OWL. One example of this is the
+<a href="https://sdml.io">Simple Domain Modeling Language (SDML)</a>.</li>
+<li>Entity/Domain/API model validation; key <em>entities</em> in a model should correspond
+to classes in the ontology, if they are exposed in a public API they must be
+pretty important, right? Therefore, we verify that the name of these key
+entities match labels of classes in our Ontology, and from there we can
+validate other relations outbound from the entity. This not to say anything
+we find that we do not recognize is <em>wrong</em>, it maybe our ontology is
+incomplete, but it does mean either way we want to know.</li>
+</ol>
 <h2 id="organization-of-this-book"><a class="header" href="#organization-of-this-book">Organization of this book</a></h2>
 <p>Part one of the book outlines the framework used to describe the ontology
 itself, the conceptual framework as well as the tools used, and the process

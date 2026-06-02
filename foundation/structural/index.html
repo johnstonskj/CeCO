@@ -184,111 +184,225 @@
 <p><span class="figure caption">Structural Aspects</span></p>
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
 <h3 id="aggregate"><a class="header" href="#aggregate">Aggregate</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>An aggregate thing is one where at least some of the parts of the whole remain
+somewhat distinct and removable from it.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Aggregate a rdfs:Class ;
   rdfs:subClassOf fnd:PhysicalThing ;
   owl:disjointWith fnd:Composite;
   skos:prefLabel "Aggregate"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
 <h3 id="atomic"><a class="header" href="#atomic">Atomic</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>An atomic thing has no parts that from which it was made, or into which it may
+be decomposed. Atomic things are disjoint with structured things.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Atomic a rdfs:Class ;
   rdfs:subClassOf fnd:StructuredThing ;
   owl:disjointWith Composite ;
   skos:prefLabel "Atomic"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
 <h3 id="composite"><a class="header" href="#composite">Composite</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A composite thing is one where the parts, once included in the whole no longer
+have any distinction from the whole and may not be <em>meaningfully</em> removed from
+it.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:Composite a rdfs:Class ;
   rdfs:subClassOf fnd:StructuredThing ;
   owl:disjointWith fnd:Aggregate ;
   skos:prefLabel "Composite"@en ;
-  skos:definition ""@en .
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="dependent-thing"><a class="header" href="#dependent-thing">Dependent Thing</a></h3>
+<h3 id="dependent-thing"><a class="header" href="#dependent-thing">Dependent thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A thing whose existence depends on the existence of some other thing; all
+parts of a composite are by nature dependent things.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:DependentThing a rdfs:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:IndependentThing ;
-  skos:prefLabel "DependentThing"@en ;
+  skos:prefLabel "Dependent thing"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="independent-thing"><a class="header" href="#independent-thing">Independent Thing</a></h3>
+<h3 id="independent-thing"><a class="header" href="#independent-thing">Independent thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A thing whose existence is not dependent on the existence of some other
+thing; at least <em>some</em> parts of an aggregate are independent things.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:IndependentThing a rdfs:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:DependentThing ;
-  skos:prefLabel "IndependentThing"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "Independent thing"@en ;
+  skos:definition "..."@en .
 </code></pre>
-<h3 id="physical-thing"><a class="header" href="#physical-thing">Physical Thing</a></h3>
+<h3 id="physical-thing"><a class="header" href="#physical-thing">Physical thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:PhysicalThing a rdfs:Class ;
   rdfs:subClassOf fnd:Thing ;
-  skos:prefLabel "PhysicalThing"@en ;
+  skos:prefLabel "Physical thing"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="structured-thing"><a class="header" href="#structured-thing">Structured Thing</a></h3>
+<h3 id="structured-thing"><a class="header" href="#structured-thing">Structured thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A thing that has some form of internal structure, it has parts whether it
+is a composite or aggregate thing. Structured things are disjoint with
+atomic things.</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:StructuredThing a rdfs:Class ;
   rdfs:subClassOf fnd:PhysicalThing ;
   owl:disjointWith fnd:Atomic ;
-  skos:prefLabel "StructuredThing"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="thing"><a class="header" href="#thing">Thing</a></h3>
-<pre><code class="language-turtle">fnd:Scheme a rdfs:Class ;
-  skos:prefLabel "Thing"@en ;
+  skos:prefLabel "Structured thing"@en ;
   skos:definition ""@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
 <p><img src="./structural-aspect-properties.svg" alt="Structural Aspect Properties" /></p>
-<h3 id="codependent-with"><a class="header" href="#codependent-with">codependent With</a></h3>
+<h3 id="codependent-with"><a class="header" href="#codependent-with">codependent with</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:codependentWith a rdfs:Property, owl:ReflexiveProperty ;
   rdfs:domain fnd:StructuredThing ;
   rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "codependentWith"@en ;
+  skos:prefLabel "codependent with"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="dependent-part-of"><a class="header" href="#dependent-part-of">dependent Part Of</a></h3>
+<h3 id="dependent-part-of"><a class="header" href="#dependent-part-of">dependent part of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:dependentPartOf a rdfs:Property ;
+  rdfs:subPropertyOf fnd:isPartOf ;
   owl:inverseOf fnd:hasDependentPart ;
   rdfs:domain fnd:Dependent ;
   rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "dependentPartOf"@en ;
+  skos:prefLabel "dependent part of"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="dependent-upon"><a class="header" href="#dependent-upon">dependent Upon</a></h3>
+<h3 id="dependent-upon"><a class="header" href="#dependent-upon">dependent upon</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:dependentUpon a rdfs:Property ;
   rdfs:domain fnd:StructuredThing ;
   rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "dependentUpon"@en ;
+  skos:prefLabel "dependent upon"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="has-dependent"><a class="header" href="#has-dependent">has Dependent</a></h3>
+<h3 id="has-dependent"><a class="header" href="#has-dependent">has dependent</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:hasDependent a rdfs:Property ;
   rdfs:domain fnd:StructuredThing ;
   rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "hasDependent"@en ;
+  skos:prefLabel "has dependent"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="has-dependent-part"><a class="header" href="#has-dependent-part">has Dependent Part</a></h3>
+<h3 id="has-dependent-part"><a class="header" href="#has-dependent-part">has dependent part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:hasDependentPart a rdfs:Property ;
+  rdfs:subPropertyOf fnd:hasPart ;
   owl:inverseOf fnd:dependentPartOf ;
   rdfs:domain fnd:StructuredThing ;
   rdfs:range fnd:Dependent ;
-  skos:prefLabel "hasDependentPart"@en ;
+  skos:prefLabel "has dependent part"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="has-independent-part"><a class="header" href="#has-independent-part">has Independent Part</a></h3>
+<h3 id="has-independent-part"><a class="header" href="#has-independent-part">has independent part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:hasIndependentPart a rdfs:Property ;
+  rdfs:subPropertyOf fnd:hasPart ;
   owl:inverseOf fnd:narrowerClassifier ;
   rdfs:domain fnd:StructuredThing ;
   rdfs:range fnd:Independent ;
-  skos:prefLabel "hasIndependentPart"@en ;
+  skos:prefLabel "has independent part"@en ;
   skos:definition ""@en .
 </code></pre>
-<h3 id="independent-part-of"><a class="header" href="#independent-part-of">independent Part Of</a></h3>
+<h3 id="has-part"><a class="header" href="#has-part">has part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:hasPart a rdfs:Property ;
+  rdfs:subPropertyOf fnd:merelogicalProperty ;
+  rdfs:domain fnd:Thing ;
+  rdfs:range fnd:Thing ;
+  skos:prefLabel "has part"@en ;
+  skos:definition ""@en .
+</code></pre>
+<h3 id="independent-part-of"><a class="header" href="#independent-part-of">independent part of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
 <pre><code class="language-turtle">fnd:independentPartOf a rdfs:Property ;
+  rdfs:subPropertyOf fnd:isPartOf ;
   owl:inverseOf fnd:hasIndependentPart ;
   rdfs:domain fnd:Independent ;
   rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "independentPartOf"@en ;
+  skos:prefLabel "independent part of"@en ;
+  skos:definition ""@en .
+</code></pre>
+<h3 id="is-part-of"><a class="header" href="#is-part-of">is part of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:isPartOf a rdfs:Property ;
+  rdfs:subPropertyOf fnd:merelogicalProperty ;
+  rdfs:domain fnd:Thing ;
+  rdfs:range fnd:Thing ;
+  skos:prefLabel "is part of"@en ;
+  skos:definition ""@en .
+</code></pre>
+<h3 id="merelogical-property"><a class="header" href="#merelogical-property">merelogical property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:merelogicalProperty a rdfs:Property ;
+  rdfs:domain fnd:Thing ;
+  rdfs:range fnd:Thing ;
+  skos:prefLabel "merelogical property"@en ;
   skos:definition ""@en .
 </code></pre>
 

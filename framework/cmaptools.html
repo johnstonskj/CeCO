@@ -180,9 +180,71 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="conceptual-cmaptools"><a class="header" href="#conceptual-cmaptools">Conceptual: CmapTools</a></h1>
-<p>TBD</p>
+<p>The <a href="https://cmap.ihmc.us/cmaptools/">IHMC CmapTools</a> software empowers users
+to construct, navigate, share and criticize knowledge models represented as
+concept maps. We use these tools because the very basis of the concept map is
+rooted in a very simple set of primitives; the <em>concept</em> and the <em>linking
+phrases</em> that relate concepts; that's it. You can add some styling to the
+diagram, and we do, but that doesn't change the meaning in any way other than
+by convention.</p>
 <p><img src="./cmaptools.png" alt="The CmapTools Interface" /></p>
 <p><span class="figure caption">The CmapTools Interface</span></p>
+<p>This simplicity means that the time you spend using the tools is time spent
+thinking about the concepts and relations, not about which shape, which of
+the many relationship types, whether this model element is allowed to be
+linked to this model element in this type of diagram. It's a very direct and
+immediate experience, something that also translates easily from whiteboard
+or napkin sketches to computer easily and quickly.</p>
+<h2 id="building-concept-maps"><a class="header" href="#building-concept-maps">Building Concept Maps</a></h2>
+<p>Here are some useful quotes from the CmapTools web site:</p>
+<ul>
+<li><em>Concept maps are graphical tools for organizing and representing knowledge
+in an organized fashion.</em></li>
+<li><em>Cmap products empowers users to construct, navigate, share and criticize
+knowledge models represented as concept maps.</em></li>
+<li><em>Concept maps express explicitly the most relevant relationships between a
+set of concepts. This relationship is depicted by means of the linking<br />
+phrases forming propositions.</em></li>
+<li><em>In a concept map, each concept consists of the minimum number of words
+needed to express the object or event, and linking words are also as concise
+as possible and usually include a verb.</em></li>
+<li><em>It is impossible to characterize any concept without its relation to other
+concepts.</em></li>
+<li><em>More abstract concepts however cannot be described as having a cognitive
+representation as a category.</em></li>
+</ul>
+<h2 id="specific-conventions"><a class="header" href="#specific-conventions">Specific Conventions</a></h2>
+<p>One convention you will see immediately is the use of the <em>subClassOf</em> linking
+phrase between concepts. This should be seen as expanding to the RDF predicate
+<code>rdfs:subClassOf</code> and to indicate that it is a <em>meta</em>-phrase it is always
+rendered in italics as show in the following.</p>
+<p><img src="./cmap-subClassOf.svg" alt="RDF Schema subClassOf" /></p>
+<p>In some cases sub-classes of a common parent class are incompatible, that is
+an individual <strong>may not</strong> be an instance of both classes. In OWL terms these
+two classes are <em>disjoint</em>. To describe this we use a similar convention, a
+linked <em>meta</em>-phrase <em>disjointWith</em> between the classes. In this case we also
+color the lines red to denote that this relation acts as a constraint. This
+relation expands to an <code>owl:disjointWith</code> predicate on each class definition.</p>
+<p><img src="./cmap-disjointWith.svg" alt="OWL disjointWith" /></p>
+<p>RDF allows for sub-property definitions and so our concept maps should allow
+us to describe them also. We dno <strong>not</strong> use the same convention as we do for
+classes (the invalid left-hand side of the image below), instead we use the
+linking phrases of the concept map as-is to define properties. In the example
+below <code>contains</code> is clearly a property, however <code>containsOne</code> is also a
+property because, by convention, it has an arrow that points to a linking
+phrase that is not italic (linking to italic phrases has no meaning). Also,
+this implies that a linking phrase could also have an arrow to another concept
+which would imply that the concept is itself a property unless it's usage
+elsewhere would prohibit that. In this diagram we show a greyed-out link to
+the root <code>rdfs:Property</code> which is of course implied for all linking phrases
+with no explicit parent.</p>
+<p><img src="./cmap-subPropertyOf.svg" alt="RDF Schema subProperyOf" /></p>
+<p>OWL allows us to denote that one relation is the inverse of another, this is
+particularly valuable in the presence of inference, but even without it is
+useful knowledge and so we should capture it. We use a similar convention to
+the <em>disjointWith</em> example above, as shown below. This results in the addition
+of an <code>owl:inverseOf</code> predicate to each property definition.</p>
+<p><img src="./cmap-inverseOf.svg" alt="OWL inverseOf" /></p>
 
                     </main>
 

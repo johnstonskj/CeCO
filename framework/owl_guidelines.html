@@ -180,6 +180,152 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="owl-guidelines"><a class="header" href="#owl-guidelines">OWL Guidelines</a></h1>
+<p>TBD</p>
+<h2 id="ontologies"><a class="header" href="#ontologies">Ontologies</a></h2>
+<p>TBD</p>
+<h3 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h3>
+<p>The following are the <em>minimum</em> set of namespaces required in the ontologies
+defined in this book.</p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>prefix</th><th>URL</th></tr></thead><tbody>
+<tr><td>RDF</td><td><code>rdf</code></td><td><code>&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</code></td></tr>
+<tr><td>RDF Schema</td><td><code>rdfs</code></td><td><code>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></td></tr>
+<tr><td>XML Schema.</td><td><code>xsd</code></td><td><code>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></td></tr>
+<tr><td>OWL</td><td><code>owl</code></td><td><code>&lt;http://www.w3.org/2002/07/owl#&gt;</code></td></tr>
+<tr><td>SKOS</td><td><code>skos</code></td><td><code>&lt;http://www.w3.org/2004/02/skos/core#&gt;</code></td></tr>
+<tr><td>Dublin Core</td><td><code>dc</code></td><td><code>&lt;http://purl.org/dc/elements/1.1/&gt;</code></td></tr>
+</tbody></table>
+</div>
+<p><span class="table caption">Minimum Required Namespaces</span></p>
+<h3 id="ontology-predicates"><a class="header" href="#ontology-predicates">Ontology Predicates</a></h3>
+<p>The following are the expected predicates expected on all <code>owl:Ontology</code>
+resources.</p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Required</th><th>Value / Purpose</th></tr></thead><tbody>
+<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>owl:Ontology</code> , maybe <code>skos:ConceptScheme</code></td></tr>
+<tr><td><code>owl:versionIRI</code></td><td><strong>yes</strong></td><td>A version-specific IRI representing the version-distinct resource.</td></tr>
+<tr><td><code>owl:versionInfo</code></td><td><strong>yes</strong></td><td>Used to attach the version identifier to this version-distinct resource.</td></tr>
+<tr><td><code>owl:backwardCompatibleWith</code></td><td>no</td><td>TBD</td></tr>
+<tr><td><code>owl:imports</code></td><td>no</td><td><em>Should</em> import SKOS.</td></tr>
+<tr><td><code>skos:prefLabel</code></td><td><strong>yes</strong></td><td>Primary label/name for this class.</td></tr>
+<tr><td><code>skos:altLabel</code></td><td>no</td><td>Alternate label/names for this class.</td></tr>
+<tr><td><code>dc:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
+<tr><td><code>skos:ConceptScheme</code></td><td>no</td><td>Denotes this ontology is also a SKOS concept scheme.</td></tr>
+<tr><td><code>skos:hasTopConcept</code></td><td>no</td><td>Denotes one or more <em>top-level</em> concepts; iff this is a <code>skos:ConceptScheme</code>.</td></tr>
+</tbody></table>
+</div>
+<p><span class="table caption">Expected Ontology Predicates</span></p>
+<p>Notes:</p>
+<ol>
+<li>The version IRI path is constructed with the template
+<code>v/{year}/{month}/{day}/{domain}/</code>, where the date is the release date for
+the ontology.</li>
+<li>The version info string is constructed with the template
+<code>v{year}-{month}-{day}</code>, which matches the date in the version IRI.</li>
+<li>Validation <strong>must</strong> ensure that any concept referenced by <code>skos:hasTopConcept</code>
+is a member of this ontology (our own constraint) and has the predicate
+<code>skos:inScheme</code> referencing this ontology.</li>
+</ol>
+<h3 id="example-ontology"><a class="header" href="#example-ontology">Example Ontology</a></h3>
+<pre><code class="language-turtle">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix owl:  &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix dc:   &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix fnd:  &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
+@base         &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
+
+fnd:
+  ##### OWL Ontology Type and Version ....................................##### 
+  a owl:Ontology ;
+  owl:versionIRI &lt;https://ceco.one/v/2026/06/01/foundation/&gt; ;
+  owl:versionInfo "v2026-06-01" ;
+  
+  ##### Labels ...........................................................#####
+  skos:prefLabel "Foundation" ;
+  skos:altLabel "CeCO Foundation" ;
+  
+  ##### SKOS Thesaurus ...................................................#####
+  a skos:ConceptScheme ;
+  skos:hasTopConcept fns:Thing ;
+  
+  ##### Import any necessary Ontologies here .............................#####
+  owl:imports &lt;http://www.w3.org/2004/02/skos/core&gt; ;
+  owl:imports &lt;http://purl.org/dc/elements/1.1/&gt; .
+
+##### Ensure these are annotation properties .............................#####
+skos:prefLabel a owl:AnnotationProperty .
+skos:altLabel a owl:AnnotationProperty .
+skos:definition a owl:AnnotationProperty .
+skos:example a owl:AnnotationProperty . # etc.
+
+dc:description a owl:AnnotationProperty . # etc.
+</code></pre>
+<h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
+<p>The following are the expected predicates expected on all <code>rdfs:Class</code>
+resources.</p>
+<h3 id="class-predicates"><a class="header" href="#class-predicates">Class Predicates</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Required</th><th>Value / Purpose</th></tr></thead><tbody>
+<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>rdfs:Class</code>, maybe <code>skos:Concept</code></td></tr>
+<tr><td><code>rdfs:subClassOf</code></td><td>no</td><td>Required if this has one or more parent classes.</td></tr>
+<tr><td><code>owl:disjointWith</code></td><td>no</td><td>Denotes one or more classes this class is disjoint with.</td></tr>
+<tr><td><code>skos:prefLabel</code></td><td><strong>yes</strong></td><td>Primary label/name for this class.</td></tr>
+<tr><td><code>skos:altLabel</code></td><td>no</td><td>Alternate label/names for this class.</td></tr>
+<tr><td><code>skos:definition</code></td><td><strong>yes</strong></td><td>Definition of this class (precise/concise as possible).</td></tr>
+<tr><td><code>dc:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
+<tr><td><code>skos:example</code></td><td>no</td><td>One or more illustrative examples.</td></tr>
+<tr><td><code>skos:broader</code></td><td>no</td><td>Denotes a broader concept; iff this is a <code>skos:Concept</code>.</td></tr>
+<tr><td><code>skos:narrower</code></td><td>no</td><td>Denotes a narrower concept; iff this is a <code>skos:Concept</code>.</td></tr>
+<tr><td><code>skos:inScheme</code></td><td><strong>yes iff</strong></td><td>Denotes one or more containing schemes; iff this is a <code>skos:Concept</code>.</td></tr>
+</tbody></table>
+</div>
+<p><span class="table caption">Expected Class Predicates</span></p>
+<h3 id="example-class"><a class="header" href="#example-class">Example Class</a></h3>
+<pre><code class="language-turtle">fnd:Reference
+  ##### Class Definition .................................................#####
+  a rdfs:Class, skos:Concept ;
+  rdfs:subClassOf fnd:Thing ;
+  owl:disjointWith fnd:Referent ;
+  
+  ##### Labels and Definition ............................................#####
+  skos:prefLabel "Reference"@en ;
+  skos:definition 
+    "A label used to *refer to a thing*, distinct from a *thing* itself."@en ;
+  
+  ##### SKOS Thesaurus ...................................................#####
+  skos:inScheme fnd: .
+</code></pre>
+<h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
+<p>The following are the expected predicates expected on all <code>rdfs:Property</code>
+resources.</p>
+<h3 id="property-predicates"><a class="header" href="#property-predicates">Property Predicates</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Required</th><th>Value / Purpose</th></tr></thead><tbody>
+<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>rdfs:Property</code>, maybe <code>skos:Concept</code></td></tr>
+<tr><td><code>rdfs:subPropertyOf</code></td><td>no</td><td>Required if this has one or more parent properties.</td></tr>
+<tr><td><code>owl:inverseOf</code></td><td>no</td><td>Denotes another property this property is the inverse of.</td></tr>
+<tr><td><code>skos:prefLabel</code></td><td><strong>yes</strong></td><td>Primary label/name for this property.</td></tr>
+<tr><td><code>skos:altLabel</code></td><td>no</td><td>Alternate label/names for this property.</td></tr>
+<tr><td><code>skos:definition</code></td><td><strong>yes</strong></td><td>Definition of this property (precise/concise as possible).</td></tr>
+<tr><td><code>dc:description</code></td><td>no</td><td>Informal description of this property.</td></tr>
+<tr><td><code>skos:example</code></td><td>no</td><td>One or more illustrative examples.</td></tr>
+<tr><td><code>skos:broader</code></td><td>no</td><td>Denotes a broader concept; iff this is a <code>skos:Concept</code>.</td></tr>
+<tr><td><code>skos:narrower</code></td><td>no</td><td>Denotes a narrower concept; iff this is a <code>skos:Concept</code>.</td></tr>
+<tr><td><code>skos:inScheme</code></td><td><strong>yes iff</strong></td><td>Denotes one or more containing schemes; iff this is a <code>skos:Concept</code>.</td></tr>
+</tbody></table>
+</div>
+<p><span class="table caption">Expected Property Predicates</span></p>
+<h3 id="example-property"><a class="header" href="#example-property">Example Property</a></h3>
+<pre><code class="language-turtle">fnd:aPartyTo 
+  ##### Class Definition .................................................#####
+  a rdfs:Property ;
+  owl:inverseOf includesParty ;
+  rdfs:domain fnd:Party ;
+  rdfs:range fnd:Agreement ;
+  
+  ##### Labels and Definition ............................................#####
+  skos:prefLabel "a party to"@en ;
+  skos:definition 
+    "Denotes that this party plays a *rôle* within the related agreement."@en .
+</code></pre>
 
                     </main>
 

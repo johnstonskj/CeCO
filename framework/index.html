@@ -184,12 +184,21 @@
 and orthogonal axis; one is purely hierarchical allowing a breakdown into
 managable sized scopes, the other is a refinement across abstraction layers.</p>
 <h2 id="organizational-dimensions"><a class="header" href="#organizational-dimensions">Organizational Dimensions</a></h2>
-<p>See <a href="./organization.html">Domains and Views</a>.</p>
+<p>The organizational dimension separates the entire ontology into a set of
+<em>domains</em>, and each domain into a set of <em>views</em>.</p>
 <h3 id="domains"><a class="header" href="#domains">Domains</a></h3>
+<p>A domain is best described as the set of concepts and entities necessarily
+described to understand one or more processes in an area of the business.
+As such the domain is often named for this area of the business or for one
+of these processes.</p>
 <h3 id="views"><a class="header" href="#views">Views</a></h3>
+<p>A view is then centered on one or more of the entities within the domain and
+provides a specific slice of the overall model.</p>
+<p>See <a href="./organization.html">Domains and Views</a>.</p>
 <h2 id="semantic-dimensions"><a class="header" href="#semantic-dimensions">Semantic Dimensions</a></h2>
-<p>You will find that the body of this book, parts two and three, are described
-using a mix of images and formal language.</p>
+<p>The semantic, or abstraction, dimension simply separates one high-level view
+described using <em>semantic maps</em> (images) from our detailed <em>formal ontology</em>
+representations in RDF and OWL.</p>
 <h3 id="concept-maps"><a class="header" href="#concept-maps">Concept Maps</a></h3>
 <p>The images are semantic maps using
 <a href="https://cmap.ihmc.us">Cmap Tools</a> suite, and provide a useful high-level way
@@ -206,6 +215,33 @@ used in the development of knowledge graphs and ontologies.</p>
 <p>For the development of the OWL ontologies we use the excellent
 <a href="https://protege.stanford.edu">Protégé</a> tool.</p>
 <p>See <a href="./protege.html">Detailed: Protégé and OWL</a> and <a href="./owl_guidelines.html">OWL Guidelines</a>.</p>
+<h2 id="on-naming"><a class="header" href="#on-naming">On Naming</a></h2>
+<p>The following is basic naming guidance <em>unless</em> there are known/expected names
+that practitioners in the domain would expect to see.</p>
+<h3 id="ontologies"><a class="header" href="#ontologies">Ontologies</a></h3>
+<ol>
+<li>Class Names: <code>UpperCamelCase</code></li>
+<li>Labels: <code>Upper Camel Case</code></li>
+</ol>
+<pre><code class="language-turtle">ex:FoundationalThings a owl:Ontology ;
+  skos:prefLabel "Foundational Things" .
+</code></pre>
+<h3 id="classes"><a class="header" href="#classes">Classes</a></h3>
+<ol>
+<li>Class Names: <code>UpperCamelCase</code></li>
+<li>Labels: <code>Sentence cased</code></li>
+</ol>
+<pre><code class="language-turtle">ex:FoundationalThing a rdfs:Class ;
+  skos:prefLabel "Foundational thing" .
+</code></pre>
+<h3 id="properties"><a class="header" href="#properties">Properties</a></h3>
+<ol>
+<li>Property Names: <code>lowerCamelCase</code></li>
+<li>Labels: <code>all lower case</code></li>
+</ol>
+<pre><code class="language-turtle">ex:foundationalRelation a rdfs:Property ;
+  skos:prefLabel "foundational relation" .
+</code></pre>
 
                     </main>
 
