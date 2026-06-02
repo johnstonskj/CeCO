@@ -6,78 +6,126 @@
 
 ## Classes
 
-### Spacial Extent
+### Spacial extent
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:SpacialExtent a rdfs:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
-  skos:prefLabel "SpacialExtent"@en ;
+  skos:prefLabel "Spacial extent"@en ;
   skos:definition ""@en .
 ```
 
-### Spacial Location
+### Spacial location
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:SpacialLocation a rdfs:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
-  skos:prefLabel "SpacialLocation"@en ;
+  skos:prefLabel "Spacial location"@en ;
   skos:definition ""@en .
 ```
 
-### Spacial Object
+### Spacial object
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:SpacialObject a rdfs:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
-  skos:prefLabel "SpacialObject"@en ;
+  skos:prefLabel "Spacial object"@en ;
   skos:definition ""@en .
 ```
 
-### Spatial Reference
+### Spatial reference
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:SpatialReference a rdfs:Class ;
   rdfs:subClassOf fnd:Reference ;
-  skos:prefLabel "SpatialReference"@en ;
+  skos:prefLabel "Spatial reference"@en ;
   skos:definition ""@en .
 ```
 
-### Spatial Reference Scheme
+### Spatial reference scheme
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:SpatialReferenceScheme a rdfs:Class ;
   rdfs:subClassOf fnd:Scheme ;
-  skos:prefLabel "SpatialReferenceScheme"@en ;
+  skos:prefLabel "Spatial reference scheme"@en ;
   skos:definition ""@en .
 ```
 
-### Spatial Region
+### Spatial region
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:SpatialRegion a rdfs:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
-  skos:prefLabel "SpatialRegion"@en ;
+  skos:prefLabel "Spatial region"@en ;
   skos:definition ""@en .
 ```
 
 ## Properties
 
-### spatial Property
+### spatial property
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:spatialProperty a rdfs:Property ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:SpatialReference ;
-  skos:prefLabel "spatialProperty"@en ;
+  skos:prefLabel "spatial property"@en ;
   skos:definition ""@en .
 ```
 
-### in Spatial Scheme
+### in spatial scheme
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:inSpatialScheme a rdfs:Property ;
   rdfs:domain fnd:SpatialReference ;
   rdfs:range fnd:SpatialReferenceScheme ;
-  skos:prefLabel "inSpatialScheme"@en ;
+  skos:prefLabel "in spatial scheme"@en ;
   skos:definition ""@en .
 ```

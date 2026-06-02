@@ -6,63 +6,99 @@
 
 ## Classes
 
-### Temporal Reference
+### Temporal reference
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:TemporalReference a rdfs:Class ;
   rdfs:subClassOf fnd:Reference ;
-  skos:prefLabel "TemporalReference"@en ;
+  skos:prefLabel "Temporal reference"@en ;
   skos:definition ""@en .
 ```
 
-### Temporal Event
+### Temporal event
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:TemporalEvent a rdfs:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
-  skos:prefLabel "TemporalEvent"@en ;
+  skos:prefLabel "Temporal event"@en ;
   skos:definition ""@en .
 ```
 
-### Temporal Span
+### Temporal span
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:TemporalSpan a rdfs:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
-  skos:prefLabel "TemporalSpan"@en ;
+  skos:prefLabel "Temporal span"@en ;
   skos:definition ""@en .
 ```
 
 ## Properties
 
-### temporal Property
+### temporal property
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:temporalProperty a rdfs:Property ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:TemporalReference ;
-  skos:prefLabel "temporalProperty"@en ;
+  skos:prefLabel "temporal property"@en ;
   skos:definition ""@en .
 ```
 
-### temporal Span Start Event
+### temporal span start event
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:temporalSpanStartEvent a rdfs:Property ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "temporalSpanStartEvent"@en ;
+  skos:prefLabel "temporal span start event"@en ;
   skos:definition ""@en .
 ```
 
-### temporal Span End Event
+### temporal span end event
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:temporalSpanEndEvent a rdfs:Property ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "temporalSpanEndEvent"@en ;
+  skos:prefLabel "temporal span end event"@en ;
   skos:definition ""@en .
 ```

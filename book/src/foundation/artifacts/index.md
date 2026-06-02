@@ -10,6 +10,12 @@ TBD
 
 ### Artifact
 
+Definition:
+
+>
+
+OWL:
+
 ```turtle
 fnd:Artifact a rdfs:Class ;
   dfs:subClassOf fnd:Referent ;
@@ -17,16 +23,34 @@ fnd:Artifact a rdfs:Class ;
   skos:definition ""@en .
 ```
 
-### Dependent Artifact
+### Dependent artifact
+
+Definition:
+
+>
+
+OWL:
 
 ```turtle
 fnd:DependentArtifact a rdfs:Class ;
   dfs:subClassOf fnd:DependentThing, fnd:Artifact ;
-  skos:prefLabel "DependentArtifact"@en ;
+  skos:prefLabel "Dependent artifact"@en ;
   skos:definition ""@en .
 ```
 
+Definition:
+
+>
+
+OWL:
+
 ### Document
+
+Definition:
+
+>
+
+OWL:
 
 ```turtle
 fnd:Document a rdfs:Class ;
@@ -35,12 +59,18 @@ fnd:Document a rdfs:Class ;
   skos:definition ""@en .
 ```
 
-### Independent Artifact
+### Independent artifact
+
+Definition:
+
+>
+
+OWL:
 
 ```turtle
 fnd:IndependentArtifact a rdfs:Class ;
   dfs:subClassOf fnd:IndependentThing, fnd:Artifact ;
-  skos:prefLabel "IndependentArtifact"@en ;
+  skos:prefLabel "Independent artifact"@en ;
   skos:definition ""@en .
 ```
 
@@ -48,82 +78,87 @@ fnd:IndependentArtifact a rdfs:Class ;
 
 ![Artifact Properties](./artifact-properties.svg)
 
-### author
+### artifact property
+
+Definition:
+
+> A property on some *thing* whose value is an artifact.
+
+OWL:
 
 ```turtle
-fnd:author a rdfs:Property ;
+fnd:artifactProperty a rdfs:Property ;
+  rdfs:domain fnd:Thing ;
+  rdfs:range fnd:Artifact ;
+  skos:prefLabel "artifact property"@en ;
+  skos:definition "A property on some *thing* whose value is an artifact."@en ;
+  skos:example "The property `author`, as a sub-property, is a relation from a party to an artifact.".
+```
+
+### party property of artifact
+
+Definition:
+
+> A property of an artifact whose value is a party.
+
+OWL:
+
+```turtle
+fnd:partyPropertyOfArtifact a rdfs:Property ;
+  rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Party ;
-  skos:prefLabel "author"@en ;
+  skos:prefLabel "A property of an artifact whose value is a party."@en ;
   skos:definition ""@en .
 ```
 
-### editor
+### property of artifact
+
+Definition:
+
+> A property of an artifact, the type of which is unknown.
+
+OWL:
 
 ```turtle
-fnd:author a rdfs:Property ;
+fnd:propertyOfArtifact a rdfs:Property ;
   rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "author"@en ;
-  skos:definition ""@en .
+  rdfs:range fnd:Thing ;
+  skos:prefLabel "property of artifact"@en ;
+  skos:definition "A property of an artifact, the type of which is unknown."@en .
 ```
 
-### issued
+### temporal event property of artifact
+
+Definition:
+
+> A property of an artifact whose value is a point in time (temporal event).
+
+OWL:
 
 ```turtle
-fnd:issued a rdfs:Property ;
+fnd:temporalEventPropertyOfArtifact a rdfs:Property ;
+  rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "issued"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "temporal event property of artifact"@en ;
+  skos:definition "A property of an artifact whose value is a point in time (temporal event)."@en .
 ```
 
-### owner
+### temporal span property of artifact
+
+Definition:
+
+> A property of an artifact whose value is a span in time (temporal span).
+
+OWL:
 
 ```turtle
-fnd:owner a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "owner"@en ;
-  skos:definition ""@en .
-```
-
-### published
-
-```turtle
-fnd:published a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:TemporalEvent ;
-  skos:prefLabel "published"@en ;
-  skos:definition ""@en .
-```
-
-### publisher
-
-```turtle
-fnd:publisher a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "publisher"@en ;
-  skos:definition ""@en .
-```
-
-### reviewer
-
-```turtle
-fnd:reviewer a rdfs:Property ;
-  rdfs:domain fnd:Artifact ;
-  rdfs:range fnd:Party ;
-  skos:prefLabel "reviewer"@en ;
-  skos:definition ""@en .
-```
-
-### valid
-
-```turtle
-fnd:valid a rdfs:Property ;
+fnd:temporalSpanPropertyOfArtifact a rdfs:Property ;
+  rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalSpan ;
-  skos:prefLabel "valid"@en ;
-  skos:definition ""@en .
+  skos:prefLabel "temporal span property of artifact"@en ;
+  skos:definition "A property of an artifact whose value is a span in time (temporal span)."@en ;
+  skos:example "A sub-class of this property may be `validityDuration` for artifacts that expire.".
 ```

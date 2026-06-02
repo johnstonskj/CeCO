@@ -16,6 +16,12 @@
 
 ### Geographic Coordinate
 
+Definition:
+
+> TBD
+
+OWL:
+
 ```turtle
 fnd:GeographicCoordinate a rdfs:Class ;
   rdfs:subClassOf fnd:SpacialLocation ;
@@ -24,6 +30,12 @@ fnd:GeographicCoordinate a rdfs:Class ;
 ```
 
 ### Geographic Coordinate Scheme
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:GeographicCoordinateScheme a rdfs:Class ;
@@ -34,6 +46,12 @@ fnd:GeographicCoordinateScheme a rdfs:Class ;
 
 ### Postal Address
 
+Definition:
+
+> TBD
+
+OWL:
+
 ```turtle
 fnd:PostalAddress a rdfs:Class ;
   rdfs:subClassOf fnd:SpacialLocation ;
@@ -42,6 +60,12 @@ fnd:PostalAddress a rdfs:Class ;
 ```
 
 ### Postal Address Scheme
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:PostalAddressScheme a rdfs:Class ;
@@ -52,6 +76,12 @@ fnd:PostalAddressScheme a rdfs:Class ;
 
 ### Postal Code
 
+Definition:
+
+> TBD
+
+OWL:
+
 ```turtle
 fnd:PostalCode a rdfs:Class ;
   rdfs:subClassOf fnd:SpacialLocation ;
@@ -60,6 +90,12 @@ fnd:PostalCode a rdfs:Class ;
 ```
 
 ### Postal Code Scheme
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:PostalCodeScheme a rdfs:Class ;
@@ -72,6 +108,12 @@ fnd:PostalCodeScheme a rdfs:Class ;
 
 ### hasPostalCode
 
+Definition:
+
+> TBD
+
+OWL:
+
 ```turtle
 fnd:hasPostalCode a rdfs:Property ;
   rdfs:domain fnd:PostalAddress ;
@@ -81,6 +123,12 @@ fnd:hasPostalCode a rdfs:Property ;
 ```
 
 ### inGeographicScheme
+
+Definition:
+
+> TBD
+
+OWL:
 
 ```turtle
 fnd:inGeographicScheme a rdfs:Property ;
