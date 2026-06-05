@@ -13,9 +13,16 @@ or at least some of it's domains may be reusable in other areas it was
 decided to keep a fixed scope so as to keep the problem bounded, even if
 already large!
 
+This repository builds from source in mdbook form, using content in
+[Cmap Tools](https://cmap.ihmc.us)  and [Protégé](https://protege.stanford.edu)
+and hosted using GitHub pages as [ceco.one](http://ceco.one).
+
 ## Background
 
-TBD
+The resulting Ontology has been used in various forms for various tasks since
+2020 growing and adding domains as necessary. Some domains are still sketchy,
+some probably only have a subset of views, and so the complete set of domains
+is likely incomplete for some time.
 
 ## Content
 
