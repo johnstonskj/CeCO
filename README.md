@@ -15,7 +15,7 @@ already large!
 
 This repository builds from source in mdbook form, using content in
 [Cmap Tools](https://cmap.ihmc.us)  and [Protégé](https://protege.stanford.edu)
-and hosted using GitHub pages as [ceco.one](http://ceco.one).
+and hosted using GitHub pages as [ceco.one](https://ceco.one).
 
 ## Background
 
