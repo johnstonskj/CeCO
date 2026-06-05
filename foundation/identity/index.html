@@ -256,6 +256,46 @@
   skos:example "...".
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
+<h3 id="authority"><a class="header" href="#authority">authority</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Denotes that one party in the agreement constituting the scheme is the
+<em>authority</em> for the scheme and responsible for setting rules and
+arbitrating issues.</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The GTIN scheme has the organization GS1 as it's authority. <br />
+<code>gtin: :authority gs1: .</code></li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:authority a rdfs:Property ;
+  rdfs:subPropertyOf fnd:includesParty ;
+  owl:inversOf fnd:authorityForScheme ;
+  rdfs:domain fnd:Scheme ;
+  rdfs:range fnd:Party ;
+  skos:prefLabel "authority"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="authority-for-scheme"><a class="header" href="#authority-for-scheme">authority for scheme</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>GS1 is the authority for the GTIN scheme. <br />
+<code>gs1: :authorityForScheme gtin: .</code></li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:authorityForScheme a rdfs:Property ;
+  rdfs:subPropertyOf fnd:aPartyTo ;
+  owl:inversOf fnd:authority ;
+  rdfs:domain fnd:Party ;
+  rdfs:range fnd:Scheme ;
+  skos:prefLabel "authority for scheme"@en ;
+  skos:definition ""@en .
+</code></pre>
 <h3 id="broader-classifier"><a class="header" href="#broader-classifier">broader classifier</a></h3>
 <p>Definition:</p>
 <blockquote>
@@ -331,8 +371,10 @@ Legos.</li>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>Building bricks is a narrower classifier than toys.</li>
-<li>Chairs is a narrower classifier than furniture.</li>
+<li>Building bricks is a narrower classifier than toys. <br />
+<code>ex:BuildingBricks :narrowerClassifier ex:Toys .</code></li>
+<li>Chairs is a narrower classifier than furniture. <br />
+<code>ex:Chairs :narrowerClassifier ex:Furniture .</code></li>
 </ol>
 <p>OWL:</p>
 <pre><code class="language-turtle">fnd:narrowerClassifier a rdfs:Property ;

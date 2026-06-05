@@ -186,8 +186,9 @@
 <h3 id="agreement"><a class="header" href="#agreement">Agreement</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>An agreement is a mutual arrangement between two or more <em>parties</em> agreeing
-on certain <em>outcomes</em> or duties within certain <em>conditions</em>.</p>
+<p>An agreement is a mutual arrangement between two or more <em>parties</em> performing
+defined <em>duties</em> (or rôles), agreeing on certain <em>outcomes</em>, or actions, and
+obeying certain <em>conditions</em>.</p>
 </blockquote>
 <p>OWL:</p>
 <pre><code class="language-turtle">fnd:Agreement a rdfs:Class ;
@@ -198,12 +199,24 @@ on certain <em>outcomes</em> or duties within certain <em>conditions</em>.</p>
 <h3 id="condition"><a class="header" href="#condition">Condition</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A condition is some restriction on one or more party, or on the environment
+<p>A condition is some restriction on one or more <em>party</em>, or on the environment
 the parties act within for the duration of the agreement.</p>
 </blockquote>
 <pre><code class="language-turtle">fnd:Condition a rdfs:Class ;
   rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Condition"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="duty"><a class="header" href="#duty">Duty</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>One or more activities assigned to a party in an agreement; in some cases
+this allows for <em>template</em> agreements where the party can be simple replaced
+at some point for the named <em>duty</em>.</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:Duty a rdfs:Class ;
+  rdfs:subClassOf fnd:DependentThing ;
+  skos:prefLabel "Duty"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="outcome"><a class="header" href="#outcome">Outcome</a></h3>
@@ -220,10 +233,10 @@ or some performed action.</p>
 <h3 id="party"><a class="header" href="#party">Party</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A participant within the agreement having some role to perform.</p>
+<p>A participant within the <em>agreement</em> having one or more <em>duties</em> to perform.</p>
 </blockquote>
 <pre><code class="language-turtle">fnd:Party a rdfs:Class ;
-  dfs:subClassOf fnd:Reference ;
+  dfs:subClassOf fnd:Thing ;
   skos:prefLabel "Party"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -240,16 +253,39 @@ or some performed action.</p>
   skos:prefLabel "a party to"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h3 id="includes-party"><a class="header" href="#includes-party">includes party</a></h3>
+<h3 id="defines-duty"><a class="header" href="#defines-duty">defines duty</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>This agreement includes this party.</p>
+<p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:includesParty a rdfs:Property ;
-owl:inverseOf aPartyTo ;
+<pre><code class="language-turtle">fnd:definesDuty a rdfs:Property ;
+  owl:inverseOf fnd:performedInScope ;
   rdfs:domain fnd:Agreement ;
+  rdfs:range fnd:Duty ;
+  skos:prefLabel "defines duty"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="duty-performed-by"><a class="header" href="#duty-performed-by">duty performed by</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:dutyPerformedBy a rdfs:Property ;
+  owl:inverseOf fnd:performsDuty ;
+  rdfs:domain fnd:Duty ;
   rdfs:range fnd:Party ;
-  skos:prefLabel "includes party"@en ;
+  skos:prefLabel "duty performed by"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="effective-timespan"><a class="header" href="#effective-timespan">effective timespan</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>This agreement is valid for the associated time span.</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:effectiveTimespan a rdfs:Property ;
+  rdfs:domain fnd:Agreement ;
+  rdfs:range fnd:TemporalSpanReference ;
+  skos:prefLabel "effective timespan"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="has-condition"><a class="header" href="#has-condition">has condition</a></h3>
@@ -263,15 +299,40 @@ owl:inverseOf aPartyTo ;
   skos:prefLabel "has condition"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h3 id="effective-timespan"><a class="header" href="#effective-timespan">effective timespan</a></h3>
+<h3 id="includes-party"><a class="header" href="#includes-party">includes party</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>This agreement is valid for the associated time span.</p>
+<p>This agreement includes this party.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:effectiveTimespan a rdfs:Property ;
+<pre><code class="language-turtle">fnd:includesParty a rdfs:Property ;
+owl:inverseOf aPartyTo ;
   rdfs:domain fnd:Agreement ;
-  rdfs:range fnd:TemporalSpanReference ;
-  skos:prefLabel "effective timespan"@en ;
+  rdfs:range fnd:Party ;
+  skos:prefLabel "includes party"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="performed-in-scope"><a class="header" href="#performed-in-scope">performed in scope</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:performedInScope a rdfs:Property ;
+  owl:inverseOf fnd:definesDuty ;
+  rdfs:domain fnd:Duty ;
+  rdfs:range fnd:Agreement ;
+  skos:prefLabel "performed in scope"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="performs-duty"><a class="header" href="#performs-duty">performs duty</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:performsDuty a rdfs:Property ;
+  owl:inverseOf fnd:dutyPerformedBy ;
+  rdfs:domain fnd:Party ;
+  rdfs:range fnd:Duty ;
+  skos:prefLabel "performs duty"@en ;
   skos:definition "..."@en .
 </code></pre>
 

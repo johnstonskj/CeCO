@@ -180,11 +180,228 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="domain-offers"><a class="header" href="#domain-offers">Domain: Offers</a></h1>
-<ul>
-<li>Pricing</li>
-<li>Terms</li>
-<li>Shipping</li>
-</ul>
+<p><img src="./offers.svg" alt="Offers Overview" /></p>
+<p><span class="figure caption">Offers Overview</span></p>
+<h2 id="view-offer-availability"><a class="header" href="#view-offer-availability">View: Offer Availability</a></h2>
+<p><img src="./offers-availability.svg" alt="Offer Availability" /></p>
+<h2 id="view-offer-eligibility"><a class="header" href="#view-offer-eligibility">View: Offer Eligibility</a></h2>
+<p><span class="figure caption">Offer Availability</span></p>
+<p><img src="./offers-eligibility.svg" alt="Offer Eligibility" /></p>
+<p><span class="figure caption">Offer Eligibility</span></p>
+<h2 id="view-offer-parties"><a class="header" href="#view-offer-parties">View: Offer Parties</a></h2>
+<p><img src="./offer-parties.svg" alt="Offer Parties" /></p>
+<p><span class="figure caption">Offer Parties</span></p>
+<h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
+<h3 id="age-restriction-eligibility"><a class="header" href="#age-restriction-eligibility">Age restriction eligibility</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:AgeRestrictionEligibility a rdfs:Class ;
+  rdfs:subClassOf off:Eligibility ;
+  skos:prefLabel "Age restriction eligibility"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="artist"><a class="header" href="#artist">Artist</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:Artist a rdfs:Class ;
+  rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
+  skos:prefLabel "Artist"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="brand-owner"><a class="header" href="#brand-owner">Brand owner</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:BrandOwner a rdfs:Class ;
+  rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
+  skos:prefLabel "Brand owner"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="constraint"><a class="header" href="#constraint">Constraint</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:Constraint a rdfs:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Constraint"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="customer-class-eligibility"><a class="header" href="#customer-class-eligibility">Customer class eligibility</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:CustomerClassEligibility a rdfs:Class ;
+  rdfs:subClassOf off:Eligibility ;
+  skos:prefLabel "Customer class eligibility"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="distributer"><a class="header" href="#distributer">Distributer</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:Distributer a rdfs:Class ;
+  rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
+  skos:prefLabel "Distributer"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="eligibility"><a class="header" href="#eligibility">Eligibility</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:Eligibility a rdfs:Class ;
+  rdfs:subClassOf off:Constraint ;
+  skos:prefLabel "Eligibility"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="offer"><a class="header" href="#offer">Offer</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:Offer a rdfs:Class ;
+  rdfs:subClassOf lgl:Consideration ;
+  skos:prefLabel "Offer"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="seller"><a class="header" href="#seller">Seller</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:Seller a rdfs:Class ;
+  rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
+  skos:prefLabel "Seller"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="service-provider"><a class="header" href="#service-provider">Service provider</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:ServiceProvider a rdfs:Class ;
+  rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
+  skos:prefLabel "Service provider"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="spatial-eligibility"><a class="header" href="#spatial-eligibility">Spatial eligibility</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:SpatialEligibility a rdfs:Class ;
+  rdfs:subClassOf off:Eligibility ;
+  skos:prefLabel "Spatial eligibility"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="temporal-eligibility"><a class="header" href="#temporal-eligibility">Temporal eligibility</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:TemporalEligibility a rdfs:Class ;
+  rdfs:subClassOf off:Eligibility ;
+  skos:prefLabel "Temporal eligibility"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="term"><a class="header" href="#term">Term</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">off:Term a rdfs:Class ;
+  rdfs:subClassOf fnd:Condition ;
+  skos:prefLabel "Term"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
+<h3 id="eligible-in-location"><a class="header" href="#eligible-in-location">eligible in location</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">off:eligibleInLocation a rdfs:Property ;
+  rdfs:domain off:TemporalEligibility ;
+  rdfs:range fnd:TemporalSpan ;
+  skos:prefLabel "eligible in location"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="eligible-in-time"><a class="header" href="#eligible-in-time">eligible in time</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">off:eligibleInTime a rdfs:Property ;
+  rdfs:domain off:SpatialEligibility ;
+  rdfs:range fnd:SpatialReference ;
+  skos:prefLabel "eligible in time"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="has-eligibility-constraints"><a class="header" href="#has-eligibility-constraints">has eligibility constraints</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">off:hasEligibilityConstraints a rdfs:Property ;
+  rdfs:domain off:Offer ;
+  rdfs:range off:Eligibility ;
+  skos:prefLabel "has eligibility constraints"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="seller-of-record"><a class="header" href="#seller-of-record">seller of record</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">off:sellerOfRecord a rdfs:Property ;
+  rdfs:domain off:Offer ;
+  rdfs:range off:Seller ;
+  skos:prefLabel "seller of record"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="terms-of-sale"><a class="header" href="#terms-of-sale">terms of sale</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">off:termsOfSale a rdfs:Property ;
+  rdfs:domain off:Offer ;
+  rdfs:range off:Term ;
+  skos:prefLabel "terms of sale"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="to-sell"><a class="header" href="#to-sell">to sell</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:toSell a rdfs:Property ;
+  rdfs:domain off:Offer ;
+  rdfs:range off:Item ;
+  skos:prefLabel "to sell"@en ;
+  skos:definition "..."@en .
+</code></pre>
 
                     </main>
 
