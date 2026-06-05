@@ -104,6 +104,54 @@ fnd:Scheme a rdfs:Class ;
 
 ## Properties
 
+### authority
+
+Definition:
+
+> Denotes that one party in the agreement constituting the scheme is the
+> *authority* for the scheme and responsible for setting rules and
+> arbitrating issues.
+
+Example:
+
+1. The GTIN scheme has the organization GS1 as it's authority. \
+   `gtin: :authority gs1: .`
+
+OWL:
+
+```turtle
+fnd:authority a rdfs:Property ;
+  rdfs:subPropertyOf fnd:includesParty ;
+  owl:inversOf fnd:authorityForScheme ;
+  rdfs:domain fnd:Scheme ;
+  rdfs:range fnd:Party ;
+  skos:prefLabel "authority"@en ;
+  skos:definition "..."@en .
+```
+
+### authority for scheme
+
+Definition:
+
+> ...
+
+Example:
+
+1. GS1 is the authority for the GTIN scheme. \
+   `gs1: :authorityForScheme gtin: .`
+
+OWL:
+
+```turtle
+fnd:authorityForScheme a rdfs:Property ;
+  rdfs:subPropertyOf fnd:aPartyTo ;
+  owl:inversOf fnd:authority ;
+  rdfs:domain fnd:Party ;
+  rdfs:range fnd:Scheme ;
+  skos:prefLabel "authority for scheme"@en ;
+  skos:definition ""@en .
+```
+
 ### broader classifier
 
 Definition:
@@ -196,8 +244,10 @@ Definition:
 
 Example:
 
-1. Building bricks is a narrower classifier than toys.
-2. Chairs is a narrower classifier than furniture.
+1. Building bricks is a narrower classifier than toys. \
+   `ex:BuildingBricks :narrowerClassifier ex:Toys .`
+2. Chairs is a narrower classifier than furniture. \
+ `ex:Chairs :narrowerClassifier ex:Furniture .`
 
 OWL:
 

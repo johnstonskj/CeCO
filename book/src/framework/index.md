@@ -51,38 +51,3 @@ For the development of the OWL ontologies we use the excellent
 [Protégé](https://protege.stanford.edu) tool.
 
 See [Detailed: Protégé and OWL](./protege.md) and [OWL Guidelines](./owl_guidelines.md).
-
-## On Naming
-
-The following is basic naming guidance *unless* there are known/expected names
-that practitioners in the domain would expect to see.
-
-### Ontologies
-
-1. Class Names: `UpperCamelCase`
-2. Labels: `Upper Camel Case`
-
-```turtle
-ex:FoundationalThings a owl:Ontology ;
-  skos:prefLabel "Foundational Things" .
-```
-
-### Classes
-
-1. Class Names: `UpperCamelCase`
-2. Labels: `Sentence cased`
-
-```turtle
-ex:FoundationalThing a rdfs:Class ;
-  skos:prefLabel "Foundational thing" .
-```
-
-### Properties
-
-1. Property Names: `lowerCamelCase`
-2. Labels: `all lower case`
-
-```turtle
-ex:foundationalRelation a rdfs:Property ;
-  skos:prefLabel "foundational relation" .
-```

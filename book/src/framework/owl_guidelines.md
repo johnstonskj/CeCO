@@ -1,10 +1,9 @@
 # OWL Guidelines
 
-TBD
+The following guidelines include basic naming guidance *unless* there are
+known/expected names that practitioners in the domain would expect to see.
 
 ## Ontologies
-
-TBD
 
 ### Namespaces
 
@@ -18,7 +17,7 @@ defined in this book.
 | XML Schema. | `xsd`  | `<http://www.w3.org/2000/01/rdf-schema#>`       |
 | OWL         | `owl`  | `<http://www.w3.org/2002/07/owl#>`              |
 | SKOS        | `skos` | `<http://www.w3.org/2004/02/skos/core#>`        |
-| Dublin Core | `dc`   | `<http://purl.org/dc/elements/1.1/>`            |
+| Dublin Core | `dct`  | `<http://purl.org/dc/terms/>`                   |
 
 <span class="table caption">Minimum Required Namespaces</span>
 
@@ -36,7 +35,9 @@ resources.
 | `owl:imports`                | no       | *Should* import SKOS.                                                           |
 | `skos:prefLabel`             | **yes**  | Primary label/name for this class.                                              |
 | `skos:altLabel`              | no       | Alternate label/names for this class.                                           |
-| `dc:description`             | no       | Informal description of this class.                                             |
+| `dct:creator`                | no       | TBD (also, editor, contributor)                                                 |
+| `dct:title`                  | no       | TBD                                                                             |
+| `dct:description`            | no       | Informal description of this class.                                             |
 | `skos:ConceptScheme`         | no       | Denotes this ontology is also a SKOS concept scheme.                            |
 | `skos:hasTopConcept`         | no       | Denotes one or more *top-level* concepts; iff this is a `skos:ConceptScheme`.   |
 
@@ -53,51 +54,59 @@ Notes:
    is a member of this ontology (our own constraint) and has the predicate
    `skos:inScheme` referencing this ontology.
 
+### Ontology Naming
+
+1. Class Names: `UpperCamelCase`
+2. Labels: `Upper Camel Case`
+
+```turtle
+ex:FoundationalThings a owl:Ontology ;
+  skos:prefLabel "Foundational Things" .
+```
+
 ### Example Ontology
 
 ```turtle
+##### Dependency Namespace Mapping ........................................##### 
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix dc:   <http://purl.org/dc/elements/1.1/> .
-@prefix fnd:  <https://ceco.one/v/2026/06/01/foundation/> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+
+##### Setup self, namespace and base .....................................##### 
+@prefix :     <https://ceco.one/v/2026/06/01/foundation/> .
 @base         <https://ceco.one/v/2026/06/01/foundation/> .
 
-fnd:
+:
   ##### OWL Ontology Type and Version ....................................##### 
   a owl:Ontology ;
   owl:versionIRI <https://ceco.one/v/2026/06/01/foundation/> ;
   owl:versionInfo "v2026-06-01" ;
   
   ##### Labels ...........................................................#####
-  skos:prefLabel "Foundation" ;
-  skos:altLabel "CeCO Foundation" ;
+  skos:prefLabel "CeCO Foundation" ;
+  dct:creator "Simon Johnston <johnstonskj@gmail.com>" ;
+  dct:title "Common eCommerce Ontology (CeCO) Foundation Layer"@en ;
+  rdfs:seeAlso <https://simonkjohnston.life/CeCO/foundation/index.html> ;
+
   
   ##### SKOS Thesaurus ...................................................#####
   a skos:ConceptScheme ;
-  skos:hasTopConcept fns:Thing ;
+  skos:hasTopConcept :Thing ;
   
   ##### Import any necessary Ontologies here .............................#####
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <http://purl.org/dc/elements/1.1/> .
-
-##### Ensure these are annotation properties .............................#####
-skos:prefLabel a owl:AnnotationProperty .
-skos:altLabel a owl:AnnotationProperty .
-skos:definition a owl:AnnotationProperty .
-skos:example a owl:AnnotationProperty . # etc.
-
-dc:description a owl:AnnotationProperty . # etc.
+  owl:imports <http://purl.org/dc/terms/> .
 ```
 
 ## Classes
 
+### Class Predicates
+
 The following are the expected predicates expected on all `rdfs:Class`
 resources.
-
-### Class Predicates
 
 | Name               | Required    | Value / Purpose                                                       |
 | ------------------ | ----------- | --------------------------------------------------------------------- |
@@ -107,13 +116,23 @@ resources.
 | `skos:prefLabel`   | **yes**     | Primary label/name for this class.                                    |
 | `skos:altLabel`    | no          | Alternate label/names for this class.                                 |
 | `skos:definition`  | **yes**     | Definition of this class (precise/concise as possible).               |
-| `dc:description`   | no          | Informal description of this class.                                   |
+| `dct:description`  | no          | Informal description of this class.                                   |
 | `skos:example`     | no          | One or more illustrative examples.                                    |
 | `skos:broader`     | no          | Denotes a broader concept; iff this is a `skos:Concept`.              |
 | `skos:narrower`    | no          | Denotes a narrower concept; iff this is a `skos:Concept`.             |
 | `skos:inScheme`    | **yes iff** | Denotes one or more containing schemes; iff this is a `skos:Concept`. |
 
 <span class="table caption">Expected Class Predicates</span>
+
+### Class Naming
+
+1. Class Names: `UpperCamelCase`
+2. Labels: `Sentence cased`
+
+```turtle
+ex:FoundationalThing a rdfs:Class ;
+  skos:prefLabel "Foundational thing" .
+```
 
 ### Example Class
 
@@ -135,10 +154,10 @@ fnd:Reference
 
 ## Properties
 
+### Property Predicates
+
 The following are the expected predicates expected on all `rdfs:Property`
 resources.
-
-### Property Predicates
 
 | Name                 | Required    | Value / Purpose                                                       |
 | ------------------   | ----------- | --------------------------------------------------------------------- |
@@ -148,13 +167,23 @@ resources.
 | `skos:prefLabel`     | **yes**     | Primary label/name for this property.                                 |
 | `skos:altLabel`      | no          | Alternate label/names for this property.                              |
 | `skos:definition`    | **yes**     | Definition of this property (precise/concise as possible).            |
-| `dc:description`     | no          | Informal description of this property.                                |
+| `dct:description`    | no          | Informal description of this property.                                |
 | `skos:example`       | no          | One or more illustrative examples.                                    |
 | `skos:broader`       | no          | Denotes a broader concept; iff this is a `skos:Concept`.              |
 | `skos:narrower`      | no          | Denotes a narrower concept; iff this is a `skos:Concept`.             |
 | `skos:inScheme`      | **yes iff** | Denotes one or more containing schemes; iff this is a `skos:Concept`. |
 
 <span class="table caption">Expected Property Predicates</span>
+
+### Property Naming
+
+1. Property Names: `lowerCamelCase`
+2. Labels: `all lower case`
+
+```turtle
+ex:foundationalRelation a rdfs:Property ;
+  skos:prefLabel "foundational relation" .
+```
 
 ### Example Property
 

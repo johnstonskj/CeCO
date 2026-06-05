@@ -10,8 +10,9 @@
 
 Definition:
 
-> An agreement is a mutual arrangement between two or more *parties* agreeing
-> on certain *outcomes* or duties within certain *conditions*.
+> An agreement is a mutual arrangement between two or more *parties* performing
+> defined *duties* (or rôles), agreeing on certain *outcomes*, or actions, and
+> obeying certain *conditions*.
 
 OWL:
 
@@ -26,13 +27,28 @@ fnd:Agreement a rdfs:Class ;
 
 Definition:
 
-> A condition is some restriction on one or more party, or on the environment
+> A condition is some restriction on one or more *party*, or on the environment
 > the parties act within for the duration of the agreement.
 
 ```turtle
 fnd:Condition a rdfs:Class ;
   rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Condition"@en ;
+  skos:definition "..."@en .
+```
+
+### Duty
+
+Definition:
+
+> One or more activities assigned to a party in an agreement; in some cases
+> this allows for *template* agreements where the party can be simple replaced
+> at some point for the named *duty*.
+
+```turtle
+fnd:Duty a rdfs:Class ;
+  rdfs:subClassOf fnd:DependentThing ;
+  skos:prefLabel "Duty"@en ;
   skos:definition "..."@en .
 ```
 
@@ -54,11 +70,11 @@ fnd:Outcome a rdfs:Class ;
 
 Definition:
 
-> A participant within the agreement having some role to perform.
+> A participant within the *agreement* having one or more *duties* to perform.
 
 ```turtle
 fnd:Party a rdfs:Class ;
-  dfs:subClassOf fnd:Reference ;
+  dfs:subClassOf fnd:Thing ;
   skos:prefLabel "Party"@en ;
   skos:definition "..."@en .
 ```
@@ -80,18 +96,47 @@ fnd:aPartyTo a rdfs:Property ;
   skos:definition "..."@en .
 ```
 
-### includes party
+### defines duty
 
 Definition:
 
-> This agreement includes this party.
+> ...
 
 ```turtle
-fnd:includesParty a rdfs:Property ;
-owl:inverseOf aPartyTo ;
+fnd:definesDuty a rdfs:Property ;
+  owl:inverseOf fnd:performedInScope ;
   rdfs:domain fnd:Agreement ;
+  rdfs:range fnd:Duty ;
+  skos:prefLabel "defines duty"@en ;
+  skos:definition "..."@en .
+```
+
+### duty performed by
+
+Definition:
+
+> ...
+
+```turtle
+fnd:dutyPerformedBy a rdfs:Property ;
+  owl:inverseOf fnd:performsDuty ;
+  rdfs:domain fnd:Duty ;
   rdfs:range fnd:Party ;
-  skos:prefLabel "includes party"@en ;
+  skos:prefLabel "duty performed by"@en ;
+  skos:definition "..."@en .
+```
+
+### effective timespan
+
+Definition:
+
+> This agreement is valid for the associated time span.
+
+```turtle
+fnd:effectiveTimespan a rdfs:Property ;
+  rdfs:domain fnd:Agreement ;
+  rdfs:range fnd:TemporalSpanReference ;
+  skos:prefLabel "effective timespan"@en ;
   skos:definition "..."@en .
 ```
 
@@ -109,16 +154,47 @@ fnd:hasCondition a rdfs:Property ;
   skos:definition "..."@en .
 ```
 
-### effective timespan
+### includes party
 
 Definition:
 
-> This agreement is valid for the associated time span.
+> This agreement includes this party.
 
 ```turtle
-fnd:effectiveTimespan a rdfs:Property ;
+fnd:includesParty a rdfs:Property ;
+owl:inverseOf aPartyTo ;
   rdfs:domain fnd:Agreement ;
-  rdfs:range fnd:TemporalSpanReference ;
-  skos:prefLabel "effective timespan"@en ;
+  rdfs:range fnd:Party ;
+  skos:prefLabel "includes party"@en ;
+  skos:definition "..."@en .
+```
+
+### performed in scope
+
+Definition:
+
+> ...
+
+```turtle
+fnd:performedInScope a rdfs:Property ;
+  owl:inverseOf fnd:definesDuty ;
+  rdfs:domain fnd:Duty ;
+  rdfs:range fnd:Agreement ;
+  skos:prefLabel "performed in scope"@en ;
+  skos:definition "..."@en .
+```
+
+### performs duty
+
+Definition:
+
+> ...
+
+```turtle
+fnd:performsDuty a rdfs:Property ;
+  owl:inverseOf fnd:dutyPerformedBy ;
+  rdfs:domain fnd:Party ;
+  rdfs:range fnd:Duty ;
+  skos:prefLabel "performs duty"@en ;
   skos:definition "..."@en .
 ```

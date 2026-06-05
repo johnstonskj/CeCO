@@ -17,7 +17,7 @@ OWL:
 
 ```turtle
 fnd:Aggregate a rdfs:Class ;
-  rdfs:subClassOf fnd:PhysicalThing ;
+  rdfs:subClassOf fnd:StructuredThing ;
   owl:disjointWith fnd:Composite;
   skos:prefLabel "Aggregate"@en ;
   skos:definition "..."@en .
@@ -34,8 +34,8 @@ OWL:
 
 ```turtle
 fnd:Atomic a rdfs:Class ;
-  rdfs:subClassOf fnd:StructuredThing ;
-  owl:disjointWith Composite ;
+  rdfs:subClassOf fnd:PhysicalThing ;
+  owl:disjointWith StructuredThing ;
   skos:prefLabel "Atomic"@en ;
   skos:definition "..."@en .
 ```
