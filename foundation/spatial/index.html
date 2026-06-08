@@ -189,7 +189,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpacialExtent a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpacialExtent a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spacial extent"@en ;
   skos:definition ""@en .
@@ -200,7 +200,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpacialLocation a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpacialLocation a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spacial location"@en ;
   skos:definition ""@en .
@@ -211,7 +211,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpacialObject a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpacialObject a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spacial object"@en ;
   skos:definition ""@en .
@@ -222,7 +222,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpatialReference a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpatialReference a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Spatial reference"@en ;
   skos:definition ""@en .
@@ -233,7 +233,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpatialReferenceScheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpatialReferenceScheme a owl:Class ;
   rdfs:subClassOf fnd:Scheme ;
   skos:prefLabel "Spatial reference scheme"@en ;
   skos:definition ""@en .
@@ -244,7 +244,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpatialRegion a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpatialRegion a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spatial region"@en ;
   skos:definition ""@en .
@@ -256,7 +256,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:spatialProperty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:spatialProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:SpatialReference ;
   skos:prefLabel "spatial property"@en ;
@@ -268,7 +268,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inSpatialScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:inSpatialScheme a owl:ObjectProperty ;
   rdfs:domain fnd:SpatialReference ;
   rdfs:range fnd:SpatialReferenceScheme ;
   skos:prefLabel "in spatial scheme"@en ;

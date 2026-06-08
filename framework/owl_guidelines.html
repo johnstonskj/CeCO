@@ -192,7 +192,7 @@ defined in this book.</p>
 <tr><td>XML Schema.</td><td><code>xsd</code></td><td><code>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></td></tr>
 <tr><td>OWL</td><td><code>owl</code></td><td><code>&lt;http://www.w3.org/2002/07/owl#&gt;</code></td></tr>
 <tr><td>SKOS</td><td><code>skos</code></td><td><code>&lt;http://www.w3.org/2004/02/skos/core#&gt;</code></td></tr>
-<tr><td>Dublin Core</td><td><code>dct</code></td><td><code>&lt;http://purl.org/dc/terms/&gt;</code></td></tr>
+<tr><td>Dublin Core</td><td><code>dcterms</code></td><td><code>&lt;http://purl.org/dc/terms/&gt;</code></td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Minimum Required Namespaces</span></p>
@@ -210,8 +210,6 @@ resources.</p>
 <tr><td><code>dct:creator</code></td><td>no</td><td>TBD (also, editor, contributor)</td></tr>
 <tr><td><code>dct:title</code></td><td>no</td><td>TBD</td></tr>
 <tr><td><code>dct:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
-<tr><td><code>skos:ConceptScheme</code></td><td>no</td><td>Denotes this ontology is also a SKOS concept scheme.</td></tr>
-<tr><td><code>skos:hasTopConcept</code></td><td>no</td><td>Denotes one or more <em>top-level</em> concepts; iff this is a <code>skos:ConceptScheme</code>.</td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Expected Ontology Predicates</span></p>
@@ -236,16 +234,16 @@ is a member of this ontology (our own constraint) and has the predicate
 </code></pre>
 <h3 id="example-ontology"><a class="header" href="#example-ontology">Example Ontology</a></h3>
 <pre><code class="language-turtle">##### Dependency Namespace Mapping ........................................##### 
-@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix xsd:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix owl:  &lt;http://www.w3.org/2002/07/owl#&gt; .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs:    &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd:     &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix owl:     &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix skos:    &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 
 ##### Setup self, namespace and base .....................................##### 
-@prefix :     &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
-@base         &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
+@prefix :        &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
+@base            &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
 
 :
   ##### OWL Ontology Type and Version ....................................##### 
@@ -254,36 +252,28 @@ is a member of this ontology (our own constraint) and has the predicate
   owl:versionInfo "v2026-06-01" ;
   
   ##### Labels ...........................................................#####
-  skos:prefLabel "CeCO Foundation" ;
-  dct:creator "Simon Johnston &lt;johnstonskj@gmail.com&gt;" ;
-  dct:title "Common eCommerce Ontology (CeCO) Foundation Layer"@en ;
-  rdfs:seeAlso &lt;https://simonkjohnston.life/CeCO/foundation/index.html&gt; ;
-
-  
-  ##### SKOS Thesaurus ...................................................#####
-  a skos:ConceptScheme ;
-  skos:hasTopConcept :Thing ;
-  
+  skos:prefLabel  "CeCO Foundation" ;
+  dcterms:creator "Simon Johnston &lt;johnstonskj@gmail.com&gt;" ;
+  dcterms:title   "Common eCommerce Ontology (CeCO) Foundation Layer"@en ;
+  rdfs:seeAlso    &lt;https://simonkjohnston.life/CeCO/foundation/index.html&gt; ;
+ 
   ##### Import any necessary Ontologies here .............................#####
-  owl:imports &lt;http://www.w3.org/2004/02/skos/core&gt; ;
-  owl:imports &lt;http://purl.org/dc/terms/&gt; .
+  owl:imports     &lt;http://www.w3.org/2004/02/skos/core&gt; ;
+  owl:imports     &lt;http://purl.org/dc/terms/&gt; .
 </code></pre>
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
 <h3 id="class-predicates"><a class="header" href="#class-predicates">Class Predicates</a></h3>
 <p>The following are the expected predicates expected on all <code>rdfs:Class</code>
 resources.</p>
 <div class="table-wrapper"><table><thead><tr><th>Name</th><th>Required</th><th>Value / Purpose</th></tr></thead><tbody>
-<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>rdfs:Class</code>, maybe <code>skos:Concept</code></td></tr>
+<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>owl:Class</code>.</td></tr>
 <tr><td><code>rdfs:subClassOf</code></td><td>no</td><td>Required if this has one or more parent classes.</td></tr>
 <tr><td><code>owl:disjointWith</code></td><td>no</td><td>Denotes one or more classes this class is disjoint with.</td></tr>
 <tr><td><code>skos:prefLabel</code></td><td><strong>yes</strong></td><td>Primary label/name for this class.</td></tr>
 <tr><td><code>skos:altLabel</code></td><td>no</td><td>Alternate label/names for this class.</td></tr>
 <tr><td><code>skos:definition</code></td><td><strong>yes</strong></td><td>Definition of this class (precise/concise as possible).</td></tr>
-<tr><td><code>dct:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
+<tr><td><code>dcterms:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
 <tr><td><code>skos:example</code></td><td>no</td><td>One or more illustrative examples.</td></tr>
-<tr><td><code>skos:broader</code></td><td>no</td><td>Denotes a broader concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:narrower</code></td><td>no</td><td>Denotes a narrower concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:inScheme</code></td><td><strong>yes iff</strong></td><td>Denotes one or more containing schemes; iff this is a <code>skos:Concept</code>.</td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Expected Class Predicates</span></p>
@@ -292,40 +282,34 @@ resources.</p>
 <li>Class Names: <code>UpperCamelCase</code></li>
 <li>Labels: <code>Sentence cased</code></li>
 </ol>
-<pre><code class="language-turtle">ex:FoundationalThing a rdfs:Class ;
+<pre><code class="language-turtle">:FoundationalThing a owl:Class ;
   skos:prefLabel "Foundational thing" .
 </code></pre>
 <h3 id="example-class"><a class="header" href="#example-class">Example Class</a></h3>
-<pre><code class="language-turtle">fnd:Reference
+<pre><code class="language-turtle">:Reference
   ##### Class Definition .................................................#####
-  a rdfs:Class, skos:Concept ;
+  a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Referent ;
   
   ##### Labels and Definition ............................................#####
   skos:prefLabel "Reference"@en ;
   skos:definition 
-    "A label used to *refer to a thing*, distinct from a *thing* itself."@en ;
-  
-  ##### SKOS Thesaurus ...................................................#####
-  skos:inScheme fnd: .
+    "A label used to *refer to a thing*, distinct from a *thing* itself."@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
 <h3 id="property-predicates"><a class="header" href="#property-predicates">Property Predicates</a></h3>
-<p>The following are the expected predicates expected on all <code>rdfs:Property</code>
+<p>The following are the expected predicates expected on all <code>owl:ObjectProperty</code>
 resources.</p>
 <div class="table-wrapper"><table><thead><tr><th>Name</th><th>Required</th><th>Value / Purpose</th></tr></thead><tbody>
-<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>rdfs:Property</code>, maybe <code>skos:Concept</code></td></tr>
+<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>owl:ObjectProperty</code>.</td></tr>
 <tr><td><code>rdfs:subPropertyOf</code></td><td>no</td><td>Required if this has one or more parent properties.</td></tr>
 <tr><td><code>owl:inverseOf</code></td><td>no</td><td>Denotes another property this property is the inverse of.</td></tr>
 <tr><td><code>skos:prefLabel</code></td><td><strong>yes</strong></td><td>Primary label/name for this property.</td></tr>
 <tr><td><code>skos:altLabel</code></td><td>no</td><td>Alternate label/names for this property.</td></tr>
 <tr><td><code>skos:definition</code></td><td><strong>yes</strong></td><td>Definition of this property (precise/concise as possible).</td></tr>
-<tr><td><code>dct:description</code></td><td>no</td><td>Informal description of this property.</td></tr>
+<tr><td><code>dcterms:description</code></td><td>no</td><td>Informal description of this property.</td></tr>
 <tr><td><code>skos:example</code></td><td>no</td><td>One or more illustrative examples.</td></tr>
-<tr><td><code>skos:broader</code></td><td>no</td><td>Denotes a broader concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:narrower</code></td><td>no</td><td>Denotes a narrower concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:inScheme</code></td><td><strong>yes iff</strong></td><td>Denotes one or more containing schemes; iff this is a <code>skos:Concept</code>.</td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Expected Property Predicates</span></p>
@@ -334,14 +318,14 @@ resources.</p>
 <li>Property Names: <code>lowerCamelCase</code></li>
 <li>Labels: <code>all lower case</code></li>
 </ol>
-<pre><code class="language-turtle">ex:foundationalRelation a rdfs:Property ;
+<pre><code class="language-turtle">:foundationalRelation a owl:ObjectProperty ;
   skos:prefLabel "foundational relation" .
 </code></pre>
 <h3 id="example-property"><a class="header" href="#example-property">Example Property</a></h3>
-<pre><code class="language-turtle">fnd:aPartyTo 
+<pre><code class="language-turtle">:aPartyTo 
   ##### Class Definition .................................................#####
-  a rdfs:Property ;
-  owl:inverseOf includesParty ;
+  a owl:ObjectProperty ;
+  owl:inverseOf :includesParty ;
   rdfs:domain fnd:Party ;
   rdfs:range fnd:Agreement ;
   

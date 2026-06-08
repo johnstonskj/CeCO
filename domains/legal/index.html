@@ -211,8 +211,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:BusinessEntity a rdfs:Class ;
-  rdfs:subClassOf lgl:JuridicalPerson ;
+<pre><code class="language-turtle">:BusinessEntity a owl:Class ;
+  rdfs:subClassOf :JuridicalPerson ;
   skos:prefLabel "Business entity"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -222,7 +222,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Claim a rdfs:Class ;
+<pre><code class="language-turtle">:Claim a owl:Class ;
   rdfs:subClassOf fnd:Outcome ;
   skos:prefLabel "Claim"@en ;
   skos:definition "..."@en .
@@ -233,7 +233,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Consideration a rdfs:Class ;
+<pre><code class="language-turtle">:Consideration a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Consideration"@en ;
   skos:definition "..."@en .
@@ -244,7 +244,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Contract a rdfs:Class ;
+<pre><code class="language-turtle">:Contract a owl:Class ;
   rdfs:subClassOf fnd:Agreement ;
   skos:prefLabel "Contract"@en ;
   skos:definition "..."@en .
@@ -255,7 +255,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:EntityGroup a rdfs:Class ;
+<pre><code class="language-turtle">:EntityGroup a owl:Class ;
   rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Entity group"@en ;
   skos:definition "..."@en .
@@ -266,8 +266,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:FormalOrganization a rdfs:Class ;
-  rdfs:subClassOf lgl:HierarchicalEntityGroup ;
+<pre><code class="language-turtle">:FormalOrganization a owl:Class ;
+  rdfs:subClassOf :HierarchicalEntityGroup ;
   skos:prefLabel "Formal organization"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -277,8 +277,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:GovernmentalEntity a rdfs:Class ;
-  rdfs:subClassOf lgl:JuridicalPerson ;
+<pre><code class="language-turtle">:GovernmentalEntity a owl:Class ;
+  rdfs:subClassOf :JuridicalPerson ;
   skos:prefLabel "Governmental entity"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -288,8 +288,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:HierarchicalEntityGroup a rdfs:Class ;
-  rdfs:subClassOf lgl:EntityGroup ;
+<pre><code class="language-turtle">:HierarchicalEntityGroup a owl:Class ;
+  rdfs:subClassOf :EntityGroup ;
   skos:prefLabel "Hierarchical entity group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -299,8 +299,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:IdentityClaim a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalDocument ;
+<pre><code class="language-turtle">:IdentityClaim a owl:Class ;
+  rdfs:subClassOf :LegalDocument ;
   skos:prefLabel "Identity claim"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -310,8 +310,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:JuridicalPerson a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalEntity ;
+<pre><code class="language-turtle">:JuridicalPerson a owl:Class ;
+  rdfs:subClassOf :LegalEntity ;
   skos:prefLabel "Juridical person"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -321,7 +321,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Jurisdiction a rdfs:Class ;
+<pre><code class="language-turtle">:Jurisdiction a owl:Class ;
   rdfs:subClassOf fnd:SpatialRegion ;
   skos:prefLabel "Jurisdiction"@en ;
   skos:definition "..."@en .
@@ -332,7 +332,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalDocument a rdfs:Class ;
+<pre><code class="language-turtle">:LegalDocument a owl:Class ;
   rdfs:subClassOf fnd:Document ;
   skos:prefLabel "Legal document"@en ;
   skos:definition "..."@en .
@@ -343,7 +343,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalEntity a rdfs:Class ;
+<pre><code class="language-turtle">:LegalEntity a owl:Class ;
   rdfs:subClassOf fnd:Referent ;
   skos:prefLabel "Legal entity"@en ;
   skos:definition "..."@en .
@@ -354,7 +354,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalIdentificationScheme a rdfs:Class ;
+<pre><code class="language-turtle">:LegalIdentificationScheme a owl:Class ;
   rdfs:subClassOf fnd:IdentificationScheme ;
   skos:prefLabel "Legal identification scheme"@en ;
   skos:definition "..."@en .
@@ -365,7 +365,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalIdentifier a rdfs:Class ;
+<pre><code class="language-turtle">:LegalIdentifier a owl:Class ;
   rdfs:subClassOf fnd:ThIdentifiering ;
   skos:prefLabel "Legal identifier"@en ;
   skos:definition "..."@en .
@@ -376,8 +376,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:NaturalPerson a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalEntity ;
+<pre><code class="language-turtle">:NaturalPerson a owl:Class ;
+  rdfs:subClassOf :LegalEntity ;
   skos:prefLabel "Natural person"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -387,7 +387,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Obligation a rdfs:Class ;
+<pre><code class="language-turtle">:Obligation a owl:Class ;
   rdfs:subClassOf fnd:Outcome ;
   skos:prefLabel "Obligation"@en ;
   skos:definition "..."@en .
@@ -398,8 +398,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:SubContract a rdfs:Class ;
-  rdfs:subClassOf lgl:Contract ;
+<pre><code class="language-turtle">:SubContract a owl:Class ;
+  rdfs:subClassOf :Contract ;
   skos:prefLabel "Sub contract"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -409,8 +409,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:SurvivingObligation a rdfs:Class ;
-  rdfs:subClassOf lgl:Obligation ;
+<pre><code class="language-turtle">:SurvivingObligation a owl:Class ;
+  rdfs:subClassOf :Obligation ;
   skos:prefLabel "Surviving obligation"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -420,9 +420,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionArtifact a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
-  rdfs:range lgl:LegalDocument ;
+<pre><code class="language-turtle">:assertionArtifact a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
+  rdfs:range :LegalDocument ;
   skos:prefLabel "assertion artifact"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -431,9 +431,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionClaim a rdfs:Property ;
-  rdfs:domain lgl:LegalEntity ;
-  rdfs:range lgl:IdentityClaim ;
+<pre><code class="language-turtle">:assertionClaim a owl:ObjectProperty ;
+  rdfs:domain :LegalEntity ;
+  rdfs:range :IdentityClaim ;
   skos:prefLabel "assertion claim"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -442,9 +442,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionLegalIdentifier a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
-  rdfs:range lgl:LegalIdentifier ;
+<pre><code class="language-turtle">:assertionLegalIdentifier a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
+  rdfs:range :LegalIdentifier ;
   skos:prefLabel "assertion legal identifier"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -453,8 +453,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionValiditySpan a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
+<pre><code class="language-turtle">:assertionValiditySpan a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
   rdfs:range fnd:TemporalSpan ;
   skos:prefLabel "assertion validity span"@en ;
   skos:definition "..."@en .
@@ -464,8 +464,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:contractuallyConstructs a rdfs:Property ;
-  rdfs:domain lgl:Thing ;
+<pre><code class="language-turtle">:contractuallyConstructs a owl:ObjectProperty ;
+  rdfs:domain :Thing ;
   rdfs:range fnd:Thing ; # Claim OR Obligation
   skos:prefLabel "contractually constructs"@en ;
   skos:definition "..."@en .
@@ -475,9 +475,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:contractuallyEntails a rdfs:Property ;
-  rdfs:domain lgl:Contract ;
-  rdfs:range lgl:Consideration ; 
+<pre><code class="language-turtle">:contractuallyEntails a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :Consideration ; 
   skos:prefLabel "contractually entails"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -486,9 +486,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasJurisdiction a rdfs:Property ;
-  rdfs:domain lgl:GovernmentalEntity ;
-  rdfs:range lgl:Jurisdiction ;
+<pre><code class="language-turtle">:hasJurisdiction a owl:ObjectProperty ;
+  rdfs:domain :GovernmentalEntity ;
+  rdfs:range :Jurisdiction ;
   skos:prefLabel "has jurisdiction"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -497,9 +497,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasMember a rdfs:Property ;
-  rdfs:domain lgl:EntityGroup ;
-  rdfs:range lgl:LegalEntity ;
+<pre><code class="language-turtle">:hasMember a owl:ObjectProperty ;
+  rdfs:domain :EntityGroup ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "has member"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -508,9 +508,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasOrganization a rdfs:Property ;
+<pre><code class="language-turtle">:hasOrganization a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ; # BusinessEntity OR GovernmentalEntity
-  rdfs:range lgl:FormalOrganization ;
+  rdfs:range :FormalOrganization ;
   skos:prefLabel "has organization"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -519,9 +519,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasSubContract a rdfs:Property ;
-  rdfs:domain lgl:Contract ;
-  rdfs:range lgl:SubContract ;
+<pre><code class="language-turtle">:hasSubContract a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :SubContract ;
   skos:prefLabel "has sub contract"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -530,9 +530,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isContainedWithinGroup a rdfs:Property ;
-  rdfs:domain lgl:HierarchicalEntityGroup ;
-  rdfs:range lgl:EntityGroup ;
+<pre><code class="language-turtle">:isContainedWithinGroup a owl:ObjectProperty ;
+  rdfs:domain :HierarchicalEntityGroup ;
+  rdfs:range :EntityGroup ;
   skos:prefLabel "is contained within group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -541,9 +541,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isLegallyOwnedBy a rdfs:Property ;
+<pre><code class="language-turtle">:isLegallyOwnedBy a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
-  rdfs:range lgl:LegalEntity ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "is legally owned by"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -552,8 +552,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isLegalOwner a rdfs:Property ;
-  rdfs:domain lgl:LegalEntity ;
+<pre><code class="language-turtle">:isLegalOwner a owl:ObjectProperty ;
+  rdfs:domain :LegalEntity ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "is legal owner"@en ;
   skos:definition "..."@en .
@@ -563,9 +563,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isMemberOfGroup a rdfs:Property ;
-  rdfs:domain lgl:EntityGroup ;
-  rdfs:range lgl:LegalEntity ;
+<pre><code class="language-turtle">:isMemberOfGroup a owl:ObjectProperty ;
+  rdfs:domain :EntityGroup ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "is member of group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -574,9 +574,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:issuingAuthority a rdfs:Property ;
-  rdfs:domain lgl:LegalIdentificationScheme ;
-  rdfs:range lgl:Legalentity ; # LegalEntity AND Party
+<pre><code class="language-turtle">:issuingAuthority a owl:ObjectProperty ;
+  rdfs:domain :LegalIdentificationScheme ;
+  rdfs:range :Legalentity ; # LegalEntity AND Party
   skos:prefLabel "issuing authority"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -585,8 +585,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:jurisdictionalRegion a rdfs:Property ;
-  rdfs:domain lgl:Jurisdiction ;
+<pre><code class="language-turtle">:jurisdictionalRegion a owl:ObjectProperty ;
+  rdfs:domain :Jurisdiction ;
   rdfs:range fnd:SpatialRegion ;
   skos:prefLabel "jurisdictional region"@en ;
   skos:definition "..."@en .
@@ -596,9 +596,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:containsEntityGroup a rdfs:Property ;
-  rdfs:domain lgl:HierarchicalEntityGroup ;
-  rdfs:range lgl:Thing ; # HierarchicalEntityGroup or EntityGroup
+<pre><code class="language-turtle">:containsEntityGroup a owl:ObjectProperty ;
+  rdfs:domain :HierarchicalEntityGroup ;
+  rdfs:range :Thing ; # HierarchicalEntityGroup or EntityGroup
   skos:prefLabel "contains entity group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -607,8 +607,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:promisee a rdfs:Property ;
-  rdfs:domain lgl:Claim ;
+<pre><code class="language-turtle">:promisee a owl:ObjectProperty ;
+  rdfs:domain :Claim ;
   rdfs:range fnd:Party ;
   skos:prefLabel "promisee"@en ;
   skos:definition "..."@en .
@@ -618,8 +618,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:promisor a rdfs:Property ;
-  rdfs:domain lgl:Obligation ;
+<pre><code class="language-turtle">:promisor a owl:ObjectProperty ;
+  rdfs:domain :Obligation ;
   rdfs:range fnd:Party ;
   skos:prefLabel "promisor"@en ;
   skos:definition "..."@en .

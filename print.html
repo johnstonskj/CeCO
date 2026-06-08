@@ -357,7 +357,7 @@ defined in this book.</p>
 <tr><td>XML Schema.</td><td><code>xsd</code></td><td><code>&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></td></tr>
 <tr><td>OWL</td><td><code>owl</code></td><td><code>&lt;http://www.w3.org/2002/07/owl#&gt;</code></td></tr>
 <tr><td>SKOS</td><td><code>skos</code></td><td><code>&lt;http://www.w3.org/2004/02/skos/core#&gt;</code></td></tr>
-<tr><td>Dublin Core</td><td><code>dct</code></td><td><code>&lt;http://purl.org/dc/terms/&gt;</code></td></tr>
+<tr><td>Dublin Core</td><td><code>dcterms</code></td><td><code>&lt;http://purl.org/dc/terms/&gt;</code></td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Minimum Required Namespaces</span></p>
@@ -375,8 +375,6 @@ resources.</p>
 <tr><td><code>dct:creator</code></td><td>no</td><td>TBD (also, editor, contributor)</td></tr>
 <tr><td><code>dct:title</code></td><td>no</td><td>TBD</td></tr>
 <tr><td><code>dct:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
-<tr><td><code>skos:ConceptScheme</code></td><td>no</td><td>Denotes this ontology is also a SKOS concept scheme.</td></tr>
-<tr><td><code>skos:hasTopConcept</code></td><td>no</td><td>Denotes one or more <em>top-level</em> concepts; iff this is a <code>skos:ConceptScheme</code>.</td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Expected Ontology Predicates</span></p>
@@ -401,16 +399,16 @@ is a member of this ontology (our own constraint) and has the predicate
 </code></pre>
 <h3 id="example-ontology"><a class="header" href="#example-ontology">Example Ontology</a></h3>
 <pre><code class="language-turtle">##### Dependency Namespace Mapping ........................................##### 
-@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix xsd:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix owl:  &lt;http://www.w3.org/2002/07/owl#&gt; .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs:    &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd:     &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix owl:     &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix skos:    &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 
 ##### Setup self, namespace and base .....................................##### 
-@prefix :     &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
-@base         &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
+@prefix :        &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
+@base            &lt;https://ceco.one/v/2026/06/01/foundation/&gt; .
 
 :
   ##### OWL Ontology Type and Version ....................................##### 
@@ -419,36 +417,28 @@ is a member of this ontology (our own constraint) and has the predicate
   owl:versionInfo "v2026-06-01" ;
   
   ##### Labels ...........................................................#####
-  skos:prefLabel "CeCO Foundation" ;
-  dct:creator "Simon Johnston &lt;johnstonskj@gmail.com&gt;" ;
-  dct:title "Common eCommerce Ontology (CeCO) Foundation Layer"@en ;
-  rdfs:seeAlso &lt;https://simonkjohnston.life/CeCO/foundation/index.html&gt; ;
-
-  
-  ##### SKOS Thesaurus ...................................................#####
-  a skos:ConceptScheme ;
-  skos:hasTopConcept :Thing ;
-  
+  skos:prefLabel  "CeCO Foundation" ;
+  dcterms:creator "Simon Johnston &lt;johnstonskj@gmail.com&gt;" ;
+  dcterms:title   "Common eCommerce Ontology (CeCO) Foundation Layer"@en ;
+  rdfs:seeAlso    &lt;https://simonkjohnston.life/CeCO/foundation/index.html&gt; ;
+ 
   ##### Import any necessary Ontologies here .............................#####
-  owl:imports &lt;http://www.w3.org/2004/02/skos/core&gt; ;
-  owl:imports &lt;http://purl.org/dc/terms/&gt; .
+  owl:imports     &lt;http://www.w3.org/2004/02/skos/core&gt; ;
+  owl:imports     &lt;http://purl.org/dc/terms/&gt; .
 </code></pre>
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
 <h3 id="class-predicates"><a class="header" href="#class-predicates">Class Predicates</a></h3>
 <p>The following are the expected predicates expected on all <code>rdfs:Class</code>
 resources.</p>
 <div class="table-wrapper"><table><thead><tr><th>Name</th><th>Required</th><th>Value / Purpose</th></tr></thead><tbody>
-<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>rdfs:Class</code>, maybe <code>skos:Concept</code></td></tr>
+<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>owl:Class</code>.</td></tr>
 <tr><td><code>rdfs:subClassOf</code></td><td>no</td><td>Required if this has one or more parent classes.</td></tr>
 <tr><td><code>owl:disjointWith</code></td><td>no</td><td>Denotes one or more classes this class is disjoint with.</td></tr>
 <tr><td><code>skos:prefLabel</code></td><td><strong>yes</strong></td><td>Primary label/name for this class.</td></tr>
 <tr><td><code>skos:altLabel</code></td><td>no</td><td>Alternate label/names for this class.</td></tr>
 <tr><td><code>skos:definition</code></td><td><strong>yes</strong></td><td>Definition of this class (precise/concise as possible).</td></tr>
-<tr><td><code>dct:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
+<tr><td><code>dcterms:description</code></td><td>no</td><td>Informal description of this class.</td></tr>
 <tr><td><code>skos:example</code></td><td>no</td><td>One or more illustrative examples.</td></tr>
-<tr><td><code>skos:broader</code></td><td>no</td><td>Denotes a broader concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:narrower</code></td><td>no</td><td>Denotes a narrower concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:inScheme</code></td><td><strong>yes iff</strong></td><td>Denotes one or more containing schemes; iff this is a <code>skos:Concept</code>.</td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Expected Class Predicates</span></p>
@@ -457,40 +447,34 @@ resources.</p>
 <li>Class Names: <code>UpperCamelCase</code></li>
 <li>Labels: <code>Sentence cased</code></li>
 </ol>
-<pre><code class="language-turtle">ex:FoundationalThing a rdfs:Class ;
+<pre><code class="language-turtle">:FoundationalThing a owl:Class ;
   skos:prefLabel "Foundational thing" .
 </code></pre>
 <h3 id="example-class"><a class="header" href="#example-class">Example Class</a></h3>
-<pre><code class="language-turtle">fnd:Reference
+<pre><code class="language-turtle">:Reference
   ##### Class Definition .................................................#####
-  a rdfs:Class, skos:Concept ;
+  a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Referent ;
   
   ##### Labels and Definition ............................................#####
   skos:prefLabel "Reference"@en ;
   skos:definition 
-    "A label used to *refer to a thing*, distinct from a *thing* itself."@en ;
-  
-  ##### SKOS Thesaurus ...................................................#####
-  skos:inScheme fnd: .
+    "A label used to *refer to a thing*, distinct from a *thing* itself."@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
 <h3 id="property-predicates"><a class="header" href="#property-predicates">Property Predicates</a></h3>
-<p>The following are the expected predicates expected on all <code>rdfs:Property</code>
+<p>The following are the expected predicates expected on all <code>owl:ObjectProperty</code>
 resources.</p>
 <div class="table-wrapper"><table><thead><tr><th>Name</th><th>Required</th><th>Value / Purpose</th></tr></thead><tbody>
-<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>rdfs:Property</code>, maybe <code>skos:Concept</code></td></tr>
+<tr><td><code>rdf:type</code> / <code>a</code></td><td><strong>yes</strong></td><td>At least <code>owl:ObjectProperty</code>.</td></tr>
 <tr><td><code>rdfs:subPropertyOf</code></td><td>no</td><td>Required if this has one or more parent properties.</td></tr>
 <tr><td><code>owl:inverseOf</code></td><td>no</td><td>Denotes another property this property is the inverse of.</td></tr>
 <tr><td><code>skos:prefLabel</code></td><td><strong>yes</strong></td><td>Primary label/name for this property.</td></tr>
 <tr><td><code>skos:altLabel</code></td><td>no</td><td>Alternate label/names for this property.</td></tr>
 <tr><td><code>skos:definition</code></td><td><strong>yes</strong></td><td>Definition of this property (precise/concise as possible).</td></tr>
-<tr><td><code>dct:description</code></td><td>no</td><td>Informal description of this property.</td></tr>
+<tr><td><code>dcterms:description</code></td><td>no</td><td>Informal description of this property.</td></tr>
 <tr><td><code>skos:example</code></td><td>no</td><td>One or more illustrative examples.</td></tr>
-<tr><td><code>skos:broader</code></td><td>no</td><td>Denotes a broader concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:narrower</code></td><td>no</td><td>Denotes a narrower concept; iff this is a <code>skos:Concept</code>.</td></tr>
-<tr><td><code>skos:inScheme</code></td><td><strong>yes iff</strong></td><td>Denotes one or more containing schemes; iff this is a <code>skos:Concept</code>.</td></tr>
 </tbody></table>
 </div>
 <p><span class="table caption">Expected Property Predicates</span></p>
@@ -499,14 +483,14 @@ resources.</p>
 <li>Property Names: <code>lowerCamelCase</code></li>
 <li>Labels: <code>all lower case</code></li>
 </ol>
-<pre><code class="language-turtle">ex:foundationalRelation a rdfs:Property ;
+<pre><code class="language-turtle">:foundationalRelation a owl:ObjectProperty ;
   skos:prefLabel "foundational relation" .
 </code></pre>
 <h3 id="example-property"><a class="header" href="#example-property">Example Property</a></h3>
-<pre><code class="language-turtle">fnd:aPartyTo 
+<pre><code class="language-turtle">:aPartyTo 
   ##### Class Definition .................................................#####
-  a rdfs:Property ;
-  owl:inverseOf includesParty ;
+  a owl:ObjectProperty ;
+  owl:inverseOf :includesParty ;
   rdfs:domain fnd:Party ;
   rdfs:range fnd:Agreement ;
   
@@ -537,18 +521,21 @@ a thing.</li>
 </ul>
 <p>The IRI for the Ontology is <a href="https://ceco.one/v/2026/06/01/foundation/"><code>&lt;https://ceco.one/v/2026/06/01/foundation/&gt;</code></a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="core"><a class="header" href="#core">Core</a></h1>
+<p>This simple core defines only five classes  that act as the top for all others
+in the rest of the foundation, and all domains. The four properties, while not
+super-properties for <em>all</em> properties in the way that <code>fnd:Thing</code> is a
+super-type, are commonly used.</p>
 <p><img src="foundation/core/./core.svg" alt="Core Classes" /></p>
 <p><span class="figure caption">Foundation Core</span></p>
 <h2 id="classes-1"><a class="header" href="#classes-1">Classes</a></h2>
 <h3 id="functional-reference"><a class="header" href="#functional-reference">Functional reference</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A reference that <em>uniquely</em> identifies it's referent. It implies that when
-used as an object property that property should be a subtype of
-<code>owl:FunctionalProperty</code>.</p>
+<p>A <em>reference</em> that uniquely identifies it's referent; any unique value of a
+functional reference identifies <strong>at most</strong> one <em>referent</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:FunctionalReference a rdfs:Class ;
+<pre><code class="language-turtle">fnd:FunctionalReference a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Functional reference"@en ;
   skos:definition "..."@en .
@@ -559,7 +546,7 @@ used as an object property that property should be a subtype of
 <p>A <em>thing</em> that has a physical form, it has mass and dimensions.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PhysicalThing a rdfs:Class ;
+<pre><code class="language-turtle">fnd:PhysicalThing a owl:Class ;
   rdfs:subClassOf fnd:Referent ;
   skos:prefLabel "Physical thing"@en ;
   skos:definition "..."@en .
@@ -567,11 +554,10 @@ used as an object property that property should be a subtype of
 <h3 id="reference"><a class="header" href="#reference">Reference</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A label used to <em>refer to</em> a <em>thing</em>, distinct from a <em>thing</em> itself.
-Reference is <code>owl:DisjointWith</code> Referent.</p>
+<p>A label used to <em>refer to</em> a <em>thing</em>, distinct from a <em>thing</em> itself.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Reference a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Reference a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Referent ;
   skos:prefLabel "Reference"@en ;
@@ -581,11 +567,10 @@ Reference is <code>owl:DisjointWith</code> Referent.</p>
 <p>Definition:</p>
 <blockquote>
 <p>An <em>actual thing</em> which exists regardless and independent of any particular
-labels used to describe, name, or identify it. It <strong>is</strong> the <em>thing</em>.
-Referent is <code>owl:DisjointWith</code> Reference.</p>
+labels used to describe, name, or identify it. It <strong>is</strong> the <em>thing</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Referent a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Referent a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Reference ;
   skos:prefLabel "Referent"@en ;
@@ -597,19 +582,22 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <p>A <em>thing</em> is.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Thing a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Thing a owl:Class ;
   rdfs:subClassOf owl:Thing ;
   skos:prefLabel "Thing"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h2 id="properties-1"><a class="header" href="#properties-1">Properties</a></h2>
+<p><img src="foundation/core/./core-properties.svg" alt="Core Properties" /></p>
+<p><span class="figure caption">Foundation Properties</span></p>
 <h3 id="has-reference"><a class="header" href="#has-reference">has reference</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>Denotes that a <em>referent</em> has one or more <em>references</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasReference a rdfs:Property ;
+<pre><code class="language-turtle">fnd:hasReference a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:referenceProperty ;
   owl:inverseOf fnd:refersTo ;
   rdfs:domain fnd:Referent ;
   rdfs:range fnd:Reference ;
@@ -619,15 +607,25 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <h3 id="has-unique-reference"><a class="header" href="#has-unique-reference">has unique reference</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>Denotes the case that a <em>referent</em> has a uniquely identifying reference.</p>
+<p>Denotes the case that a <em>referent</em> has a <strong>uniquely</strong> identifying <em>reference</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasUniqueReference a rdfs:Property ;
-  rdfs:subPropertyOf hasReference ;
+<pre><code class="language-turtle">fnd:hasUniqueReference a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:referenceProperty, fnd:hasReference ;
   owl:inverseOf fnd:uniquelyRefersTo ;
   rdfs:domain fnd:Referent ;
   rdfs:range fnd:FunctionalReference ;
   skos:prefLabel "has unique reference"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="reference-property"><a class="header" href="#reference-property">reference property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A Property between <em>referents</em> and <em>references</em>.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:referenceProperty a owl:ObjectProperty ;
+  skos:prefLabel "reference property"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="refers-to"><a class="header" href="#refers-to">refers to</a></h3>
@@ -636,7 +634,8 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <p>Denotes a the <em>referent</em> that a <em>reference</em> describes.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:refersTo a rdfs:Property ;
+<pre><code class="language-turtle">fnd:refersTo a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:referenceProperty ;
   owl:inverseOf fnd:hasReference ;
   rdfs:domain fnd:Reference ;
   rdfs:range fnd:Referent ;
@@ -646,11 +645,11 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <h3 id="uniquely-refers-to"><a class="header" href="#uniquely-refers-to">uniquely refers to</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>Denotes a the <em>referent</em> that a <em>functional reference</em> uniquely describes.</p>
+<p>Denotes a the <em>referent</em> that a <em>functional reference</em> <strong>uniquely</strong> describes.</p>
 </blockquote>
 <p>OWL:</p>
 <pre><code class="language-turtle">fnd:uniquelyRefersTo a owl:FunctionalProperty ;
-  rdfs:subPropertyOf fnd:refersTo ;
+  rdfs:subPropertyOf fnd:referenceProperty, fnd:refersTo ;
   owl:inverseOf fnd:hasUniqueReference ;
   rdfs:domain fnd:FunctionalReference ;
   rdfs:range fnd:Referent ;
@@ -658,27 +657,45 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
   skos:definition "..."@en .
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="identity-aspects"><a class="header" href="#identity-aspects">Identity Aspects</a></h1>
+<p>Identity, and classification, are important in many ontologies; for example,
+we make use of IRIs to identify classes and property definitions in our
+ontologies and classify classes and properties as SKOS concepts as appropriate.
+In this section we provide the ability to define <em>schemes</em> which describe the
+namespace, rules, and authority for a set <em>things</em> and then go on to define
+<em>classifier</em> and <em>identifier</em> schemes.</p>
 <p><img src="foundation/identity/./identify-aspects.svg" alt="Identity Aspect Classes" /></p>
-<p><span class="figure caption">Identity Aspects</span></p>
+<p><span class="figure caption">Identity Aspect Classes</span></p>
 <h2 id="classes-2"><a class="header" href="#classes-2">Classes</a></h2>
 <h3 id="classification-scheme"><a class="header" href="#classification-scheme">Classification scheme</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A <em>classification scheme</em> names and provides a scope for a set of <em>classifiers</em>.</p>
+<p>A classification scheme provides a reference and scope for a set of <em>classifiers</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:ClassificationScheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:ClassificationScheme a owl:Class ;
   rdfs:subClassOf fnd:Scheme ;
   skos:prefLabel "Classification scheme"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="classified-thing"><a class="header" href="#classified-thing">Classified thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A thing to which <em>classifiers</em> have been/may be attached.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:ClassifiedThing a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Classified thing"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="classifier"><a class="header" href="#classifier">Classifier</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A <em>classifier</em></p>
+<p>A <em>classifier</em> is used to denote a group to which one more <em>things</em> belongs,
+within some <em>classification scheme</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Classifier a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Classifier a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Classifier"@en ;
   skos:definition "..."@en .
@@ -689,7 +706,7 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:FunctionalIdentifier a rdfs:Class ;
+<pre><code class="language-turtle">fnd:FunctionalIdentifier a owl:Class ;
   rdfs:subClassOf fnd:Identifier ;
   skos:prefLabel "Functional identifier"@en ;
   skos:definition ""@en .
@@ -697,12 +714,23 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <h3 id="identification-scheme"><a class="header" href="#identification-scheme">Identification scheme</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>An <em>identification scheme</em> names and provides a scope for a set of <em>identifiers</em>.</p>
+<p>An identification scheme provides a reference and scope for a set of <em>identifiers</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:IdentificationScheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:IdentificationScheme a owl:Class ;
   rdfs:subClassOf fnd:Scheme ;
   skos:prefLabel "Identification scheme"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="identified-thing"><a class="header" href="#identified-thing">Identified thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A thing to which <em>identifiers</em> have been/may be attached.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:IdentifiedThing a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Identified thing"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="identifier"><a class="header" href="#identifier">Identifier</a></h3>
@@ -711,7 +739,7 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Identifier a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Identifier a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Identifier"@en ;
   skos:definition ""@en .
@@ -727,52 +755,56 @@ Referent is <code>owl:DisjointWith</code> Reference.</p>
 <li>The International Standard Book Number (ISBN).</li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Scheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Scheme a owl:Class ;
   rdfs:subClassOf fnd:Agreement ;
   skos:prefLabel "Scheme"@en ;
   skos:definition "..."@en ;
-  skos:example "...".
+  skos:example "..." .
 </code></pre>
 <h2 id="properties-2"><a class="header" href="#properties-2">Properties</a></h2>
+<p><img src="foundation/identity/./identify-properties.svg" alt="Identity Aspect Properties" /></p>
+<p><span class="figure caption">IdentitAspect Properties</span></p>
 <h3 id="authority"><a class="header" href="#authority">authority</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>Denotes that one party in the agreement constituting the scheme is the
-<em>authority</em> for the scheme and responsible for setting rules and
-arbitrating issues.</p>
+<p>Denotes that one <em>party</em> in the scheme's agreement with <em>responsibility</em>
+for management of the scheme; for example, setting rules and arbitrating
+issues.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>The GTIN scheme has the organization GS1 as it's authority. <br />
+<li>The GTIN scheme has the organization GS1 as it's <em>authority</em>. <br />
 <code>gtin: :authority gs1: .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:authority a rdfs:Property ;
+<pre><code class="language-turtle">fnd:authority a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:includesParty ;
-  owl:inversOf fnd:authorityForScheme ;
+  owl:inverseOf fnd:authorityForScheme ;
   rdfs:domain fnd:Scheme ;
   rdfs:range fnd:Party ;
   skos:prefLabel "authority"@en ;
-  skos:definition "..."@en .
+  skos:definition "..."@en ;
+  skos:example "..."@en .
 </code></pre>
 <h3 id="authority-for-scheme"><a class="header" href="#authority-for-scheme">authority for scheme</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>...</p>
+<p>Denotes a <em>scheme</em> which this <em>party</em> has authority over.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>GS1 is the authority for the GTIN scheme. <br />
+<li>GS1 is the <em>authority for</em> the GTIN scheme. <br />
 <code>gs1: :authorityForScheme gtin: .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:authorityForScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:authorityForScheme a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:aPartyTo ;
-  owl:inversOf fnd:authority ;
+  owl:inverseOf fnd:authority ;
   rdfs:domain fnd:Party ;
   rdfs:range fnd:Scheme ;
   skos:prefLabel "authority for scheme"@en ;
-  skos:definition ""@en .
+  skos:definition ""@en ;
+  skos:example "..."@en .
 </code></pre>
 <h3 id="broader-classifier"><a class="header" href="#broader-classifier">broader classifier</a></h3>
 <p>Definition:</p>
@@ -781,16 +813,21 @@ arbitrating issues.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>Toy is a broader classifier than building bricks.</li>
-<li>Furniture is a broader classifier than chairs.</li>
+<li>Toy is a <em>broader classifier</em> than building bricks. <br />
+<code>ex:Toys :broaderClassifier :BuildingBricks .</code></li>
+<li>Furniture is a <em>broader classifier</em> than chairs. <br />
+<code>ex:Furniture :broaderClassifier :Chairs .</code></li>
+<li>Science and Technology is a is a <em>broader classifier</em> than Computer Science. <br />
+<code>ex:ScienceAndTechnology :broaderClassifier ex:ComputerScience .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:broaderClassifier a rdfs:Property ;
+<pre><code class="language-turtle">fnd:broaderClassifier a owl:ObjectProperty ;
   owl:inverseOf fnd:narrowerClassifier ;
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:Classifier ;
   skos:prefLabel "broader classifier"@en ;
-  skos:definition ""@en .
+  skos:definition ""@en ;
+  skos:example "..."@en .
 </code></pre>
 <h3 id="broader-transitive-classifier"><a class="header" href="#broader-transitive-classifier">broader transitive classifier</a></h3>
 <p>Definition:</p>
@@ -799,9 +836,9 @@ arbitrating issues.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>If building bricks is a broader classifier than Legos.</li>
-<li>If toys is a broader classifier than building bricks.</li>
-<li>Then, transitively, toys is a broader classifier that Legos.</li>
+<li>If building bricks is a <em>broader transitive classifier</em> than Legos, and
+toys is a <em>broader transitive classifier</em> than building bricks, then toys
+is a <em>broader transitive classifier</em> than Legos.</li>
 </ol>
 <p>OWL:</p>
 <pre><code class="language-turtle">fnd:broaderTransitiveClassifier a owl:TransitiveProperty ;
@@ -809,7 +846,76 @@ arbitrating issues.</p>
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:Classifier ;
   skos:prefLabel "broader transitive classifier"@en ;
-  skos:definition ""@en .
+  skos:definition ""@en ;
+  skos:example "..."@en .
+</code></pre>
+<h3 id="classified-by"><a class="header" href="#classified-by">classified by</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code> is <em>classified by</em> <code>Computer Science</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:classifiedBy a owl:ObjectProperty ;
+  rdfs:domain fnd:ClassifiedThing ;
+  rdfs:range fnd:Classifier ;
+  skos:prefLabel "classified by"@en ;
+  skos:definition ""@en ;
+  skos:example "..."@en .
+</code></pre>
+<h3 id="classifies"><a class="header" href="#classifies">classifies</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The classifier <code>Computer Science</code> <em>classifies</em> the thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:classifies a owl:ObjectProperty ;
+  rdfs:domain fnd:Classifier ;
+  rdfs:range fnd:ClassifiedThing ;
+  skos:prefLabel "classifies"@en ;
+  skos:definition ""@en ;
+  skos:example "..."@en .
+</code></pre>
+<h3 id="identified-by"><a class="header" href="#identified-by">identified by</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code> is <em>identified by</em> <code>urn:isbn:978-1-4503-7617-4</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:identifiedBy a owl:ObjectProperty ;
+  rdfs:domain fnd:IdentifiedThing ;
+  rdfs:range fnd:Identifier ;
+  skos:prefLabel "identified by"@en ;
+  skos:definition ""@en 
+  skos:example "..." .
+</code></pre>
+<h3 id="identifies"><a class="header" href="#identifies">identifies</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The identifier <code>urn:isbn:978-1-4503-7617-4</code> <em>identifies</em> the thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:identifiesa owl:ObjectProperty ;
+  rdfs:domain fnd:Identifier ;
+  rdfs:range fnd:IdentifiedThing ;
+  skos:prefLabel "identifies"@en ;
+  skos:definition ""@en  ;
+  skos:example "..." .
 </code></pre>
 <h3 id="in-classification-scheme"><a class="header" href="#in-classification-scheme">in classification scheme</a></h3>
 <p>Definition:</p>
@@ -817,7 +923,7 @@ arbitrating issues.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inClassificationScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:inClassificationScheme a owl:ObjectProperty ;
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:ClassificationScheme ;
   skos:prefLabel "in classification scheme"@en ;
@@ -828,14 +934,8 @@ arbitrating issues.</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
-<p>Example:</p>
-<ol>
-<li>If building bricks is a broader classifier than Legos, and toys is a broader
-classifier than building bricks, then toys is a broader classifier than
-Legos.</li>
-</ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inIdentificationScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:inIdentificationScheme a owl:ObjectProperty ;
   rdfs:domain fnd:Identifier ;
   rdfs:range fnd:IdentificationScheme ;
   skos:prefLabel "in identification scheme"@en ;
@@ -849,13 +949,15 @@ Legos.</li>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>Building bricks is a narrower classifier than toys. <br />
+<li>Building bricks is a <em>narrower classifier</em> than toys. <br />
 <code>ex:BuildingBricks :narrowerClassifier ex:Toys .</code></li>
-<li>Chairs is a narrower classifier than furniture. <br />
+<li>Chairs is a <em>narrower classifier</em> than furniture. <br />
 <code>ex:Chairs :narrowerClassifier ex:Furniture .</code></li>
+<li><code>Computer Science</code> is a is a <em>narrower classifier</em> than <code>Science and Technology</code>. <br />
+<code>ex:ComputerScience :narrowerClassifier ex:ScienceAndTechnology .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:narrowerClassifier a rdfs:Property ;
+<pre><code class="language-turtle">fnd:narrowerClassifier a owl:ObjectProperty ;
   owl:inverseOf fnd:broaderClassifier ;
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:Classifier ;
@@ -886,12 +988,18 @@ Legos.</li>
 <p>An aggregate thing is one where at least some of the parts of the whole remain
 somewhat distinct and removable from it.</p>
 </blockquote>
+<p>Example:</p>
+<ol>
+<li>A Car is an aggregate where components like wheels and engine can be removed
+and replaced.</li>
+</ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Aggregate a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Aggregate a owl:Class ;
   rdfs:subClassOf fnd:StructuredThing ;
   owl:disjointWith fnd:Composite;
   skos:prefLabel "Aggregate"@en ;
-  skos:definition "..."@en .
+  skos:definition "..."@en ;
+  skos:example "..." .
 </code></pre>
 <h3 id="atomic"><a class="header" href="#atomic">Atomic</a></h3>
 <p>Definition:</p>
@@ -900,7 +1008,7 @@ somewhat distinct and removable from it.</p>
 be decomposed. Atomic things are disjoint with structured things.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Atomic a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Atomic a owl:Class ;
   rdfs:subClassOf fnd:PhysicalThing ;
   owl:disjointWith StructuredThing ;
   skos:prefLabel "Atomic"@en ;
@@ -913,8 +1021,12 @@ be decomposed. Atomic things are disjoint with structured things.</p>
 have any distinction from the whole and may not be <em>meaningfully</em> removed from
 it.</p>
 </blockquote>
+<p>Example:</p>
+<ol>
+<li>An omelette is a composite, you cannot reconstitute the egg used as a <em>part</em>.</li>
+</ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Composite a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Composite a owl:Class ;
   rdfs:subClassOf fnd:StructuredThing ;
   owl:disjointWith fnd:Aggregate ;
   skos:prefLabel "Composite"@en ;
@@ -923,11 +1035,10 @@ it.</p>
 <h3 id="dependent-thing"><a class="header" href="#dependent-thing">Dependent thing</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A thing whose existence depends on the existence of some other thing; all
-parts of a composite are by nature dependent things.</p>
+<p>A thing whose existence depends on the existence of some other thing.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:DependentThing a rdfs:Class ;
+<pre><code class="language-turtle">fnd:DependentThing a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:IndependentThing ;
   skos:prefLabel "Dependent thing"@en ;
@@ -937,22 +1048,34 @@ parts of a composite are by nature dependent things.</p>
 <p>Definition:</p>
 <blockquote>
 <p>A thing whose existence is not dependent on the existence of some other
-thing; at least <em>some</em> parts of an aggregate are independent things.</p>
+thing.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:IndependentThing a rdfs:Class ;
+<pre><code class="language-turtle">fnd:IndependentThing a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:DependentThing ;
   skos:prefLabel "Independent thing"@en ;
   skos:definition "..."@en .
 </code></pre>
+<h3 id="part"><a class="header" href="#part">Part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>Some <em>thing</em> which acts as a component of a <em>structured thing</em>.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:Part a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Part"@en ;
+  skos:definition "..."@en .
+</code></pre>
 <h3 id="physical-thing-1"><a class="header" href="#physical-thing-1">Physical thing</a></h3>
 <p>Definition:</p>
 <blockquote>
+<p>A <em>thing</em> that has a physical form, it has mass and dimensions.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PhysicalThing a rdfs:Class ;
-  rdfs:subClassOf fnd:Thing ;
+<pre><code class="language-turtle">fnd:PhysicalThing a owl:Class ;
+  rdfs:subClassOf fnd:Referent ;
   skos:prefLabel "Physical thing"@en ;
   skos:definition ""@en .
 </code></pre>
@@ -960,146 +1083,13 @@ thing; at least <em>some</em> parts of an aggregate are independent things.</p>
 <p>Definition:</p>
 <blockquote>
 <p>A thing that has some form of internal structure, it has parts whether it
-is a composite or aggregate thing. Structured things are disjoint with
-atomic things.</p>
+is a <em>composite</em> or <em>aggregate</em> thing.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:StructuredThing a rdfs:Class ;
+<pre><code class="language-turtle">fnd:StructuredThing a owl:Class ;
   rdfs:subClassOf fnd:PhysicalThing ;
   owl:disjointWith fnd:Atomic ;
   skos:prefLabel "Structured thing"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h2 id="properties-3"><a class="header" href="#properties-3">Properties</a></h2>
-<p><img src="foundation/structural/./structural-aspect-properties.svg" alt="Structural Aspect Properties" /></p>
-<h3 id="codependent-with"><a class="header" href="#codependent-with">codependent with</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:codependentWith a rdfs:Property, owl:ReflexiveProperty ;
-  rdfs:domain fnd:StructuredThing ;
-  rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "codependent with"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="dependent-part-of"><a class="header" href="#dependent-part-of">dependent part of</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:dependentPartOf a rdfs:Property ;
-  rdfs:subPropertyOf fnd:isPartOf ;
-  owl:inverseOf fnd:hasDependentPart ;
-  rdfs:domain fnd:Dependent ;
-  rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "dependent part of"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="dependent-upon"><a class="header" href="#dependent-upon">dependent upon</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:dependentUpon a rdfs:Property ;
-  rdfs:domain fnd:StructuredThing ;
-  rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "dependent upon"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="has-dependent"><a class="header" href="#has-dependent">has dependent</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasDependent a rdfs:Property ;
-  rdfs:domain fnd:StructuredThing ;
-  rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "has dependent"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="has-dependent-part"><a class="header" href="#has-dependent-part">has dependent part</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasDependentPart a rdfs:Property ;
-  rdfs:subPropertyOf fnd:hasPart ;
-  owl:inverseOf fnd:dependentPartOf ;
-  rdfs:domain fnd:StructuredThing ;
-  rdfs:range fnd:Dependent ;
-  skos:prefLabel "has dependent part"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="has-independent-part"><a class="header" href="#has-independent-part">has independent part</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasIndependentPart a rdfs:Property ;
-  rdfs:subPropertyOf fnd:hasPart ;
-  owl:inverseOf fnd:narrowerClassifier ;
-  rdfs:domain fnd:StructuredThing ;
-  rdfs:range fnd:Independent ;
-  skos:prefLabel "has independent part"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="has-part"><a class="header" href="#has-part">has part</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasPart a rdfs:Property ;
-  rdfs:subPropertyOf fnd:merelogicalProperty ;
-  rdfs:domain fnd:Thing ;
-  rdfs:range fnd:Thing ;
-  skos:prefLabel "has part"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="independent-part-of"><a class="header" href="#independent-part-of">independent part of</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:independentPartOf a rdfs:Property ;
-  rdfs:subPropertyOf fnd:isPartOf ;
-  owl:inverseOf fnd:hasIndependentPart ;
-  rdfs:domain fnd:Independent ;
-  rdfs:range fnd:StructuredThing ;
-  skos:prefLabel "independent part of"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="is-part-of"><a class="header" href="#is-part-of">is part of</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:isPartOf a rdfs:Property ;
-  rdfs:subPropertyOf fnd:merelogicalProperty ;
-  rdfs:domain fnd:Thing ;
-  rdfs:range fnd:Thing ;
-  skos:prefLabel "is part of"@en ;
-  skos:definition ""@en .
-</code></pre>
-<h3 id="merelogical-property"><a class="header" href="#merelogical-property">merelogical property</a></h3>
-<p>Definition:</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>OWL:</p>
-<pre><code class="language-turtle">fnd:merelogicalProperty a rdfs:Property ;
-  rdfs:domain fnd:Thing ;
-  rdfs:range fnd:Thing ;
-  skos:prefLabel "merelogical property"@en ;
   skos:definition ""@en .
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="spacial-aspects"><a class="header" href="#spacial-aspects">Spacial Aspects</a></h1>
@@ -1112,7 +1102,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpacialExtent a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpacialExtent a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spacial extent"@en ;
   skos:definition ""@en .
@@ -1123,7 +1113,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpacialLocation a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpacialLocation a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spacial location"@en ;
   skos:definition ""@en .
@@ -1134,7 +1124,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpacialObject a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpacialObject a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spacial object"@en ;
   skos:definition ""@en .
@@ -1145,7 +1135,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpatialReference a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpatialReference a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Spatial reference"@en ;
   skos:definition ""@en .
@@ -1156,7 +1146,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpatialReferenceScheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpatialReferenceScheme a owl:Class ;
   rdfs:subClassOf fnd:Scheme ;
   skos:prefLabel "Spatial reference scheme"@en ;
   skos:definition ""@en .
@@ -1167,19 +1157,19 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:SpatialRegion a rdfs:Class ;
+<pre><code class="language-turtle">fnd:SpatialRegion a owl:Class ;
   rdfs:subClassOf fnd:SpatialReference ;
   skos:prefLabel "Spatial region"@en ;
   skos:definition ""@en .
 </code></pre>
-<h2 id="properties-4"><a class="header" href="#properties-4">Properties</a></h2>
+<h2 id="properties-3"><a class="header" href="#properties-3">Properties</a></h2>
 <h3 id="spatial-property"><a class="header" href="#spatial-property">spatial property</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:spatialProperty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:spatialProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:SpatialReference ;
   skos:prefLabel "spatial property"@en ;
@@ -1191,7 +1181,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inSpatialScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:inSpatialScheme a owl:ObjectProperty ;
   rdfs:domain fnd:SpatialReference ;
   rdfs:range fnd:SpatialReferenceScheme ;
   skos:prefLabel "in spatial scheme"@en ;
@@ -1207,7 +1197,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:TemporalReference a rdfs:Class ;
+<pre><code class="language-turtle">fnd:TemporalReference a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Temporal reference"@en ;
   skos:definition ""@en .
@@ -1218,7 +1208,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:TemporalEvent a rdfs:Class ;
+<pre><code class="language-turtle">fnd:TemporalEvent a owl:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
   skos:prefLabel "Temporal event"@en ;
   skos:definition ""@en .
@@ -1229,19 +1219,19 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:TemporalSpan a rdfs:Class ;
+<pre><code class="language-turtle">fnd:TemporalSpan a owl:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
   skos:prefLabel "Temporal span"@en ;
   skos:definition ""@en .
 </code></pre>
-<h2 id="properties-5"><a class="header" href="#properties-5">Properties</a></h2>
+<h2 id="properties-4"><a class="header" href="#properties-4">Properties</a></h2>
 <h3 id="temporal-property"><a class="header" href="#temporal-property">temporal property</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:temporalProperty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:temporalProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:TemporalReference ;
   skos:prefLabel "temporal property"@en ;
@@ -1253,7 +1243,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:temporalSpanStartEvent a rdfs:Property ;
+<pre><code class="language-turtle">fnd:temporalSpanStartEvent a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;
@@ -1266,7 +1256,7 @@ atomic things.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:temporalSpanEndEvent a rdfs:Property ;
+<pre><code class="language-turtle">fnd:temporalSpanEndEvent a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;
@@ -1285,7 +1275,7 @@ defined <em>duties</em> (or rôles), agreeing on certain <em>outcomes</em>, or a
 obeying certain <em>conditions</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Agreement a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Agreement a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Agreement"@en ;
   skos:definition "..."@en .
@@ -1296,7 +1286,7 @@ obeying certain <em>conditions</em>.</p>
 <p>A condition is some restriction on one or more <em>party</em>, or on the environment
 the parties act within for the duration of the agreement.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:Condition a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Condition a owl:Class ;
   rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Condition"@en ;
   skos:definition "..."@en .
@@ -1308,7 +1298,7 @@ the parties act within for the duration of the agreement.</p>
 this allows for <em>template</em> agreements where the party can be simple replaced
 at some point for the named <em>duty</em>.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:Duty a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Duty a owl:Class ;
   rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Duty"@en ;
   skos:definition "..."@en .
@@ -1319,7 +1309,7 @@ at some point for the named <em>duty</em>.</p>
 <p>Some expected future state, some created artifact or financial instrument,
 or some performed action.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:Outcome a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Outcome a owl:Class ;
   dfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Outcome"@en ;
   skos:definition "..."@en .
@@ -1329,18 +1319,20 @@ or some performed action.</p>
 <blockquote>
 <p>A participant within the <em>agreement</em> having one or more <em>duties</em> to perform.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:Party a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Party a owl:Class ;
   dfs:subClassOf fnd:Thing ;
   skos:prefLabel "Party"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-6"><a class="header" href="#properties-6">Properties</a></h2>
+<h2 id="properties-5"><a class="header" href="#properties-5">Properties</a></h2>
+<p><img src="foundation/agreements/./agreement-properties.svg" alt="Agreement Properties" /></p>
+<p><span class="figure caption">Agreement Properties</span></p>
 <h3 id="a-party-to"><a class="header" href="#a-party-to">a party to</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>Denotes that this party plays a role within the related agreement.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:aPartyTo a rdfs:Property ;
+<pre><code class="language-turtle">fnd:aPartyTo a owl:ObjectProperty ;
   owl:inverseOf includesParty ;
   rdfs:domain fnd:Party ;
   rdfs:range fnd:Agreement ;
@@ -1352,7 +1344,8 @@ or some performed action.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:definesDuty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:definesDuty a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:dutyProperty ;
   owl:inverseOf fnd:performedInScope ;
   rdfs:domain fnd:Agreement ;
   rdfs:range fnd:Duty ;
@@ -1364,11 +1357,21 @@ or some performed action.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:dutyPerformedBy a rdfs:Property ;
+<pre><code class="language-turtle">fnd:dutyPerformedBy a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:dutyProperty ;
   owl:inverseOf fnd:performsDuty ;
   rdfs:domain fnd:Duty ;
   rdfs:range fnd:Party ;
   skos:prefLabel "duty performed by"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="duty-property"><a class="header" href="#duty-property">duty property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<pre><code class="language-turtle">fnd:dutyProperty a owl:ObjectProperty ;
+  skos:prefLabel "duty property"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="effective-timespan"><a class="header" href="#effective-timespan">effective timespan</a></h3>
@@ -1376,7 +1379,7 @@ or some performed action.</p>
 <blockquote>
 <p>This agreement is valid for the associated time span.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:effectiveTimespan a rdfs:Property ;
+<pre><code class="language-turtle">fnd:effectiveTimespan a owl:ObjectProperty ;
   rdfs:domain fnd:Agreement ;
   rdfs:range fnd:TemporalSpanReference ;
   skos:prefLabel "effective timespan"@en ;
@@ -1387,7 +1390,7 @@ or some performed action.</p>
 <blockquote>
 <p>This agreement includes this condition.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:hasCondition a rdfs:Property ;
+<pre><code class="language-turtle">fnd:hasCondition a owl:ObjectProperty ;
   rdfs:domain fnd:Agreement ;
   rdfs:range fnd:Condition ;
   skos:prefLabel "has condition"@en ;
@@ -1398,7 +1401,7 @@ or some performed action.</p>
 <blockquote>
 <p>This agreement includes this party.</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:includesParty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:includesParty a owl:ObjectProperty ;
 owl:inverseOf aPartyTo ;
   rdfs:domain fnd:Agreement ;
   rdfs:range fnd:Party ;
@@ -1410,7 +1413,7 @@ owl:inverseOf aPartyTo ;
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:performedInScope a rdfs:Property ;
+<pre><code class="language-turtle">fnd:performedInScope a owl:ObjectProperty ;
   owl:inverseOf fnd:definesDuty ;
   rdfs:domain fnd:Duty ;
   rdfs:range fnd:Agreement ;
@@ -1422,7 +1425,7 @@ owl:inverseOf aPartyTo ;
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:performsDuty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:performsDuty a owl:ObjectProperty ;
   owl:inverseOf fnd:dutyPerformedBy ;
   rdfs:domain fnd:Party ;
   rdfs:range fnd:Duty ;
@@ -1439,7 +1442,7 @@ owl:inverseOf aPartyTo ;
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Artifact a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Artifact a owl:Class ;
   dfs:subClassOf fnd:Referent ;
   skos:prefLabel "Artifact"@en ;
   skos:definition ""@en .
@@ -1449,7 +1452,7 @@ owl:inverseOf aPartyTo ;
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:DependentArtifact a rdfs:Class ;
+<pre><code class="language-turtle">fnd:DependentArtifact a owl:Class ;
   dfs:subClassOf fnd:DependentThing, fnd:Artifact ;
   skos:prefLabel "Dependent artifact"@en ;
   skos:definition ""@en .
@@ -1463,7 +1466,7 @@ owl:inverseOf aPartyTo ;
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Document a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Document a owl:Class ;
   dfs:subClassOf fnd:Artifact ;
   skos:prefLabel "Document"@en ;
   skos:definition ""@en .
@@ -1473,12 +1476,12 @@ owl:inverseOf aPartyTo ;
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:IndependentArtifact a rdfs:Class ;
+<pre><code class="language-turtle">fnd:IndependentArtifact a owl:Class ;
   dfs:subClassOf fnd:IndependentThing, fnd:Artifact ;
   skos:prefLabel "Independent artifact"@en ;
   skos:definition ""@en .
 </code></pre>
-<h2 id="properties-7"><a class="header" href="#properties-7">Properties</a></h2>
+<h2 id="properties-6"><a class="header" href="#properties-6">Properties</a></h2>
 <p><img src="foundation/artifacts/./artifact-properties.svg" alt="Artifact Properties" /></p>
 <h3 id="artifact-property"><a class="header" href="#artifact-property">artifact property</a></h3>
 <p>Definition:</p>
@@ -1486,7 +1489,7 @@ owl:inverseOf aPartyTo ;
 <p>A property on some <em>thing</em> whose value is an artifact.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:artifactProperty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:artifactProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Artifact ;
   skos:prefLabel "artifact property"@en ;
@@ -1499,7 +1502,7 @@ owl:inverseOf aPartyTo ;
 <p>A property of an artifact whose value is a party.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:partyPropertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:partyPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Party ;
@@ -1512,7 +1515,7 @@ owl:inverseOf aPartyTo ;
 <p>A property of an artifact, the type of which is unknown.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:propertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:propertyOfArtifact a owl:ObjectProperty ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "property of artifact"@en ;
@@ -1524,7 +1527,7 @@ owl:inverseOf aPartyTo ;
 <p>A property of an artifact whose value is a point in time (temporal event).</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:temporalEventPropertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:temporalEventPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalEvent ;
@@ -1537,7 +1540,7 @@ owl:inverseOf aPartyTo ;
 <p>A property of an artifact whose value is a span in time (temporal span).</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:temporalSpanPropertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:temporalSpanPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalSpan ;
@@ -1562,7 +1565,7 @@ owl:inverseOf aPartyTo ;
 <p>An intentional behavior performed by an actor resulting in some outcome.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">act:Action a rdfs:Class
+<pre><code class="language-turtle">:Action a owl:Class
   skos:prefLabel "Action"@en ;
   skos:definition 
     "..."@en.
@@ -1573,7 +1576,7 @@ owl:inverseOf aPartyTo ;
 <p>Some identifiable participant able to take certain actions within some scope or environment.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">act:Actor a rdfs:Class
+<pre><code class="language-turtle">act:Actor a owl:Class
   skos:prefLabel "Actor"@en ;
   skos:definition 
     "..."@en.
@@ -1584,7 +1587,7 @@ owl:inverseOf aPartyTo ;
 <p>The ability, within some scope or environment, to perform an action or actions.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">act:Agency a rdfs:Class
+<pre><code class="language-turtle">:Agency a owl:Class
   skos:prefLabel "Agency"@en ;
   skos:definition 
     "..."@en.
@@ -1595,43 +1598,50 @@ owl:inverseOf aPartyTo ;
 <p>The permission granted by some actor with...</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="authorization"><a class="header" href="#authorization">Authorization</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="authorizationactor"><a class="header" href="#authorizationactor">AuthorizationActor</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="environment"><a class="header" href="#environment">Environment</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="grantaction"><a class="header" href="#grantaction">GrantAction</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="grantauthority"><a class="header" href="#grantauthority">GrantAuthority</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="outcome-1"><a class="header" href="#outcome-1">Outcome</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<h2 id="properties-8"><a class="header" href="#properties-8">Properties</a></h2>
+<pre><code class="language-turtle"></code></pre>
+<h2 id="properties-7"><a class="header" href="#properties-7">Properties</a></h2>
 <h3 id="grantedby"><a class="header" href="#grantedby">grantedBy</a></h3>
 <p>Definition:</p>
 <blockquote>
@@ -1639,42 +1649,49 @@ owl:inverseOf aPartyTo ;
 the <code>AuthorizationActor</code> that granted it.</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="hasagency"><a class="header" href="#hasagency">hasAgency</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="hasauthority"><a class="header" href="#hasauthority">hasAuthority</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="responsiblefor"><a class="header" href="#responsiblefor">responsibleFor</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="resultingin"><a class="header" href="#resultingin">resultingIn</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="toperform"><a class="header" href="#toperform">toPerform</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <h3 id="withinenvironment"><a class="header" href="#withinenvironment">withinEnvironment</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
+<pre><code class="language-turtle"></code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ceco-domain-advertising"><a class="header" href="#ceco-domain-advertising">CeCO Domain: Advertising</a></h1>
 <p><img src="domains/advertising/./advertising.svg" alt="Advertising Overview" /></p>
 <p><span class="figure caption">Advertising Overview</span></p>
@@ -1703,18 +1720,18 @@ the <code>AuthorizationActor</code> that granted it.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:ClassName a rdfs:Class ;
+<pre><code class="language-turtle">:ClassName a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "ClassName"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-9"><a class="header" href="#properties-9">Properties</a></h2>
+<h2 id="properties-8"><a class="header" href="#properties-8">Properties</a></h2>
 <h3 id="a-property"><a class="header" href="#a-property">a property</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:aProperty a rdfs:Property ;
+<pre><code class="language-turtle">:aProperty a rdfs:Property ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "a propery"@en ;
@@ -1745,18 +1762,18 @@ the <code>AuthorizationActor</code> that granted it.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:ClassName a rdfs:Class ;
+<pre><code class="language-turtle">:ClassName a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "ClassName"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-10"><a class="header" href="#properties-10">Properties</a></h2>
+<h2 id="properties-9"><a class="header" href="#properties-9">Properties</a></h2>
 <h3 id="a-property-1"><a class="header" href="#a-property-1">a property</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:aProperty a rdfs:Property ;
+<pre><code class="language-turtle">:aProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "a propery"@en ;
@@ -1776,18 +1793,18 @@ the <code>AuthorizationActor</code> that granted it.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:ClassName a rdfs:Class ;
+<pre><code class="language-turtle">:ClassName a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "ClassName"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-11"><a class="header" href="#properties-11">Properties</a></h2>
+<h2 id="properties-10"><a class="header" href="#properties-10">Properties</a></h2>
 <h3 id="a-property-2"><a class="header" href="#a-property-2">a property</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:aProperty a rdfs:Property ;
+<pre><code class="language-turtle">:aProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "a propery"@en ;
@@ -1813,18 +1830,18 @@ the <code>AuthorizationActor</code> that granted it.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:ClassName a rdfs:Class ;
+<pre><code class="language-turtle">:ClassName a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "ClassName"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-12"><a class="header" href="#properties-12">Properties</a></h2>
+<h2 id="properties-11"><a class="header" href="#properties-11">Properties</a></h2>
 <h3 id="a-property-3"><a class="header" href="#a-property-3">a property</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:aProperty a rdfs:Property ;
+<pre><code class="language-turtle">:aProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "a propery"@en ;
@@ -1862,8 +1879,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:BusinessEntity a rdfs:Class ;
-  rdfs:subClassOf lgl:JuridicalPerson ;
+<pre><code class="language-turtle">:BusinessEntity a owl:Class ;
+  rdfs:subClassOf :JuridicalPerson ;
   skos:prefLabel "Business entity"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -1873,7 +1890,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Claim a rdfs:Class ;
+<pre><code class="language-turtle">:Claim a owl:Class ;
   rdfs:subClassOf fnd:Outcome ;
   skos:prefLabel "Claim"@en ;
   skos:definition "..."@en .
@@ -1884,7 +1901,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Consideration a rdfs:Class ;
+<pre><code class="language-turtle">:Consideration a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Consideration"@en ;
   skos:definition "..."@en .
@@ -1895,7 +1912,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Contract a rdfs:Class ;
+<pre><code class="language-turtle">:Contract a owl:Class ;
   rdfs:subClassOf fnd:Agreement ;
   skos:prefLabel "Contract"@en ;
   skos:definition "..."@en .
@@ -1906,7 +1923,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:EntityGroup a rdfs:Class ;
+<pre><code class="language-turtle">:EntityGroup a owl:Class ;
   rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Entity group"@en ;
   skos:definition "..."@en .
@@ -1917,8 +1934,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:FormalOrganization a rdfs:Class ;
-  rdfs:subClassOf lgl:HierarchicalEntityGroup ;
+<pre><code class="language-turtle">:FormalOrganization a owl:Class ;
+  rdfs:subClassOf :HierarchicalEntityGroup ;
   skos:prefLabel "Formal organization"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -1928,8 +1945,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:GovernmentalEntity a rdfs:Class ;
-  rdfs:subClassOf lgl:JuridicalPerson ;
+<pre><code class="language-turtle">:GovernmentalEntity a owl:Class ;
+  rdfs:subClassOf :JuridicalPerson ;
   skos:prefLabel "Governmental entity"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -1939,8 +1956,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:HierarchicalEntityGroup a rdfs:Class ;
-  rdfs:subClassOf lgl:EntityGroup ;
+<pre><code class="language-turtle">:HierarchicalEntityGroup a owl:Class ;
+  rdfs:subClassOf :EntityGroup ;
   skos:prefLabel "Hierarchical entity group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -1950,8 +1967,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:IdentityClaim a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalDocument ;
+<pre><code class="language-turtle">:IdentityClaim a owl:Class ;
+  rdfs:subClassOf :LegalDocument ;
   skos:prefLabel "Identity claim"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -1961,8 +1978,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:JuridicalPerson a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalEntity ;
+<pre><code class="language-turtle">:JuridicalPerson a owl:Class ;
+  rdfs:subClassOf :LegalEntity ;
   skos:prefLabel "Juridical person"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -1972,7 +1989,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Jurisdiction a rdfs:Class ;
+<pre><code class="language-turtle">:Jurisdiction a owl:Class ;
   rdfs:subClassOf fnd:SpatialRegion ;
   skos:prefLabel "Jurisdiction"@en ;
   skos:definition "..."@en .
@@ -1983,7 +2000,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalDocument a rdfs:Class ;
+<pre><code class="language-turtle">:LegalDocument a owl:Class ;
   rdfs:subClassOf fnd:Document ;
   skos:prefLabel "Legal document"@en ;
   skos:definition "..."@en .
@@ -1994,7 +2011,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalEntity a rdfs:Class ;
+<pre><code class="language-turtle">:LegalEntity a owl:Class ;
   rdfs:subClassOf fnd:Referent ;
   skos:prefLabel "Legal entity"@en ;
   skos:definition "..."@en .
@@ -2005,7 +2022,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalIdentificationScheme a rdfs:Class ;
+<pre><code class="language-turtle">:LegalIdentificationScheme a owl:Class ;
   rdfs:subClassOf fnd:IdentificationScheme ;
   skos:prefLabel "Legal identification scheme"@en ;
   skos:definition "..."@en .
@@ -2016,7 +2033,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:LegalIdentifier a rdfs:Class ;
+<pre><code class="language-turtle">:LegalIdentifier a owl:Class ;
   rdfs:subClassOf fnd:ThIdentifiering ;
   skos:prefLabel "Legal identifier"@en ;
   skos:definition "..."@en .
@@ -2027,8 +2044,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:NaturalPerson a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalEntity ;
+<pre><code class="language-turtle">:NaturalPerson a owl:Class ;
+  rdfs:subClassOf :LegalEntity ;
   skos:prefLabel "Natural person"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2038,7 +2055,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:Obligation a rdfs:Class ;
+<pre><code class="language-turtle">:Obligation a owl:Class ;
   rdfs:subClassOf fnd:Outcome ;
   skos:prefLabel "Obligation"@en ;
   skos:definition "..."@en .
@@ -2049,8 +2066,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:SubContract a rdfs:Class ;
-  rdfs:subClassOf lgl:Contract ;
+<pre><code class="language-turtle">:SubContract a owl:Class ;
+  rdfs:subClassOf :Contract ;
   skos:prefLabel "Sub contract"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2060,20 +2077,20 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">lgl:SurvivingObligation a rdfs:Class ;
-  rdfs:subClassOf lgl:Obligation ;
+<pre><code class="language-turtle">:SurvivingObligation a owl:Class ;
+  rdfs:subClassOf :Obligation ;
   skos:prefLabel "Surviving obligation"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-13"><a class="header" href="#properties-13">Properties</a></h2>
+<h2 id="properties-12"><a class="header" href="#properties-12">Properties</a></h2>
 <h3 id="assertion-artifact"><a class="header" href="#assertion-artifact">assertion artifact</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionArtifact a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
-  rdfs:range lgl:LegalDocument ;
+<pre><code class="language-turtle">:assertionArtifact a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
+  rdfs:range :LegalDocument ;
   skos:prefLabel "assertion artifact"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2082,9 +2099,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionClaim a rdfs:Property ;
-  rdfs:domain lgl:LegalEntity ;
-  rdfs:range lgl:IdentityClaim ;
+<pre><code class="language-turtle">:assertionClaim a owl:ObjectProperty ;
+  rdfs:domain :LegalEntity ;
+  rdfs:range :IdentityClaim ;
   skos:prefLabel "assertion claim"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2093,9 +2110,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionLegalIdentifier a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
-  rdfs:range lgl:LegalIdentifier ;
+<pre><code class="language-turtle">:assertionLegalIdentifier a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
+  rdfs:range :LegalIdentifier ;
   skos:prefLabel "assertion legal identifier"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2104,8 +2121,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:assertionValiditySpan a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
+<pre><code class="language-turtle">:assertionValiditySpan a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
   rdfs:range fnd:TemporalSpan ;
   skos:prefLabel "assertion validity span"@en ;
   skos:definition "..."@en .
@@ -2115,8 +2132,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:contractuallyConstructs a rdfs:Property ;
-  rdfs:domain lgl:Thing ;
+<pre><code class="language-turtle">:contractuallyConstructs a owl:ObjectProperty ;
+  rdfs:domain :Thing ;
   rdfs:range fnd:Thing ; # Claim OR Obligation
   skos:prefLabel "contractually constructs"@en ;
   skos:definition "..."@en .
@@ -2126,9 +2143,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:contractuallyEntails a rdfs:Property ;
-  rdfs:domain lgl:Contract ;
-  rdfs:range lgl:Consideration ; 
+<pre><code class="language-turtle">:contractuallyEntails a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :Consideration ; 
   skos:prefLabel "contractually entails"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2137,9 +2154,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasJurisdiction a rdfs:Property ;
-  rdfs:domain lgl:GovernmentalEntity ;
-  rdfs:range lgl:Jurisdiction ;
+<pre><code class="language-turtle">:hasJurisdiction a owl:ObjectProperty ;
+  rdfs:domain :GovernmentalEntity ;
+  rdfs:range :Jurisdiction ;
   skos:prefLabel "has jurisdiction"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2148,9 +2165,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasMember a rdfs:Property ;
-  rdfs:domain lgl:EntityGroup ;
-  rdfs:range lgl:LegalEntity ;
+<pre><code class="language-turtle">:hasMember a owl:ObjectProperty ;
+  rdfs:domain :EntityGroup ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "has member"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2159,9 +2176,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasOrganization a rdfs:Property ;
+<pre><code class="language-turtle">:hasOrganization a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ; # BusinessEntity OR GovernmentalEntity
-  rdfs:range lgl:FormalOrganization ;
+  rdfs:range :FormalOrganization ;
   skos:prefLabel "has organization"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2170,9 +2187,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:hasSubContract a rdfs:Property ;
-  rdfs:domain lgl:Contract ;
-  rdfs:range lgl:SubContract ;
+<pre><code class="language-turtle">:hasSubContract a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :SubContract ;
   skos:prefLabel "has sub contract"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2181,9 +2198,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isContainedWithinGroup a rdfs:Property ;
-  rdfs:domain lgl:HierarchicalEntityGroup ;
-  rdfs:range lgl:EntityGroup ;
+<pre><code class="language-turtle">:isContainedWithinGroup a owl:ObjectProperty ;
+  rdfs:domain :HierarchicalEntityGroup ;
+  rdfs:range :EntityGroup ;
   skos:prefLabel "is contained within group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2192,9 +2209,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isLegallyOwnedBy a rdfs:Property ;
+<pre><code class="language-turtle">:isLegallyOwnedBy a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
-  rdfs:range lgl:LegalEntity ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "is legally owned by"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2203,8 +2220,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isLegalOwner a rdfs:Property ;
-  rdfs:domain lgl:LegalEntity ;
+<pre><code class="language-turtle">:isLegalOwner a owl:ObjectProperty ;
+  rdfs:domain :LegalEntity ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "is legal owner"@en ;
   skos:definition "..."@en .
@@ -2214,9 +2231,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:isMemberOfGroup a rdfs:Property ;
-  rdfs:domain lgl:EntityGroup ;
-  rdfs:range lgl:LegalEntity ;
+<pre><code class="language-turtle">:isMemberOfGroup a owl:ObjectProperty ;
+  rdfs:domain :EntityGroup ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "is member of group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2225,9 +2242,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:issuingAuthority a rdfs:Property ;
-  rdfs:domain lgl:LegalIdentificationScheme ;
-  rdfs:range lgl:Legalentity ; # LegalEntity AND Party
+<pre><code class="language-turtle">:issuingAuthority a owl:ObjectProperty ;
+  rdfs:domain :LegalIdentificationScheme ;
+  rdfs:range :Legalentity ; # LegalEntity AND Party
   skos:prefLabel "issuing authority"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2236,8 +2253,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:jurisdictionalRegion a rdfs:Property ;
-  rdfs:domain lgl:Jurisdiction ;
+<pre><code class="language-turtle">:jurisdictionalRegion a owl:ObjectProperty ;
+  rdfs:domain :Jurisdiction ;
   rdfs:range fnd:SpatialRegion ;
   skos:prefLabel "jurisdictional region"@en ;
   skos:definition "..."@en .
@@ -2247,9 +2264,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:containsEntityGroup a rdfs:Property ;
-  rdfs:domain lgl:HierarchicalEntityGroup ;
-  rdfs:range lgl:Thing ; # HierarchicalEntityGroup or EntityGroup
+<pre><code class="language-turtle">:containsEntityGroup a owl:ObjectProperty ;
+  rdfs:domain :HierarchicalEntityGroup ;
+  rdfs:range :Thing ; # HierarchicalEntityGroup or EntityGroup
   skos:prefLabel "contains entity group"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2258,8 +2275,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:promisee a rdfs:Property ;
-  rdfs:domain lgl:Claim ;
+<pre><code class="language-turtle">:promisee a owl:ObjectProperty ;
+  rdfs:domain :Claim ;
   rdfs:range fnd:Party ;
   skos:prefLabel "promisee"@en ;
   skos:definition "..."@en .
@@ -2269,8 +2286,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">lgl:promisor a rdfs:Property ;
-  rdfs:domain lgl:Obligation ;
+<pre><code class="language-turtle">:promisor a owl:ObjectProperty ;
+  rdfs:domain :Obligation ;
   rdfs:range fnd:Party ;
   skos:prefLabel "promisor"@en ;
   skos:definition "..."@en .
@@ -2294,8 +2311,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:AgeRestrictionEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:AgeRestrictionEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Age restriction eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2305,7 +2322,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Artist a rdfs:Class ;
+<pre><code class="language-turtle">:Artist a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Artist"@en ;
   skos:definition "..."@en .
@@ -2316,7 +2333,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:BrandOwner a rdfs:Class ;
+<pre><code class="language-turtle">:BrandOwner a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Brand owner"@en ;
   skos:definition "..."@en .
@@ -2327,7 +2344,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Constraint a rdfs:Class ;
+<pre><code class="language-turtle">:Constraint a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Constraint"@en ;
   skos:definition "..."@en .
@@ -2338,8 +2355,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:CustomerClassEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:CustomerClassEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Customer class eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2349,7 +2366,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Distributer a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Distributer a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Distributer"@en ;
   skos:definition "..."@en .
@@ -2360,8 +2377,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Eligibility a rdfs:Class ;
-  rdfs:subClassOf off:Constraint ;
+<pre><code class="language-turtle">:Eligibility a owl:Class ;
+  rdfs:subClassOf :Constraint ;
   skos:prefLabel "Eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2371,7 +2388,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Offer a rdfs:Class ;
+<pre><code class="language-turtle">:Offer a owl:Class ;
   rdfs:subClassOf lgl:Consideration ;
   skos:prefLabel "Offer"@en ;
   skos:definition "..."@en .
@@ -2382,7 +2399,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Seller a rdfs:Class ;
+<pre><code class="language-turtle">:Seller a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Seller"@en ;
   skos:definition "..."@en .
@@ -2393,7 +2410,7 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:ServiceProvider a rdfs:Class ;
+<pre><code class="language-turtle">:ServiceProvider a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Service provider"@en ;
   skos:definition "..."@en .
@@ -2404,8 +2421,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:SpatialEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:SpatialEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Spatial eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2415,8 +2432,8 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:TemporalEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:TemporalEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Temporal eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2426,19 +2443,19 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Term a rdfs:Class ;
+<pre><code class="language-turtle">:Term a owl:Class ;
   rdfs:subClassOf fnd:Condition ;
   skos:prefLabel "Term"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-14"><a class="header" href="#properties-14">Properties</a></h2>
+<h2 id="properties-13"><a class="header" href="#properties-13">Properties</a></h2>
 <h3 id="eligible-in-location"><a class="header" href="#eligible-in-location">eligible in location</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:eligibleInLocation a rdfs:Property ;
-  rdfs:domain off:TemporalEligibility ;
+<pre><code class="language-turtle">:eligibleInLocation a owl:ObjectProperty ;
+  rdfs:domain :TemporalEligibility ;
   rdfs:range fnd:TemporalSpan ;
   skos:prefLabel "eligible in location"@en ;
   skos:definition "..."@en .
@@ -2448,8 +2465,8 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:eligibleInTime a rdfs:Property ;
-  rdfs:domain off:SpatialEligibility ;
+<pre><code class="language-turtle">:eligibleInTime a owl:ObjectProperty ;
+  rdfs:domain :SpatialEligibility ;
   rdfs:range fnd:SpatialReference ;
   skos:prefLabel "eligible in time"@en ;
   skos:definition "..."@en .
@@ -2459,9 +2476,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:hasEligibilityConstraints a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Eligibility ;
+<pre><code class="language-turtle">:hasEligibilityConstraints a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Eligibility ;
   skos:prefLabel "has eligibility constraints"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2470,9 +2487,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:sellerOfRecord a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Seller ;
+<pre><code class="language-turtle">:sellerOfRecord a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Seller ;
   skos:prefLabel "seller of record"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2481,9 +2498,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:termsOfSale a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Term ;
+<pre><code class="language-turtle">:termsOfSale a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Term ;
   skos:prefLabel "terms of sale"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2492,9 +2509,9 @@ have not yet been necessary.</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:toSell a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Item ;
+<pre><code class="language-turtle">fnd:toSell a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Item ;
   skos:prefLabel "to sell"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -2524,18 +2541,18 @@ have not yet been necessary.</p>
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:ClassName a rdfs:Class ;
+<pre><code class="language-turtle">:ClassName a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "ClassName"@en ;
   skos:definition "..."@en .
 </code></pre>
-<h2 id="properties-15"><a class="header" href="#properties-15">Properties</a></h2>
+<h2 id="properties-14"><a class="header" href="#properties-14">Properties</a></h2>
 <h3 id="a-property-4"><a class="header" href="#a-property-4">a property</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:aProperty a rdfs:Property ;
+<pre><code class="language-turtle">:aProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "a propery"@en ;
@@ -2555,9 +2572,9 @@ have not yet been necessary.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:GeographicCoordinate a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "GeographicCoordinate"@en ;
+<pre><code class="language-turtle">:GeographicCoordinate a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Geographic cordinate"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="geographic-coordinate-scheme"><a class="header" href="#geographic-coordinate-scheme">Geographic Coordinate Scheme</a></h3>
@@ -2566,9 +2583,9 @@ have not yet been necessary.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:GeographicCoordinateScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "GeographicCoordinateScheme"@en ;
+<pre><code class="language-turtle">:Geographic coordinate scheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Geographic coordinate scheme"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-address"><a class="header" href="#postal-address">Postal Address</a></h3>
@@ -2577,9 +2594,9 @@ have not yet been necessary.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalAddress a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "PostalAddress"@en ;
+<pre><code class="language-turtle">:PostalAddress a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Postal address"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-address-scheme"><a class="header" href="#postal-address-scheme">Postal Address Scheme</a></h3>
@@ -2588,9 +2605,9 @@ have not yet been necessary.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalAddressScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "PostalAddressScheme"@en ;
+<pre><code class="language-turtle">:PostalAddressScheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Postal address scheme"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-code"><a class="header" href="#postal-code">Postal Code</a></h3>
@@ -2599,9 +2616,9 @@ have not yet been necessary.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalCode a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "PostalCode"@en ;
+<pre><code class="language-turtle">:PostalCode a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Postal code"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-code-scheme"><a class="header" href="#postal-code-scheme">Postal Code Scheme</a></h3>
@@ -2610,22 +2627,22 @@ have not yet been necessary.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalCodeScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "PostalCodeScheme"@en ;
+<pre><code class="language-turtle">:PostalCodeScheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Postal code scheme"@en ;
   skos:definition ""@en .
 </code></pre>
-<h2 id="properties-16"><a class="header" href="#properties-16">Properties</a></h2>
+<h2 id="properties-15"><a class="header" href="#properties-15">Properties</a></h2>
 <h3 id="haspostalcode"><a class="header" href="#haspostalcode">hasPostalCode</a></h3>
 <p>Definition:</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasPostalCode a rdfs:Property ;
-  rdfs:domain fnd:PostalAddress ;
-  rdfs:range fnd:PostalCode ;
-  skos:prefLabel "hasPostalCode"@en ;
+<pre><code class="language-turtle">:hasPostalCode a owl:ObjectProperty ;
+  rdfs:domain :PostalAddress ;
+  rdfs:range :PostalCode ;
+  skos:prefLabel "has postal code"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="ingeographicscheme"><a class="header" href="#ingeographicscheme">inGeographicScheme</a></h3>
@@ -2634,12 +2651,479 @@ have not yet been necessary.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inGeographicScheme a rdfs:Property ;
-  rdfs:subPropertyOf fnd:inScheme ;
-  rdfs:domain fnd:GeographicCoordinate ;
-  rdfs:range fnd:GeographicCoordinateScheme ;
-  skos:prefLabel "inGeographicScheme"@en ;
+<pre><code class="language-turtle">:inGeographicScheme a owl:ObjectProperty ;
+  rdfs:subPropertyOf :inScheme ;
+  rdfs:domain :GeographicCoordinate ;
+  rdfs:range :GeographicCoordinateScheme ;
+  skos:prefLabel "in geographic scheme"@en ;
   skos:definition ""@en .
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="manufacturing"><a class="header" href="#manufacturing">Manufacturing</a></h1>
+<p><img src="domains/manufacturing/./manufacturing.svg" alt="Structure Overview" /></p>
+<p><span class="figure caption">Manufacturing Overview</span></p>
+<h2 id="view-resources"><a class="header" href="#view-resources">View: Resources</a></h2>
+<p><img src="domains/manufacturing/./manufacturing-resources.svg" alt="Structure Breakdown" /></p>
+<p><span class="figure caption">Manufacturing Resources</span></p>
+<h2 id="view-assembly-breakdown"><a class="header" href="#view-assembly-breakdown">View: Assembly Breakdown</a></h2>
+<p><img src="domains/manufacturing/./manufacturing-assembly-breakdown.svg" alt="Structure Breakdown" /></p>
+<p><span class="figure caption">Manufacturing Assembly Breakdown</span></p>
+<h2 id="view-process"><a class="header" href="#view-process">View: Process</a></h2>
+<p><img src="domains/manufacturing/./manufacturing-Process.svg" alt="Structure Breakdown" /></p>
+<p><span class="figure caption">Manufacturing Process</span></p>
+<h2 id="classes-17"><a class="header" href="#classes-17">Classes</a></h2>
+<h3 id="activity"><a class="header" href="#activity">Activity</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Activity a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Activity"@en .
+
+</code></pre>
+<h3 id="assembly"><a class="header" href="#assembly">Assembly</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Assembly a owl:Class ;
+  rdfs:subClassOf :PartOf, :Whole ;
+  skos:prefLabel "Assembly"@en .
+</code></pre>
+<h3 id="bill-of-materials"><a class="header" href="#bill-of-materials">Bill of materials</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:BillOfMaterials a owl:Class ;
+  rdfs:subClassOf fnd:Artifact ;
+  skos:prefLabel "Bill of materials"@en .
+</code></pre>
+<h3 id="component"><a class="header" href="#component">Component</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Component a owl:Class ;
+  rdfs:subClassOf :PartOf, :Whole ;
+  skos:prefLabel "Component"@en .
+</code></pre>
+<h3 id="manufacture"><a class="header" href="#manufacture">Manufacture</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Manufacture a owl:Class ;
+  rdfs:subClassOf :Process ;
+  skos:prefLabel "Manufacture"@en .
+</code></pre>
+<h3 id="material"><a class="header" href="#material">Material</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:NonTangibleResource a owl:Class ;
+  rdfs:subClassOf :Resource ;
+  skos:prefLabel "Non-tangible resource"@en .
+</code></pre>
+<h3 id="non-tangible-resource"><a class="header" href="#non-tangible-resource">Non-tangible resource</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:NonTangibleResource a owl:Class ;
+  rdfs:subClassOf :Resource ;
+  skos:prefLabel "Non-tangible resource"@en .
+</code></pre>
+<h3 id="part-1"><a class="header" href="#part-1">Part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Part a owl:Class ;
+  rdfs:subClassOf :PartOf ;
+  skos:prefLabel "Part"@en .
+</code></pre>
+<h3 id="part-of"><a class="header" href="#part-of">Part of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:PartOf a owl:Class ;
+  rdfs:subClassOf :Material ;
+  owl:disjointWith :Whole ;
+  skos:altLabel "Meronym"@en ;
+  skos:prefLabel "Part of"@en .
+</code></pre>
+<h3 id="process"><a class="header" href="#process">Process</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Process a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Process"@en .
+</code></pre>
+<h3 id="resource"><a class="header" href="#resource">Resource</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A resource is anything that can be drawn upon to function, survive, or achieve a goal.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Resource a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:definition "..."@en ;
+  skos:prefLabel "Resource"@en .
+</code></pre>
+<h3 id="sub-assembly"><a class="header" href="#sub-assembly">Sub-assembly</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:SubAssembly a owl:Class ;
+  rdfs:subClassOf :PartOf, :Whole ;
+  skos:prefLabel "Sub-assembly"@en .
+</code></pre>
+<h3 id="tangible-resource"><a class="header" href="#tangible-resource">Tangible resource</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:TangibleResource a owl:Class ;
+  rdfs:subClassOf :Resource ;
+  skos:prefLabel "Tangible resource"@en .
+</code></pre>
+<h3 id="whole"><a class="header" href="#whole">Whole</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:Whole a owl:Class ;
+  rdfs:subClassOf :Material ;
+  skos:altLabel "Holonym"@en ;
+  skos:prefLabel "Whole"@en .
+</code></pre>
+<h2 id="properties-16"><a class="header" href="#properties-16">Properties</a></h2>
+<p><img src="domains/manufacturing/./manufacturing-properties.svg" alt="Structure Properties" /></p>
+<p><span class="figure caption">Manufacturing Properties</span></p>
+<h3 id="activity-property"><a class="header" href="#activity-property">activity property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:activityProperty a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+  rdfs:domain [
+    a owl:Class ;
+    owl:unionOf (
+      :Activity
+      :Resource
+    )
+  ] ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf (
+      :Activity
+      :Resource
+    )
+  ] ;
+  skos:prefLabel "activity property"@en .
+</code></pre>
+<h3 id="assembles"><a class="header" href="#assembles">assembles</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:assembles a owl:ObjectProperty ;
+  rdfs:subPropertyOf :activityProperty ;
+  rdfs:domain :Activity ;
+  rdfs:range :Material ;
+  skos:prefLabel "assembles"@en .
+</code></pre>
+<h3 id="codependent-with"><a class="header" href="#codependent-with">codependent with</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:codependentWith a owl:ObjectProperty, owl:SymmetricProperty ;
+  rdfs:subPropertyOf :mereologicalProperty ;
+  skos:prefLabel "co-dependent with"@en .
+</code></pre>
+<h3 id="consumes"><a class="header" href="#consumes">consumes</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:consumes a owl:ObjectProperty ;
+  rdfs:subPropertyOf :activityProperty ;
+  rdfs:domain :Activity ;
+  rdfs:range :Material ;
+  skos:prefLabel "consumes"@en .
+</code></pre>
+<h3 id="details-breakdown-of"><a class="header" href="#details-breakdown-of">details breakdown of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:detailsBreakdownOf a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+  rdfs:domain :BillOfMaterials ;
+  rdfs:range :Assembly ;
+  skos:prefLabel "details breakdown of"@en .
+</code></pre>
+<h3 id="has-activity"><a class="header" href="#has-activity">has activity</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>...</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:hasActivity a owl:ObjectProperty ;
+  rdfs:subPropertyOf :processProperty ;
+  owl:inverseOf :isActivityWithin ;
+  rdfs:domain :Process ;
+  rdfs:range :Activity ;
+  skos:prefLabel "has activity"@en .
+</code></pre>
+<h3 id="has-dependent"><a class="header" href="#has-dependent">has dependent</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:hasDependent a owl:ObjectProperty, owl:TransitiveProperty ;
+  rdfs:subPropertyOf :mereologicalProperty ;
+  owl:inverseOf :isDependentOn ;
+  skos:prefLabel "has dependent"@en .
+</code></pre>
+<h3 id="has-dependent-part"><a class="header" href="#has-dependent-part">has dependent part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:hasDependentPart a owl:ObjectProperty ;
+  rdfs:subPropertyOf :hasPart ;
+  owl:inverseOf :isDependentPartOf ;
+  rdfs:range [
+    a owl:Class ;
+    owl:intersectionOf (
+      fnd:DependentThing
+      :PartOf
+    )
+  ] ;
+  skos:prefLabel "has dependent part"@en .
+</code></pre>
+<h3 id="has-independent-part"><a class="header" href="#has-independent-part">has independent part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:hasIndependentPart a owl:ObjectProperty ;
+  rdfs:subPropertyOf :hasPart ;
+  owl:inverseOf :isIndependentPartOf ;
+  rdfs:range [
+    a owl:Class ;
+    owl:intersectionOf (
+      fnd:IndependentThing
+      :PartOf
+    )
+  ] ;
+  skos:prefLabel "has independent part"@en .
+</code></pre>
+<h3 id="has-part"><a class="header" href="#has-part">has part</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:hasPart a owl:ObjectProperty, owl:TransitiveProperty ;
+  rdfs:subPropertyOf :mereologicalProperty ;
+  owl:inverseOf :isPartOf ;
+  rdfs:domain :Whole ;
+  rdfs:range :PartOf ;
+  skos:altLabel "holonymy"@en ;
+  skos:prefLabel "has part"@en .
+</code></pre>
+<h3 id="is-activity-within"><a class="header" href="#is-activity-within">is activity within</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:isActivityWithin a owl:ObjectProperty ;
+  rdfs:subPropertyOf :processProperty ;
+  rdfs:domain :Activity ;
+  rdfs:range :Process ;
+  skos:prefLabel "is activity within"@en .
+</code></pre>
+<h3 id="is-co-dependent-with"><a class="header" href="#is-co-dependent-with">is co-dependent with</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:isCodependentWith a owl:ObjectProperty, owl:SymmetricProperty ;
+  rdfs:subPropertyOf :mereologicalProperty ;
+  skos:prefLabel "is co-dependent with"@en .
+</code></pre>
+<h3 id="is-dependent-on"><a class="header" href="#is-dependent-on">is dependent on</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:isDependentOn a owl:ObjectProperty, owl:TransitiveProperty ;
+  rdfs:subPropertyOf :mereologicalProperty ;
+  skos:prefLabel "is dependent on"@en .
+</code></pre>
+<h3 id="is-dependent-part-of"><a class="header" href="#is-dependent-part-of">is dependent part of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:isDependentPartOf a owl:ObjectProperty ;
+  rdfs:subPropertyOf :isPartOf ;
+  rdfs:domain [
+    a owl:Class ;
+    owl:intersectionOf (
+      fnd:DependentThing
+      :Whole
+    )
+  ] ;
+  skos:prefLabel "is dependent part of"@en .
+</code></pre>
+<h3 id="is-independent-part-of"><a class="header" href="#is-independent-part-of">is independent part of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:isIndependentPartOf a owl:ObjectProperty ;
+  rdfs:subPropertyOf :isPartOf ;
+  rdfs:domain [
+    a owl:Class ;
+    owl:intersectionOf (
+      fnd:IndependentThing
+      :Whole
+    )
+  ] ;
+  skos:prefLabel "is independent part of"@en .
+</code></pre>
+<h3 id="is-part-of"><a class="header" href="#is-part-of">is part of</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:isPartOf a owl:ObjectProperty, owl:TransitiveProperty ;
+  rdfs:subPropertyOf :mereologicalProperty ;
+  rdfs:domain :PartOf ;
+  rdfs:range :Whole ;
+  skos:altLabel "meronymy"@en ;
+  skos:prefLabel "is part of"@en .
+</code></pre>
+<h3 id="merelogical-property"><a class="header" href="#merelogical-property">merelogical property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:mereologicalProperty a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+  rdfs:domain [
+    a owl:Class ;
+    owl:unionOf (
+      :PartOf
+      :Whole
+    )
+  ] ;
+  rdfs:range [
+    a owl:Class ;
+    owl:unionOf (
+      :PartOf
+      :Whole
+    )
+  ] ;
+  skos:prefLabel "mereological property"@en .
+</code></pre>
+<h3 id="process-property"><a class="header" href="#process-property">process property</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:processProperty a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+  skos:prefLabel "process property"@en .
+</code></pre>
+<h3 id="produces"><a class="header" href="#produces">produces</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:produces a owl:ObjectProperty ;
+  rdfs:subPropertyOf :activityProperty ;
+  rdfs:domain :Activity ;
+  rdfs:range :Material ;
+  skos:prefLabel "produces"@en .
+</code></pre>
+<h3 id="requires"><a class="header" href="#requires">requires</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:requires a owl:ObjectProperty ;
+  rdfs:subPropertyOf :activityProperty ;
+  rdfs:domain :Activity ;
+  rdfs:range :Material ;
+  skos:prefLabel "requires"@en .
+
+</code></pre>
+<h3 id="transforms"><a class="header" href="#transforms">transforms</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:transforms a owl:ObjectProperty ;
+  rdfs:subPropertyOf :activityProperty ;
+  rdfs:domain :Activity ;
+  rdfs:range :Material ;
+  skos:prefLabel "transforms"@en .
+</code></pre>
+<h3 id="waits-for"><a class="header" href="#waits-for">waits for</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">:waitsFor a owl:ObjectProperty ;
+  rdfs:subPropertyOf :activityProperty ;
+  rdfs:domain :Activity ;
+  rdfs:range :Activity ;
+  skos:prefLabel "waits for"@en .
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="references"><a class="header" href="#references">References</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="index"><a class="header" href="#index">Index</a></h1>

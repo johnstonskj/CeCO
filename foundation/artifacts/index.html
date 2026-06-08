@@ -189,7 +189,7 @@
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Artifact a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Artifact a owl:Class ;
   dfs:subClassOf fnd:Referent ;
   skos:prefLabel "Artifact"@en ;
   skos:definition ""@en .
@@ -199,7 +199,7 @@
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:DependentArtifact a rdfs:Class ;
+<pre><code class="language-turtle">fnd:DependentArtifact a owl:Class ;
   dfs:subClassOf fnd:DependentThing, fnd:Artifact ;
   skos:prefLabel "Dependent artifact"@en ;
   skos:definition ""@en .
@@ -213,7 +213,7 @@
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Document a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Document a owl:Class ;
   dfs:subClassOf fnd:Artifact ;
   skos:prefLabel "Document"@en ;
   skos:definition ""@en .
@@ -223,7 +223,7 @@
 <blockquote>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:IndependentArtifact a rdfs:Class ;
+<pre><code class="language-turtle">fnd:IndependentArtifact a owl:Class ;
   dfs:subClassOf fnd:IndependentThing, fnd:Artifact ;
   skos:prefLabel "Independent artifact"@en ;
   skos:definition ""@en .
@@ -236,7 +236,7 @@
 <p>A property on some <em>thing</em> whose value is an artifact.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:artifactProperty a rdfs:Property ;
+<pre><code class="language-turtle">fnd:artifactProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Artifact ;
   skos:prefLabel "artifact property"@en ;
@@ -249,7 +249,7 @@
 <p>A property of an artifact whose value is a party.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:partyPropertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:partyPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Party ;
@@ -262,7 +262,7 @@
 <p>A property of an artifact, the type of which is unknown.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:propertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:propertyOfArtifact a owl:ObjectProperty ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "property of artifact"@en ;
@@ -274,7 +274,7 @@
 <p>A property of an artifact whose value is a point in time (temporal event).</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:temporalEventPropertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:temporalEventPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalEvent ;
@@ -287,7 +287,7 @@
 <p>A property of an artifact whose value is a span in time (temporal span).</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:temporalSpanPropertyOfArtifact a rdfs:Property ;
+<pre><code class="language-turtle">fnd:temporalSpanPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalSpan ;

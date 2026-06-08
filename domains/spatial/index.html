@@ -193,9 +193,9 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:GeographicCoordinate a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "GeographicCoordinate"@en ;
+<pre><code class="language-turtle">:GeographicCoordinate a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Geographic cordinate"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="geographic-coordinate-scheme"><a class="header" href="#geographic-coordinate-scheme">Geographic Coordinate Scheme</a></h3>
@@ -204,9 +204,9 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:GeographicCoordinateScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "GeographicCoordinateScheme"@en ;
+<pre><code class="language-turtle">:Geographic coordinate scheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Geographic coordinate scheme"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-address"><a class="header" href="#postal-address">Postal Address</a></h3>
@@ -215,9 +215,9 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalAddress a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "PostalAddress"@en ;
+<pre><code class="language-turtle">:PostalAddress a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Postal address"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-address-scheme"><a class="header" href="#postal-address-scheme">Postal Address Scheme</a></h3>
@@ -226,9 +226,9 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalAddressScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "PostalAddressScheme"@en ;
+<pre><code class="language-turtle">:PostalAddressScheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Postal address scheme"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-code"><a class="header" href="#postal-code">Postal Code</a></h3>
@@ -237,9 +237,9 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalCode a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "PostalCode"@en ;
+<pre><code class="language-turtle">:PostalCode a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Postal code"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="postal-code-scheme"><a class="header" href="#postal-code-scheme">Postal Code Scheme</a></h3>
@@ -248,9 +248,9 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:PostalCodeScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "PostalCodeScheme"@en ;
+<pre><code class="language-turtle">:PostalCodeScheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Postal code scheme"@en ;
   skos:definition ""@en .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
@@ -260,10 +260,10 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:hasPostalCode a rdfs:Property ;
-  rdfs:domain fnd:PostalAddress ;
-  rdfs:range fnd:PostalCode ;
-  skos:prefLabel "hasPostalCode"@en ;
+<pre><code class="language-turtle">:hasPostalCode a owl:ObjectProperty ;
+  rdfs:domain :PostalAddress ;
+  rdfs:range :PostalCode ;
+  skos:prefLabel "has postal code"@en ;
   skos:definition ""@en .
 </code></pre>
 <h3 id="ingeographicscheme"><a class="header" href="#ingeographicscheme">inGeographicScheme</a></h3>
@@ -272,11 +272,11 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inGeographicScheme a rdfs:Property ;
-  rdfs:subPropertyOf fnd:inScheme ;
-  rdfs:domain fnd:GeographicCoordinate ;
-  rdfs:range fnd:GeographicCoordinateScheme ;
-  skos:prefLabel "inGeographicScheme"@en ;
+<pre><code class="language-turtle">:inGeographicScheme a owl:ObjectProperty ;
+  rdfs:subPropertyOf :inScheme ;
+  rdfs:domain :GeographicCoordinate ;
+  rdfs:range :GeographicCoordinateScheme ;
+  skos:prefLabel "in geographic scheme"@en ;
   skos:definition ""@en .
 </code></pre>
 
@@ -288,7 +288,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../references/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../domains/manufacturing/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -302,7 +302,7 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../references/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../domains/manufacturing/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -198,8 +198,8 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:AgeRestrictionEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:AgeRestrictionEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Age restriction eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -209,7 +209,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Artist a rdfs:Class ;
+<pre><code class="language-turtle">:Artist a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Artist"@en ;
   skos:definition "..."@en .
@@ -220,7 +220,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:BrandOwner a rdfs:Class ;
+<pre><code class="language-turtle">:BrandOwner a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Brand owner"@en ;
   skos:definition "..."@en .
@@ -231,7 +231,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Constraint a rdfs:Class ;
+<pre><code class="language-turtle">:Constraint a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Constraint"@en ;
   skos:definition "..."@en .
@@ -242,8 +242,8 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:CustomerClassEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:CustomerClassEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Customer class eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -253,7 +253,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Distributer a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Distributer a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Distributer"@en ;
   skos:definition "..."@en .
@@ -264,8 +264,8 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Eligibility a rdfs:Class ;
-  rdfs:subClassOf off:Constraint ;
+<pre><code class="language-turtle">:Eligibility a owl:Class ;
+  rdfs:subClassOf :Constraint ;
   skos:prefLabel "Eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -275,7 +275,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Offer a rdfs:Class ;
+<pre><code class="language-turtle">:Offer a owl:Class ;
   rdfs:subClassOf lgl:Consideration ;
   skos:prefLabel "Offer"@en ;
   skos:definition "..."@en .
@@ -286,7 +286,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Seller a rdfs:Class ;
+<pre><code class="language-turtle">:Seller a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Seller"@en ;
   skos:definition "..."@en .
@@ -297,7 +297,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:ServiceProvider a rdfs:Class ;
+<pre><code class="language-turtle">:ServiceProvider a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Service provider"@en ;
   skos:definition "..."@en .
@@ -308,8 +308,8 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:SpatialEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:SpatialEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Spatial eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -319,8 +319,8 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:TemporalEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+<pre><code class="language-turtle">:TemporalEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Temporal eligibility"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -330,7 +330,7 @@
 <p>...</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">off:Term a rdfs:Class ;
+<pre><code class="language-turtle">:Term a owl:Class ;
   rdfs:subClassOf fnd:Condition ;
   skos:prefLabel "Term"@en ;
   skos:definition "..."@en .
@@ -341,8 +341,8 @@
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:eligibleInLocation a rdfs:Property ;
-  rdfs:domain off:TemporalEligibility ;
+<pre><code class="language-turtle">:eligibleInLocation a owl:ObjectProperty ;
+  rdfs:domain :TemporalEligibility ;
   rdfs:range fnd:TemporalSpan ;
   skos:prefLabel "eligible in location"@en ;
   skos:definition "..."@en .
@@ -352,8 +352,8 @@
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:eligibleInTime a rdfs:Property ;
-  rdfs:domain off:SpatialEligibility ;
+<pre><code class="language-turtle">:eligibleInTime a owl:ObjectProperty ;
+  rdfs:domain :SpatialEligibility ;
   rdfs:range fnd:SpatialReference ;
   skos:prefLabel "eligible in time"@en ;
   skos:definition "..."@en .
@@ -363,9 +363,9 @@
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:hasEligibilityConstraints a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Eligibility ;
+<pre><code class="language-turtle">:hasEligibilityConstraints a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Eligibility ;
   skos:prefLabel "has eligibility constraints"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -374,9 +374,9 @@
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:sellerOfRecord a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Seller ;
+<pre><code class="language-turtle">:sellerOfRecord a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Seller ;
   skos:prefLabel "seller of record"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -385,9 +385,9 @@
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">off:termsOfSale a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Term ;
+<pre><code class="language-turtle">:termsOfSale a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Term ;
   skos:prefLabel "terms of sale"@en ;
   skos:definition "..."@en .
 </code></pre>
@@ -396,9 +396,9 @@
 <blockquote>
 <p>...</p>
 </blockquote>
-<pre><code class="language-turtle">fnd:toSell a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Item ;
+<pre><code class="language-turtle">fnd:toSell a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Item ;
   skos:prefLabel "to sell"@en ;
   skos:definition "..."@en .
 </code></pre>

@@ -180,27 +180,45 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="identity-aspects"><a class="header" href="#identity-aspects">Identity Aspects</a></h1>
+<p>Identity, and classification, are important in many ontologies; for example,
+we make use of IRIs to identify classes and property definitions in our
+ontologies and classify classes and properties as SKOS concepts as appropriate.
+In this section we provide the ability to define <em>schemes</em> which describe the
+namespace, rules, and authority for a set <em>things</em> and then go on to define
+<em>classifier</em> and <em>identifier</em> schemes.</p>
 <p><img src="./identify-aspects.svg" alt="Identity Aspect Classes" /></p>
-<p><span class="figure caption">Identity Aspects</span></p>
+<p><span class="figure caption">Identity Aspect Classes</span></p>
 <h2 id="classes"><a class="header" href="#classes">Classes</a></h2>
 <h3 id="classification-scheme"><a class="header" href="#classification-scheme">Classification scheme</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A <em>classification scheme</em> names and provides a scope for a set of <em>classifiers</em>.</p>
+<p>A classification scheme provides a reference and scope for a set of <em>classifiers</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:ClassificationScheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:ClassificationScheme a owl:Class ;
   rdfs:subClassOf fnd:Scheme ;
   skos:prefLabel "Classification scheme"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="classified-thing"><a class="header" href="#classified-thing">Classified thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A thing to which <em>classifiers</em> have been/may be attached.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:ClassifiedThing a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Classified thing"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="classifier"><a class="header" href="#classifier">Classifier</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>A <em>classifier</em></p>
+<p>A <em>classifier</em> is used to denote a group to which one more <em>things</em> belongs,
+within some <em>classification scheme</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Classifier a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Classifier a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Classifier"@en ;
   skos:definition "..."@en .
@@ -211,7 +229,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:FunctionalIdentifier a rdfs:Class ;
+<pre><code class="language-turtle">fnd:FunctionalIdentifier a owl:Class ;
   rdfs:subClassOf fnd:Identifier ;
   skos:prefLabel "Functional identifier"@en ;
   skos:definition ""@en .
@@ -219,12 +237,23 @@
 <h3 id="identification-scheme"><a class="header" href="#identification-scheme">Identification scheme</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>An <em>identification scheme</em> names and provides a scope for a set of <em>identifiers</em>.</p>
+<p>An identification scheme provides a reference and scope for a set of <em>identifiers</em>.</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:IdentificationScheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:IdentificationScheme a owl:Class ;
   rdfs:subClassOf fnd:Scheme ;
   skos:prefLabel "Identification scheme"@en ;
+  skos:definition "..."@en .
+</code></pre>
+<h3 id="identified-thing"><a class="header" href="#identified-thing">Identified thing</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>A thing to which <em>identifiers</em> have been/may be attached.</p>
+</blockquote>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:IdentifiedThing a owl:Class ;
+  rdfs:subClassOf fnd:Thing ;
+  skos:prefLabel "Identified thing"@en ;
   skos:definition "..."@en .
 </code></pre>
 <h3 id="identifier"><a class="header" href="#identifier">Identifier</a></h3>
@@ -233,7 +262,7 @@
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Identifier a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Identifier a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Identifier"@en ;
   skos:definition ""@en .
@@ -249,52 +278,56 @@
 <li>The International Standard Book Number (ISBN).</li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:Scheme a rdfs:Class ;
+<pre><code class="language-turtle">fnd:Scheme a owl:Class ;
   rdfs:subClassOf fnd:Agreement ;
   skos:prefLabel "Scheme"@en ;
   skos:definition "..."@en ;
-  skos:example "...".
+  skos:example "..." .
 </code></pre>
 <h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
+<p><img src="./identify-properties.svg" alt="Identity Aspect Properties" /></p>
+<p><span class="figure caption">IdentitAspect Properties</span></p>
 <h3 id="authority"><a class="header" href="#authority">authority</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>Denotes that one party in the agreement constituting the scheme is the
-<em>authority</em> for the scheme and responsible for setting rules and
-arbitrating issues.</p>
+<p>Denotes that one <em>party</em> in the scheme's agreement with <em>responsibility</em>
+for management of the scheme; for example, setting rules and arbitrating
+issues.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>The GTIN scheme has the organization GS1 as it's authority. <br />
+<li>The GTIN scheme has the organization GS1 as it's <em>authority</em>. <br />
 <code>gtin: :authority gs1: .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:authority a rdfs:Property ;
+<pre><code class="language-turtle">fnd:authority a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:includesParty ;
-  owl:inversOf fnd:authorityForScheme ;
+  owl:inverseOf fnd:authorityForScheme ;
   rdfs:domain fnd:Scheme ;
   rdfs:range fnd:Party ;
   skos:prefLabel "authority"@en ;
-  skos:definition "..."@en .
+  skos:definition "..."@en ;
+  skos:example "..."@en .
 </code></pre>
 <h3 id="authority-for-scheme"><a class="header" href="#authority-for-scheme">authority for scheme</a></h3>
 <p>Definition:</p>
 <blockquote>
-<p>...</p>
+<p>Denotes a <em>scheme</em> which this <em>party</em> has authority over.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>GS1 is the authority for the GTIN scheme. <br />
+<li>GS1 is the <em>authority for</em> the GTIN scheme. <br />
 <code>gs1: :authorityForScheme gtin: .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:authorityForScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:authorityForScheme a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:aPartyTo ;
-  owl:inversOf fnd:authority ;
+  owl:inverseOf fnd:authority ;
   rdfs:domain fnd:Party ;
   rdfs:range fnd:Scheme ;
   skos:prefLabel "authority for scheme"@en ;
-  skos:definition ""@en .
+  skos:definition ""@en ;
+  skos:example "..."@en .
 </code></pre>
 <h3 id="broader-classifier"><a class="header" href="#broader-classifier">broader classifier</a></h3>
 <p>Definition:</p>
@@ -303,16 +336,21 @@ arbitrating issues.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>Toy is a broader classifier than building bricks.</li>
-<li>Furniture is a broader classifier than chairs.</li>
+<li>Toy is a <em>broader classifier</em> than building bricks. <br />
+<code>ex:Toys :broaderClassifier :BuildingBricks .</code></li>
+<li>Furniture is a <em>broader classifier</em> than chairs. <br />
+<code>ex:Furniture :broaderClassifier :Chairs .</code></li>
+<li>Science and Technology is a is a <em>broader classifier</em> than Computer Science. <br />
+<code>ex:ScienceAndTechnology :broaderClassifier ex:ComputerScience .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:broaderClassifier a rdfs:Property ;
+<pre><code class="language-turtle">fnd:broaderClassifier a owl:ObjectProperty ;
   owl:inverseOf fnd:narrowerClassifier ;
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:Classifier ;
   skos:prefLabel "broader classifier"@en ;
-  skos:definition ""@en .
+  skos:definition ""@en ;
+  skos:example "..."@en .
 </code></pre>
 <h3 id="broader-transitive-classifier"><a class="header" href="#broader-transitive-classifier">broader transitive classifier</a></h3>
 <p>Definition:</p>
@@ -321,9 +359,9 @@ arbitrating issues.</p>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>If building bricks is a broader classifier than Legos.</li>
-<li>If toys is a broader classifier than building bricks.</li>
-<li>Then, transitively, toys is a broader classifier that Legos.</li>
+<li>If building bricks is a <em>broader transitive classifier</em> than Legos, and
+toys is a <em>broader transitive classifier</em> than building bricks, then toys
+is a <em>broader transitive classifier</em> than Legos.</li>
 </ol>
 <p>OWL:</p>
 <pre><code class="language-turtle">fnd:broaderTransitiveClassifier a owl:TransitiveProperty ;
@@ -331,7 +369,76 @@ arbitrating issues.</p>
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:Classifier ;
   skos:prefLabel "broader transitive classifier"@en ;
-  skos:definition ""@en .
+  skos:definition ""@en ;
+  skos:example "..."@en .
+</code></pre>
+<h3 id="classified-by"><a class="header" href="#classified-by">classified by</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code> is <em>classified by</em> <code>Computer Science</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:classifiedBy a owl:ObjectProperty ;
+  rdfs:domain fnd:ClassifiedThing ;
+  rdfs:range fnd:Classifier ;
+  skos:prefLabel "classified by"@en ;
+  skos:definition ""@en ;
+  skos:example "..."@en .
+</code></pre>
+<h3 id="classifies"><a class="header" href="#classifies">classifies</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The classifier <code>Computer Science</code> <em>classifies</em> the thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:classifies a owl:ObjectProperty ;
+  rdfs:domain fnd:Classifier ;
+  rdfs:range fnd:ClassifiedThing ;
+  skos:prefLabel "classifies"@en ;
+  skos:definition ""@en ;
+  skos:example "..."@en .
+</code></pre>
+<h3 id="identified-by"><a class="header" href="#identified-by">identified by</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code> is <em>identified by</em> <code>urn:isbn:978-1-4503-7617-4</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:identifiedBy a owl:ObjectProperty ;
+  rdfs:domain fnd:IdentifiedThing ;
+  rdfs:range fnd:Identifier ;
+  skos:prefLabel "identified by"@en ;
+  skos:definition ""@en 
+  skos:example "..." .
+</code></pre>
+<h3 id="identifies"><a class="header" href="#identifies">identifies</a></h3>
+<p>Definition:</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<p>Example:</p>
+<ol>
+<li>The identifier <code>urn:isbn:978-1-4503-7617-4</code> <em>identifies</em> the thing <code>&lt;https://dl.acm.org/doi/book/10.1145/3382097&gt;</code>.</li>
+</ol>
+<p>OWL:</p>
+<pre><code class="language-turtle">fnd:identifiesa owl:ObjectProperty ;
+  rdfs:domain fnd:Identifier ;
+  rdfs:range fnd:IdentifiedThing ;
+  skos:prefLabel "identifies"@en ;
+  skos:definition ""@en  ;
+  skos:example "..." .
 </code></pre>
 <h3 id="in-classification-scheme"><a class="header" href="#in-classification-scheme">in classification scheme</a></h3>
 <p>Definition:</p>
@@ -339,7 +446,7 @@ arbitrating issues.</p>
 <p>TBD</p>
 </blockquote>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inClassificationScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:inClassificationScheme a owl:ObjectProperty ;
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:ClassificationScheme ;
   skos:prefLabel "in classification scheme"@en ;
@@ -350,14 +457,8 @@ arbitrating issues.</p>
 <blockquote>
 <p>TBD</p>
 </blockquote>
-<p>Example:</p>
-<ol>
-<li>If building bricks is a broader classifier than Legos, and toys is a broader
-classifier than building bricks, then toys is a broader classifier than
-Legos.</li>
-</ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:inIdentificationScheme a rdfs:Property ;
+<pre><code class="language-turtle">fnd:inIdentificationScheme a owl:ObjectProperty ;
   rdfs:domain fnd:Identifier ;
   rdfs:range fnd:IdentificationScheme ;
   skos:prefLabel "in identification scheme"@en ;
@@ -371,13 +472,15 @@ Legos.</li>
 </blockquote>
 <p>Example:</p>
 <ol>
-<li>Building bricks is a narrower classifier than toys. <br />
+<li>Building bricks is a <em>narrower classifier</em> than toys. <br />
 <code>ex:BuildingBricks :narrowerClassifier ex:Toys .</code></li>
-<li>Chairs is a narrower classifier than furniture. <br />
+<li>Chairs is a <em>narrower classifier</em> than furniture. <br />
 <code>ex:Chairs :narrowerClassifier ex:Furniture .</code></li>
+<li><code>Computer Science</code> is a is a <em>narrower classifier</em> than <code>Science and Technology</code>. <br />
+<code>ex:ComputerScience :narrowerClassifier ex:ScienceAndTechnology .</code></li>
 </ol>
 <p>OWL:</p>
-<pre><code class="language-turtle">fnd:narrowerClassifier a rdfs:Property ;
+<pre><code class="language-turtle">fnd:narrowerClassifier a owl:ObjectProperty ;
   owl:inverseOf fnd:broaderClassifier ;
   rdfs:domain fnd:Classifier ;
   rdfs:range fnd:Classifier ;
