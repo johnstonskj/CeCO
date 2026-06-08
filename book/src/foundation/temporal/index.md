@@ -15,7 +15,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:TemporalReference a rdfs:Class ;
+fnd:TemporalReference a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Temporal reference"@en ;
   skos:definition ""@en .
@@ -30,7 +30,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:TemporalEvent a rdfs:Class ;
+fnd:TemporalEvent a owl:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
   skos:prefLabel "Temporal event"@en ;
   skos:definition ""@en .
@@ -45,7 +45,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:TemporalSpan a rdfs:Class ;
+fnd:TemporalSpan a owl:Class ;
   rdfs:subClassOf fnd:TemporalReference ;
   skos:prefLabel "Temporal span"@en ;
   skos:definition ""@en .
@@ -62,7 +62,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:temporalProperty a rdfs:Property ;
+fnd:temporalProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:TemporalReference ;
   skos:prefLabel "temporal property"@en ;
@@ -78,7 +78,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:temporalSpanStartEvent a rdfs:Property ;
+fnd:temporalSpanStartEvent a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;
@@ -95,7 +95,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:temporalSpanEndEvent a rdfs:Property ;
+fnd:temporalSpanEndEvent a owl:ObjectProperty ;
   rdfs:subPropertyOf fnd:temporalProperty ;
   rdfs:domain fnd:TemporalSpan ;
   rdfs:range fnd:TemporalEvent ;

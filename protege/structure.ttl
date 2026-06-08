@@ -1,0 +1,340 @@
+@prefix : <https://ceco.one/v/2026/06/01/structure/> .
+@prefix fnd: <https://ceco.one/v/2026/06/01/foundation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://ceco.one/v/2026/06/01/structure/> .
+
+<https://ceco.one/v/2026/06/01/structure/> rdf:type owl:Ontology ;
+                                            owl:versionIRI <https://ceco.one/v/2026/06/01/structure/> ;
+                                            owl:imports <http://www.w3.org/2004/02/skos/core> ,
+                                                        fnd: ;
+                                            dcterms:creator "Simon Johnston <johnstonskj@gmail.com>" ;
+                                            dcterms:title "eCommerce Common Ontology (CeCo) Structure Layer"@en ;
+                                            rdfs:seeAlso <https://ceco.one/domains/structure/index.html> ;
+                                            owl:versionInfo "v2026-06-01"@en ;
+                                            <http://www.w3.org/2004/02/skos/core#prefLabel> "CeCO Structure"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://ceco.one/v/2026/06/01/structure/activityProperty
+:activityProperty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Activity
+                                              :Resource
+                                            )
+                              ] ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( :Activity
+                                             :Resource
+                                           )
+                             ] ;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Properties that  relate `Activities` to the `Resources` necessary to that activity."@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "activity property"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/assembles
+:assembles rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :activityProperty ;
+           rdfs:domain :Activity ;
+           rdfs:range :Material ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "assembles"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/consumes
+:consumes rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :activityProperty ;
+          rdfs:domain :Activity ;
+          rdfs:range :Material ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "consumes"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/detailsBreakdownOf
+:detailsBreakdownOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :BillOfMaterials ;
+                    rdfs:range :Assembly ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "details breakdown of"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/hasActivity
+:hasActivity rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :processProperty ;
+             owl:inverseOf :isActivityWithin ;
+             rdfs:domain :Process ;
+             rdfs:range :Activity ;
+             <http://www.w3.org/2004/02/skos/core#definition> "Denotes that an activity belongs within the scope of a specific process."@en ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "has activity"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/hasDependent
+:hasDependent rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :mereologicalProperty ;
+              owl:inverseOf :isDependentOn ;
+              rdf:type owl:TransitiveProperty ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "has dependent"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/hasDependentPart
+:hasDependentPart rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasPart ;
+                  owl:inverseOf :isDependentPartOf ;
+                  rdfs:range [ owl:intersectionOf ( fnd:DependentThing
+                                                    :PartOf
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "has dependent part"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/hasIndependentPart
+:hasIndependentPart rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasPart ;
+                    owl:inverseOf :isIndependentPartOf ;
+                    rdfs:range [ owl:intersectionOf ( fnd:IndependentThing
+                                                      :PartOf
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "has independent part"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :mereologicalProperty ;
+         owl:inverseOf :isPartOf ;
+         rdf:type owl:TransitiveProperty ;
+         rdfs:domain :Whole ;
+         rdfs:range :PartOf ;
+         <http://www.w3.org/2004/02/skos/core#altLabel> "holonymy"@en ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "has part"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/isActivityWithin
+:isActivityWithin rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :processProperty ;
+                  rdfs:domain :Activity ;
+                  rdfs:range :Process ;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Denotes the specific process that provides the scope for this activity."@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "is activity within"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/isCodependentWith
+:isCodependentWith rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :mereologicalProperty ;
+                   rdf:type owl:SymmetricProperty ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "is co-dependent with"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/isDependentOn
+:isDependentOn rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :mereologicalProperty ;
+               rdf:type owl:TransitiveProperty ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "is dependent on"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/isDependentPartOf
+:isDependentPartOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :isPartOf ;
+                   rdfs:domain [ owl:intersectionOf ( fnd:DependentThing
+                                                      :Whole
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "is dependent part of"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/isIndependentPartOf
+:isIndependentPartOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :isPartOf ;
+                     rdfs:domain [ owl:intersectionOf ( fnd:IndependentThing
+                                                        :Whole
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "is independent part of"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :mereologicalProperty ;
+          rdf:type owl:TransitiveProperty ;
+          rdfs:domain :PartOf ;
+          rdfs:range :Whole ;
+          <http://www.w3.org/2004/02/skos/core#altLabel> "meronymy"@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "is part of"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/mereologicalProperty
+:mereologicalProperty rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( :PartOf
+                                                  :Whole
+                                                )
+                                  ] ;
+                      rdfs:range [ rdf:type owl:Class ;
+                                   owl:unionOf ( :PartOf
+                                                 :Whole
+                                               )
+                                 ] ;
+                      <http://www.w3.org/2004/02/skos/core#definition> "A property which relates `Materials` as either `Whole` or `Parts`." ;
+                      <http://www.w3.org/2004/02/skos/core#example> "The property part-of denotes a `Part` to `Whole` relation; e.g. this wheel *is a part of* this car."@en ;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "mereological property"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/processProperty
+:processProperty rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A property where either the domain or range is a `Process`."@en ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "process property"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/produces
+:produces rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :activityProperty ;
+          rdfs:domain :Activity ;
+          rdfs:range :Material ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "produces"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/requires
+:requires rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :activityProperty ;
+          rdfs:domain :Activity ;
+          rdfs:range :Material ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "requires"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/transforms
+:transforms rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :activityProperty ;
+            rdfs:domain :Activity ;
+            rdfs:range :Material ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "transforms"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/waitsFor
+:waitsFor rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :activityProperty ;
+          rdfs:domain :Activity ;
+          rdfs:range :Activity ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "waits for"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://ceco.one/v/2026/06/01/structure/Activity
+:Activity rdf:type owl:Class ;
+          rdfs:subClassOf fnd:Thing ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Activity"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Assembly
+:Assembly rdf:type owl:Class ;
+          rdfs:subClassOf :PartOf ,
+                          :Whole ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Assembly"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/BillOfMaterials
+:BillOfMaterials rdf:type owl:Class ;
+                 rdfs:subClassOf fnd:Artifact ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Bill of materials"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Component
+:Component rdf:type owl:Class ;
+           rdfs:subClassOf :PartOf ,
+                           :Whole ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Component"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Manufacture
+:Manufacture rdf:type owl:Class ;
+             rdfs:subClassOf :Process ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Manufacture"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Material
+:Material rdf:type owl:Class ;
+          rdfs:subClassOf :TangibleResource ;
+          <http://www.w3.org/2004/02/skos/core#definition> "A material is any physical substance used to create objects, structures, or products."@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Material"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/NonTangibleResource
+:NonTangibleResource rdf:type owl:Class ;
+                     rdfs:subClassOf :Resource ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Non-tangible resource"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Part
+:Part rdf:type owl:Class ;
+      rdfs:subClassOf :PartOf ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Part"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/PartOf
+:PartOf rdf:type owl:Class ;
+        rdfs:subClassOf :Material ;
+        owl:disjointWith :Whole ;
+        <http://www.w3.org/2004/02/skos/core#altLabel> "Meronym"@en ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Part of"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Process
+:Process rdf:type owl:Class ;
+         rdfs:subClassOf fnd:Thing ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Process"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Resource
+:Resource rdf:type owl:Class ;
+          rdfs:subClassOf fnd:Thing ;
+          <http://www.w3.org/2004/02/skos/core#definition> "A resource is anything that can be drawn upon to function, survive, or achieve a goal."@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Resource"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/SubAssembly
+:SubAssembly rdf:type owl:Class ;
+             rdfs:subClassOf :PartOf ,
+                             :Whole ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Sub-assembly"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/TangibleResource
+:TangibleResource rdf:type owl:Class ;
+                  rdfs:subClassOf :Resource ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Tangible resource"@en .
+
+
+###  https://ceco.one/v/2026/06/01/structure/Whole
+:Whole rdf:type owl:Class ;
+       rdfs:subClassOf :Material ;
+       <http://www.w3.org/2004/02/skos/core#altLabel> "Holonym"@en ;
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Whole"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Material
+                :NonTangibleResource
+                :TangibleResource
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

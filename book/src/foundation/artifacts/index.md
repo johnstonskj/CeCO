@@ -17,7 +17,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:Artifact a rdfs:Class ;
+fnd:Artifact a owl:Class ;
   dfs:subClassOf fnd:Referent ;
   skos:prefLabel "Artifact"@en ;
   skos:definition ""@en .
@@ -32,7 +32,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:DependentArtifact a rdfs:Class ;
+fnd:DependentArtifact a owl:Class ;
   dfs:subClassOf fnd:DependentThing, fnd:Artifact ;
   skos:prefLabel "Dependent artifact"@en ;
   skos:definition ""@en .
@@ -53,7 +53,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:Document a rdfs:Class ;
+fnd:Document a owl:Class ;
   dfs:subClassOf fnd:Artifact ;
   skos:prefLabel "Document"@en ;
   skos:definition ""@en .
@@ -68,7 +68,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:IndependentArtifact a rdfs:Class ;
+fnd:IndependentArtifact a owl:Class ;
   dfs:subClassOf fnd:IndependentThing, fnd:Artifact ;
   skos:prefLabel "Independent artifact"@en ;
   skos:definition ""@en .
@@ -87,7 +87,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:artifactProperty a rdfs:Property ;
+fnd:artifactProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Artifact ;
   skos:prefLabel "artifact property"@en ;
@@ -104,7 +104,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:partyPropertyOfArtifact a rdfs:Property ;
+fnd:partyPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Party ;
@@ -121,7 +121,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:propertyOfArtifact a rdfs:Property ;
+fnd:propertyOfArtifact a owl:ObjectProperty ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "property of artifact"@en ;
@@ -137,7 +137,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:temporalEventPropertyOfArtifact a rdfs:Property ;
+fnd:temporalEventPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalEvent ;
@@ -154,7 +154,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:temporalSpanPropertyOfArtifact a rdfs:Property ;
+fnd:temporalSpanPropertyOfArtifact a owl:ObjectProperty ;
   rdfs:subClassOf fnd:propertyOfArtifact ;
   rdfs:domain fnd:Artifact ;
   rdfs:range fnd:TemporalSpan ;

@@ -27,7 +27,7 @@ Definition:
 OWL:
 
 ```turtle
-act:Action a rdfs:Class
+:Action a owl:Class
   skos:prefLabel "Action"@en ;
   skos:definition 
     "..."@en.
@@ -42,7 +42,7 @@ Definition:
 OWL:
 
 ```turtle
-act:Actor a rdfs:Class
+act:Actor a owl:Class
   skos:prefLabel "Actor"@en ;
   skos:definition 
     "..."@en.
@@ -57,7 +57,7 @@ Definition:
 OWL:
 
 ```turtle
-act:Agency a rdfs:Class
+:Agency a owl:Class
   skos:prefLabel "Agency"@en ;
   skos:definition 
     "..."@en.
@@ -71,6 +71,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### Authorization
 
 Definition:
@@ -78,6 +81,9 @@ Definition:
 > TBD
 
 OWL:
+
+```turtle
+```
 
 ### AuthorizationActor
 
@@ -87,6 +93,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### Environment
 
 Definition:
@@ -94,6 +103,9 @@ Definition:
 > TBD
 
 OWL:
+
+```turtle
+```
 
 ### GrantAction
 
@@ -103,6 +115,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### GrantAuthority
 
 Definition:
@@ -111,6 +126,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### Outcome
 
 Definition:
@@ -118,6 +136,9 @@ Definition:
 > TBD
 
 OWL:
+
+```turtle
+```
 
 ## Properties
 
@@ -130,6 +151,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### hasAgency
 
 Definition:
@@ -137,6 +161,9 @@ Definition:
 > TBD
 
 OWL:
+
+```turtle
+```
 
 ### hasAuthority
 
@@ -146,6 +173,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### responsibleFor
 
 Definition:
@@ -153,6 +183,9 @@ Definition:
 > TBD
 
 OWL:
+
+```turtle
+```
 
 ### resultingIn
 
@@ -162,6 +195,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### toPerform
 
 Definition:
@@ -170,6 +206,9 @@ Definition:
 
 OWL:
 
+```turtle
+```
+
 ### withinEnvironment
 
 Definition:
@@ -177,3 +216,6 @@ Definition:
 > TBD
 
 OWL:
+
+```turtle
+```

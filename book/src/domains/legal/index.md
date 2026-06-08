@@ -55,8 +55,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:BusinessEntity a rdfs:Class ;
-  rdfs:subClassOf lgl:JuridicalPerson ;
+:BusinessEntity a owl:Class ;
+  rdfs:subClassOf :JuridicalPerson ;
   skos:prefLabel "Business entity"@en ;
   skos:definition "..."@en .
 ```
@@ -70,7 +70,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:Claim a rdfs:Class ;
+:Claim a owl:Class ;
   rdfs:subClassOf fnd:Outcome ;
   skos:prefLabel "Claim"@en ;
   skos:definition "..."@en .
@@ -85,7 +85,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:Consideration a rdfs:Class ;
+:Consideration a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Consideration"@en ;
   skos:definition "..."@en .
@@ -100,7 +100,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:Contract a rdfs:Class ;
+:Contract a owl:Class ;
   rdfs:subClassOf fnd:Agreement ;
   skos:prefLabel "Contract"@en ;
   skos:definition "..."@en .
@@ -115,7 +115,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:EntityGroup a rdfs:Class ;
+:EntityGroup a owl:Class ;
   rdfs:subClassOf fnd:DependentThing ;
   skos:prefLabel "Entity group"@en ;
   skos:definition "..."@en .
@@ -130,8 +130,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:FormalOrganization a rdfs:Class ;
-  rdfs:subClassOf lgl:HierarchicalEntityGroup ;
+:FormalOrganization a owl:Class ;
+  rdfs:subClassOf :HierarchicalEntityGroup ;
   skos:prefLabel "Formal organization"@en ;
   skos:definition "..."@en .
 ```
@@ -145,8 +145,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:GovernmentalEntity a rdfs:Class ;
-  rdfs:subClassOf lgl:JuridicalPerson ;
+:GovernmentalEntity a owl:Class ;
+  rdfs:subClassOf :JuridicalPerson ;
   skos:prefLabel "Governmental entity"@en ;
   skos:definition "..."@en .
 ```
@@ -160,8 +160,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:HierarchicalEntityGroup a rdfs:Class ;
-  rdfs:subClassOf lgl:EntityGroup ;
+:HierarchicalEntityGroup a owl:Class ;
+  rdfs:subClassOf :EntityGroup ;
   skos:prefLabel "Hierarchical entity group"@en ;
   skos:definition "..."@en .
 ```
@@ -175,8 +175,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:IdentityClaim a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalDocument ;
+:IdentityClaim a owl:Class ;
+  rdfs:subClassOf :LegalDocument ;
   skos:prefLabel "Identity claim"@en ;
   skos:definition "..."@en .
 ```
@@ -190,8 +190,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:JuridicalPerson a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalEntity ;
+:JuridicalPerson a owl:Class ;
+  rdfs:subClassOf :LegalEntity ;
   skos:prefLabel "Juridical person"@en ;
   skos:definition "..."@en .
 ```
@@ -205,7 +205,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:Jurisdiction a rdfs:Class ;
+:Jurisdiction a owl:Class ;
   rdfs:subClassOf fnd:SpatialRegion ;
   skos:prefLabel "Jurisdiction"@en ;
   skos:definition "..."@en .
@@ -220,7 +220,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:LegalDocument a rdfs:Class ;
+:LegalDocument a owl:Class ;
   rdfs:subClassOf fnd:Document ;
   skos:prefLabel "Legal document"@en ;
   skos:definition "..."@en .
@@ -235,7 +235,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:LegalEntity a rdfs:Class ;
+:LegalEntity a owl:Class ;
   rdfs:subClassOf fnd:Referent ;
   skos:prefLabel "Legal entity"@en ;
   skos:definition "..."@en .
@@ -250,7 +250,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:LegalIdentificationScheme a rdfs:Class ;
+:LegalIdentificationScheme a owl:Class ;
   rdfs:subClassOf fnd:IdentificationScheme ;
   skos:prefLabel "Legal identification scheme"@en ;
   skos:definition "..."@en .
@@ -265,7 +265,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:LegalIdentifier a rdfs:Class ;
+:LegalIdentifier a owl:Class ;
   rdfs:subClassOf fnd:ThIdentifiering ;
   skos:prefLabel "Legal identifier"@en ;
   skos:definition "..."@en .
@@ -280,8 +280,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:NaturalPerson a rdfs:Class ;
-  rdfs:subClassOf lgl:LegalEntity ;
+:NaturalPerson a owl:Class ;
+  rdfs:subClassOf :LegalEntity ;
   skos:prefLabel "Natural person"@en ;
   skos:definition "..."@en .
 ```
@@ -295,7 +295,7 @@ Definition:
 OWL:
 
 ```turtle
-lgl:Obligation a rdfs:Class ;
+:Obligation a owl:Class ;
   rdfs:subClassOf fnd:Outcome ;
   skos:prefLabel "Obligation"@en ;
   skos:definition "..."@en .
@@ -310,8 +310,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:SubContract a rdfs:Class ;
-  rdfs:subClassOf lgl:Contract ;
+:SubContract a owl:Class ;
+  rdfs:subClassOf :Contract ;
   skos:prefLabel "Sub contract"@en ;
   skos:definition "..."@en .
 ```
@@ -325,8 +325,8 @@ Definition:
 OWL:
 
 ```turtle
-lgl:SurvivingObligation a rdfs:Class ;
-  rdfs:subClassOf lgl:Obligation ;
+:SurvivingObligation a owl:Class ;
+  rdfs:subClassOf :Obligation ;
   skos:prefLabel "Surviving obligation"@en ;
   skos:definition "..."@en .
 ```
@@ -340,9 +340,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:assertionArtifact a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
-  rdfs:range lgl:LegalDocument ;
+:assertionArtifact a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
+  rdfs:range :LegalDocument ;
   skos:prefLabel "assertion artifact"@en ;
   skos:definition "..."@en .
 ```
@@ -354,9 +354,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:assertionClaim a rdfs:Property ;
-  rdfs:domain lgl:LegalEntity ;
-  rdfs:range lgl:IdentityClaim ;
+:assertionClaim a owl:ObjectProperty ;
+  rdfs:domain :LegalEntity ;
+  rdfs:range :IdentityClaim ;
   skos:prefLabel "assertion claim"@en ;
   skos:definition "..."@en .
 ```
@@ -368,9 +368,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:assertionLegalIdentifier a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
-  rdfs:range lgl:LegalIdentifier ;
+:assertionLegalIdentifier a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
+  rdfs:range :LegalIdentifier ;
   skos:prefLabel "assertion legal identifier"@en ;
   skos:definition "..."@en .
 ```
@@ -382,8 +382,8 @@ Definition:
 > ...
 
 ```turtle
-lgl:assertionValiditySpan a rdfs:Property ;
-  rdfs:domain lgl:IdentityClaim ;
+:assertionValiditySpan a owl:ObjectProperty ;
+  rdfs:domain :IdentityClaim ;
   rdfs:range fnd:TemporalSpan ;
   skos:prefLabel "assertion validity span"@en ;
   skos:definition "..."@en .
@@ -396,8 +396,8 @@ Definition:
 > ...
 
 ```turtle
-lgl:contractuallyConstructs a rdfs:Property ;
-  rdfs:domain lgl:Thing ;
+:contractuallyConstructs a owl:ObjectProperty ;
+  rdfs:domain :Thing ;
   rdfs:range fnd:Thing ; # Claim OR Obligation
   skos:prefLabel "contractually constructs"@en ;
   skos:definition "..."@en .
@@ -410,9 +410,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:contractuallyEntails a rdfs:Property ;
-  rdfs:domain lgl:Contract ;
-  rdfs:range lgl:Consideration ; 
+:contractuallyEntails a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :Consideration ; 
   skos:prefLabel "contractually entails"@en ;
   skos:definition "..."@en .
 ```
@@ -424,9 +424,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:hasJurisdiction a rdfs:Property ;
-  rdfs:domain lgl:GovernmentalEntity ;
-  rdfs:range lgl:Jurisdiction ;
+:hasJurisdiction a owl:ObjectProperty ;
+  rdfs:domain :GovernmentalEntity ;
+  rdfs:range :Jurisdiction ;
   skos:prefLabel "has jurisdiction"@en ;
   skos:definition "..."@en .
 ```
@@ -438,9 +438,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:hasMember a rdfs:Property ;
-  rdfs:domain lgl:EntityGroup ;
-  rdfs:range lgl:LegalEntity ;
+:hasMember a owl:ObjectProperty ;
+  rdfs:domain :EntityGroup ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "has member"@en ;
   skos:definition "..."@en .
 ```
@@ -452,9 +452,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:hasOrganization a rdfs:Property ;
+:hasOrganization a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ; # BusinessEntity OR GovernmentalEntity
-  rdfs:range lgl:FormalOrganization ;
+  rdfs:range :FormalOrganization ;
   skos:prefLabel "has organization"@en ;
   skos:definition "..."@en .
 ```
@@ -466,9 +466,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:hasSubContract a rdfs:Property ;
-  rdfs:domain lgl:Contract ;
-  rdfs:range lgl:SubContract ;
+:hasSubContract a owl:ObjectProperty ;
+  rdfs:domain :Contract ;
+  rdfs:range :SubContract ;
   skos:prefLabel "has sub contract"@en ;
   skos:definition "..."@en .
 ```
@@ -480,9 +480,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:isContainedWithinGroup a rdfs:Property ;
-  rdfs:domain lgl:HierarchicalEntityGroup ;
-  rdfs:range lgl:EntityGroup ;
+:isContainedWithinGroup a owl:ObjectProperty ;
+  rdfs:domain :HierarchicalEntityGroup ;
+  rdfs:range :EntityGroup ;
   skos:prefLabel "is contained within group"@en ;
   skos:definition "..."@en .
 ```
@@ -494,9 +494,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:isLegallyOwnedBy a rdfs:Property ;
+:isLegallyOwnedBy a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
-  rdfs:range lgl:LegalEntity ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "is legally owned by"@en ;
   skos:definition "..."@en .
 ```
@@ -508,8 +508,8 @@ Definition:
 > ...
 
 ```turtle
-lgl:isLegalOwner a rdfs:Property ;
-  rdfs:domain lgl:LegalEntity ;
+:isLegalOwner a owl:ObjectProperty ;
+  rdfs:domain :LegalEntity ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "is legal owner"@en ;
   skos:definition "..."@en .
@@ -522,9 +522,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:isMemberOfGroup a rdfs:Property ;
-  rdfs:domain lgl:EntityGroup ;
-  rdfs:range lgl:LegalEntity ;
+:isMemberOfGroup a owl:ObjectProperty ;
+  rdfs:domain :EntityGroup ;
+  rdfs:range :LegalEntity ;
   skos:prefLabel "is member of group"@en ;
   skos:definition "..."@en .
 ```
@@ -536,9 +536,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:issuingAuthority a rdfs:Property ;
-  rdfs:domain lgl:LegalIdentificationScheme ;
-  rdfs:range lgl:Legalentity ; # LegalEntity AND Party
+:issuingAuthority a owl:ObjectProperty ;
+  rdfs:domain :LegalIdentificationScheme ;
+  rdfs:range :Legalentity ; # LegalEntity AND Party
   skos:prefLabel "issuing authority"@en ;
   skos:definition "..."@en .
 ```
@@ -550,8 +550,8 @@ Definition:
 > ...
 
 ```turtle
-lgl:jurisdictionalRegion a rdfs:Property ;
-  rdfs:domain lgl:Jurisdiction ;
+:jurisdictionalRegion a owl:ObjectProperty ;
+  rdfs:domain :Jurisdiction ;
   rdfs:range fnd:SpatialRegion ;
   skos:prefLabel "jurisdictional region"@en ;
   skos:definition "..."@en .
@@ -564,9 +564,9 @@ Definition:
 > ...
 
 ```turtle
-lgl:containsEntityGroup a rdfs:Property ;
-  rdfs:domain lgl:HierarchicalEntityGroup ;
-  rdfs:range lgl:Thing ; # HierarchicalEntityGroup or EntityGroup
+:containsEntityGroup a owl:ObjectProperty ;
+  rdfs:domain :HierarchicalEntityGroup ;
+  rdfs:range :Thing ; # HierarchicalEntityGroup or EntityGroup
   skos:prefLabel "contains entity group"@en ;
   skos:definition "..."@en .
 ```
@@ -578,8 +578,8 @@ Definition:
 > ...
 
 ```turtle
-lgl:promisee a rdfs:Property ;
-  rdfs:domain lgl:Claim ;
+:promisee a owl:ObjectProperty ;
+  rdfs:domain :Claim ;
   rdfs:range fnd:Party ;
   skos:prefLabel "promisee"@en ;
   skos:definition "..."@en .
@@ -592,8 +592,8 @@ Definition:
 > ...
 
 ```turtle
-lgl:promisor a rdfs:Property ;
-  rdfs:domain lgl:Obligation ;
+:promisor a owl:ObjectProperty ;
+  rdfs:domain :Obligation ;
   rdfs:range fnd:Party ;
   skos:prefLabel "promisor"@en ;
   skos:definition "..."@en .

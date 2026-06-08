@@ -1,5 +1,10 @@
 # Core
 
+This simple core defines only five classes  that act as the top for all others
+in the rest of the foundation, and all domains. The four properties, while not
+super-properties for *all* properties in the way that `fnd:Thing` is a
+super-type, are commonly used.
+
 ![Core Classes](./core.svg)
 
 <span class="figure caption">Foundation Core</span>
@@ -10,14 +15,13 @@
 
 Definition:
 
-> A reference that *uniquely* identifies it's referent. It implies that when
-> used as an object property that property should be a subtype of
-> `owl:FunctionalProperty`.
+> A *reference* that uniquely identifies it's referent; any unique value of a
+> functional reference identifies **at most** one *referent*.
 
 OWL:
 
 ```turtle
-fnd:FunctionalReference a rdfs:Class ;
+fnd:FunctionalReference a owl:Class ;
   rdfs:subClassOf fnd:Reference ;
   skos:prefLabel "Functional reference"@en ;
   skos:definition "..."@en .
@@ -32,7 +36,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:PhysicalThing a rdfs:Class ;
+fnd:PhysicalThing a owl:Class ;
   rdfs:subClassOf fnd:Referent ;
   skos:prefLabel "Physical thing"@en ;
   skos:definition "..."@en .
@@ -43,12 +47,11 @@ fnd:PhysicalThing a rdfs:Class ;
 Definition:
 
 > A label used to *refer to* a *thing*, distinct from a *thing* itself.
-> Reference is `owl:DisjointWith` Referent.
 
 OWL:
 
 ```turtle
-fnd:Reference a rdfs:Class ;
+fnd:Reference a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Referent ;
   skos:prefLabel "Reference"@en ;
@@ -61,12 +64,11 @@ Definition:
 
 > An *actual thing* which exists regardless and independent of any particular
 > labels used to describe, name, or identify it. It **is** the *thing*.
-> Referent is `owl:DisjointWith` Reference.
 
 OWL:
 
 ```turtle
-fnd:Referent a rdfs:Class ;
+fnd:Referent a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   owl:disjointWith fnd:Reference ;
   skos:prefLabel "Referent"@en ;
@@ -82,13 +84,17 @@ Definition:
 OWL:
 
 ```turtle
-fnd:Thing a rdfs:Class ;
+fnd:Thing a owl:Class ;
   rdfs:subClassOf owl:Thing ;
   skos:prefLabel "Thing"@en ;
   skos:definition "..."@en .
 ```
 
 ## Properties
+
+![Core Properties](./core-properties.svg)
+
+<span class="figure caption">Foundation Properties</span>
 
 ### has reference
 
@@ -99,7 +105,8 @@ Definition:
 OWL:
 
 ```turtle
-fnd:hasReference a rdfs:Property ;
+fnd:hasReference a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:referenceProperty ;
   owl:inverseOf fnd:refersTo ;
   rdfs:domain fnd:Referent ;
   rdfs:range fnd:Reference ;
@@ -111,17 +118,31 @@ fnd:hasReference a rdfs:Property ;
 
 Definition:
 
-> Denotes the case that a *referent* has a uniquely identifying reference.
+> Denotes the case that a *referent* has a **uniquely** identifying *reference*.
 
 OWL:
 
 ```turtle
-fnd:hasUniqueReference a rdfs:Property ;
-  rdfs:subPropertyOf hasReference ;
+fnd:hasUniqueReference a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:referenceProperty, fnd:hasReference ;
   owl:inverseOf fnd:uniquelyRefersTo ;
   rdfs:domain fnd:Referent ;
   rdfs:range fnd:FunctionalReference ;
   skos:prefLabel "has unique reference"@en ;
+  skos:definition "..."@en .
+```
+
+### reference property
+
+Definition:
+
+> A Property between *referents* and *references*.
+
+OWL:
+
+```turtle
+fnd:referenceProperty a owl:ObjectProperty ;
+  skos:prefLabel "reference property"@en ;
   skos:definition "..."@en .
 ```
 
@@ -134,7 +155,8 @@ Definition:
 OWL:
 
 ```turtle
-fnd:refersTo a rdfs:Property ;
+fnd:refersTo a owl:ObjectProperty ;
+  rdfs:subPropertyOf fnd:referenceProperty ;
   owl:inverseOf fnd:hasReference ;
   rdfs:domain fnd:Reference ;
   rdfs:range fnd:Referent ;
@@ -146,13 +168,13 @@ fnd:refersTo a rdfs:Property ;
 
 Definition:
 
-> Denotes a the *referent* that a *functional reference* uniquely describes.
+> Denotes a the *referent* that a *functional reference* **uniquely** describes.
 
 OWL:
 
 ```turtle
 fnd:uniquelyRefersTo a owl:FunctionalProperty ;
-  rdfs:subPropertyOf fnd:refersTo ;
+  rdfs:subPropertyOf fnd:referenceProperty, fnd:refersTo ;
   owl:inverseOf fnd:hasUniqueReference ;
   rdfs:domain fnd:FunctionalReference ;
   rdfs:range fnd:Referent ;

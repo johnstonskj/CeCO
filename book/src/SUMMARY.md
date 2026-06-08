@@ -24,6 +24,7 @@
   - [Offers](./domains/offers/index.md)
   - [Products](./domains/products/index.md)
   - [Spatial](./domains/spatial/index.md)
+  - [Manufacturing](./domains/manufacturing/index.md)
 - [References](./references/index.md)
   - [Index](./references/term_index.md)
   - [List of Images](./references/image_list.md)

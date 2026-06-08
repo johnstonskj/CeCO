@@ -33,8 +33,8 @@ Definition:
 OWL:
 
 ```turtle
-off:AgeRestrictionEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+:AgeRestrictionEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Age restriction eligibility"@en ;
   skos:definition "..."@en .
 ```
@@ -48,7 +48,7 @@ Definition:
 OWL:
 
 ```turtle
-off:Artist a rdfs:Class ;
+:Artist a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Artist"@en ;
   skos:definition "..."@en .
@@ -63,7 +63,7 @@ Definition:
 OWL:
 
 ```turtle
-off:BrandOwner a rdfs:Class ;
+:BrandOwner a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Brand owner"@en ;
   skos:definition "..."@en .
@@ -78,7 +78,7 @@ Definition:
 OWL:
 
 ```turtle
-off:Constraint a rdfs:Class ;
+:Constraint a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "Constraint"@en ;
   skos:definition "..."@en .
@@ -93,8 +93,8 @@ Definition:
 OWL:
 
 ```turtle
-off:CustomerClassEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+:CustomerClassEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Customer class eligibility"@en ;
   skos:definition "..."@en .
 ```
@@ -108,7 +108,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:Distributer a rdfs:Class ;
+fnd:Distributer a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Distributer"@en ;
   skos:definition "..."@en .
@@ -123,8 +123,8 @@ Definition:
 OWL:
 
 ```turtle
-off:Eligibility a rdfs:Class ;
-  rdfs:subClassOf off:Constraint ;
+:Eligibility a owl:Class ;
+  rdfs:subClassOf :Constraint ;
   skos:prefLabel "Eligibility"@en ;
   skos:definition "..."@en .
 ```
@@ -138,7 +138,7 @@ Definition:
 OWL:
 
 ```turtle
-off:Offer a rdfs:Class ;
+:Offer a owl:Class ;
   rdfs:subClassOf lgl:Consideration ;
   skos:prefLabel "Offer"@en ;
   skos:definition "..."@en .
@@ -153,7 +153,7 @@ Definition:
 OWL:
 
 ```turtle
-off:Seller a rdfs:Class ;
+:Seller a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Seller"@en ;
   skos:definition "..."@en .
@@ -168,7 +168,7 @@ Definition:
 OWL:
 
 ```turtle
-off:ServiceProvider a rdfs:Class ;
+:ServiceProvider a owl:Class ;
   rdfs:subClassOf fnd:Party, lgl:LegalEntity ;
   skos:prefLabel "Service provider"@en ;
   skos:definition "..."@en .
@@ -183,8 +183,8 @@ Definition:
 OWL:
 
 ```turtle
-off:SpatialEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+:SpatialEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Spatial eligibility"@en ;
   skos:definition "..."@en .
 ```
@@ -198,8 +198,8 @@ Definition:
 OWL:
 
 ```turtle
-off:TemporalEligibility a rdfs:Class ;
-  rdfs:subClassOf off:Eligibility ;
+:TemporalEligibility a owl:Class ;
+  rdfs:subClassOf :Eligibility ;
   skos:prefLabel "Temporal eligibility"@en ;
   skos:definition "..."@en .
 ```
@@ -213,7 +213,7 @@ Definition:
 OWL:
 
 ```turtle
-off:Term a rdfs:Class ;
+:Term a owl:Class ;
   rdfs:subClassOf fnd:Condition ;
   skos:prefLabel "Term"@en ;
   skos:definition "..."@en .
@@ -228,8 +228,8 @@ Definition:
 > ...
 
 ```turtle
-off:eligibleInLocation a rdfs:Property ;
-  rdfs:domain off:TemporalEligibility ;
+:eligibleInLocation a owl:ObjectProperty ;
+  rdfs:domain :TemporalEligibility ;
   rdfs:range fnd:TemporalSpan ;
   skos:prefLabel "eligible in location"@en ;
   skos:definition "..."@en .
@@ -242,8 +242,8 @@ Definition:
 > ...
 
 ```turtle
-off:eligibleInTime a rdfs:Property ;
-  rdfs:domain off:SpatialEligibility ;
+:eligibleInTime a owl:ObjectProperty ;
+  rdfs:domain :SpatialEligibility ;
   rdfs:range fnd:SpatialReference ;
   skos:prefLabel "eligible in time"@en ;
   skos:definition "..."@en .
@@ -256,9 +256,9 @@ Definition:
 > ...
 
 ```turtle
-off:hasEligibilityConstraints a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Eligibility ;
+:hasEligibilityConstraints a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Eligibility ;
   skos:prefLabel "has eligibility constraints"@en ;
   skos:definition "..."@en .
 ```
@@ -270,9 +270,9 @@ Definition:
 > ...
 
 ```turtle
-off:sellerOfRecord a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Seller ;
+:sellerOfRecord a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Seller ;
   skos:prefLabel "seller of record"@en ;
   skos:definition "..."@en .
 ```
@@ -284,9 +284,9 @@ Definition:
 > ...
 
 ```turtle
-off:termsOfSale a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Term ;
+:termsOfSale a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Term ;
   skos:prefLabel "terms of sale"@en ;
   skos:definition "..."@en .
 ```
@@ -298,9 +298,9 @@ Definition:
 > ...
 
 ```turtle
-fnd:toSell a rdfs:Property ;
-  rdfs:domain off:Offer ;
-  rdfs:range off:Item ;
+fnd:toSell a owl:ObjectProperty ;
+  rdfs:domain :Offer ;
+  rdfs:range :Item ;
   skos:prefLabel "to sell"@en ;
   skos:definition "..."@en .
 ```

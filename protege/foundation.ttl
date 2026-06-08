@@ -1,32 +1,19 @@
 @prefix : <https://ceco.one/v/2026/06/01/foundation/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <https://ceco.one/v/2026/06/01/foundation/> .
 
-<https://ceco.one/v/2026/06/01/foundation/> rdf:type owl:Ontology, skos:ConceptScheme ;
-    owl:versionIRI <https://ceco.one/v/2026/06/01/foundation/> ;
-    owl:imports <http://www.w3.org/2004/02/skos/core> ;
-    <http://purl.org/dc/terms/creator> "Simon Johnston <johnstonskj@gmail.com>" ;
-    <http://purl.org/dc/terms/title> "Common eCommerce Ontology (CeCO) Foundation Layer"@en ;
-    rdfs:seeAlso <https://simonkjohnston.life/CeCO/foundation/index.html> ;
-    owl:versionInfo "v2026-06-01" ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "CeCO Foundation"@en ;
-    skos:hasTopConcept :Thing .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://www.w3.org/2004/02/skos/core#altLabel
-<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
-
-###  http://www.w3.org/2004/02/skos/core#prefLabel
-<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+<https://ceco.one/v/2026/06/01/foundation/> rdf:type owl:Ontology ;
+                                             owl:versionIRI <https://ceco.one/v/2026/06/01/foundation/> ;
+                                             owl:imports <http://www.w3.org/2004/02/skos/core> ;
+                                             <http://purl.org/dc/terms/creator> "Simon Johnston <johnstonskj@gmail.com>" ;
+                                             <http://purl.org/dc/terms/title> "Common eCommerce Ontology (CeCO) Foundation Layer"@en ;
+                                             rdfs:seeAlso <https://ceco.one/foundation/index.html> ;
+                                             owl:versionInfo "v2026-06-01" ;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "CeCO Foundation"@en .
 
 #################################################################
 #    Datatypes
@@ -35,38 +22,50 @@
 ###  http://purl.org/dc/terms/Box
 <http://purl.org/dc/terms/Box> rdf:type rdfs:Datatype .
 
+
 ###  http://purl.org/dc/terms/ISO3166
 <http://purl.org/dc/terms/ISO3166> rdf:type rdfs:Datatype .
+
 
 ###  http://purl.org/dc/terms/ISO639-2
 <http://purl.org/dc/terms/ISO639-2> rdf:type rdfs:Datatype .
 
+
 ###  http://purl.org/dc/terms/ISO639-3
 <http://purl.org/dc/terms/ISO639-3> rdf:type rdfs:Datatype .
+
 
 ###  http://purl.org/dc/terms/Period
 <http://purl.org/dc/terms/Period> rdf:type rdfs:Datatype .
 
+
 ###  http://purl.org/dc/terms/Point
 <http://purl.org/dc/terms/Point> rdf:type rdfs:Datatype .
+
 
 ###  http://purl.org/dc/terms/RFC1766
 <http://purl.org/dc/terms/RFC1766> rdf:type rdfs:Datatype .
 
+
 ###  http://purl.org/dc/terms/RFC3066
 <http://purl.org/dc/terms/RFC3066> rdf:type rdfs:Datatype .
+
 
 ###  http://purl.org/dc/terms/RFC4646
 <http://purl.org/dc/terms/RFC4646> rdf:type rdfs:Datatype .
 
+
 ###  http://purl.org/dc/terms/RFC5646
 <http://purl.org/dc/terms/RFC5646> rdf:type rdfs:Datatype .
+
 
 ###  http://purl.org/dc/terms/URI
 <http://purl.org/dc/terms/URI> rdf:type rdfs:Datatype .
 
+
 ###  http://purl.org/dc/terms/W3CDTF
 <http://purl.org/dc/terms/W3CDTF> rdf:type rdfs:Datatype .
+
 
 #################################################################
 #    Object Properties
@@ -74,257 +73,304 @@
 
 ###  https://ceco.one/v/2026/06/01/foundation/authority
 :authority rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    owl:inverseOf :authorityForScheme ;
-    rdfs:domain :Scheme ;
-    rdfs:range :Party ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "authority"@en .
+           rdfs:subPropertyOf :dutyProperty ;
+           owl:inverseOf :authorityForScheme ;
+           rdfs:domain :Scheme ;
+           rdfs:range :Party ;
+           <http://www.w3.org/2004/02/skos/core#definition> "Denotes that one *party* in the scheme's agreement with *responsibility* for management of the scheme; for example, setting rules and arbitrating issues."@en ;
+           <http://www.w3.org/2004/02/skos/core#example> "The GTIN scheme has the organization GS1 as it's *authority*."@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "authority"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/authorityForScheme
 :authorityForScheme rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Party ;
-    rdfs:range :Scheme ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "authority for scheme"@en .
+                    rdfs:subPropertyOf :dutyProperty ;
+                    rdfs:domain :Party ;
+                    rdfs:range :Scheme ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "authority for scheme"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/broaderClassifier
 :broaderClassifier rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    owl:inverseOf :narrowerClassifier ;
-    rdfs:domain :Classifier ;
-    rdfs:range :Classifier ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "broader classifier"@en .
+                   rdfs:subPropertyOf :classificationProperty ;
+                   owl:inverseOf :narrowerClassifier ;
+                   rdfs:domain :Classifier ;
+                   rdfs:range :Classifier ;
+                   <http://www.w3.org/2004/02/skos/core#definition> "Denotes a *scheme* which this *party* has authority over."@en ;
+                   <http://www.w3.org/2004/02/skos/core#example> "GS1 is the *authority for* the GTIN scheme."@en ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "broader classifier"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/broaderTransitiveClassifier
 :broaderTransitiveClassifier rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :broaderClassifier ;
-    owl:inverseOf :narrowerTransitiveClassifier ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "broader transitive classifier"@en .
+                             rdfs:subPropertyOf :broaderClassifier ;
+                             owl:inverseOf :narrowerTransitiveClassifier ;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "broader transitive classifier"@en .
+
+
+###  https://ceco.one/v/2026/06/01/foundation/classificationProperty
+:classificationProperty rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( :ClassifiedThing
+                                                    :Classifier
+                                                  )
+                                    ] ;
+                        rdfs:range [ rdf:type owl:Class ;
+                                     owl:unionOf ( :ClassifiedThing
+                                                   :Classifier
+                                                 )
+                                   ] ;
+                        <http://www.w3.org/2004/02/skos/core#definition> "A property whose domain or range is an *Classifier* or an *Classified thing*."@en ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "classification property"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/classifiedBy
 :classifiedBy rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    owl:inverseOf :classifies ;
-    rdfs:domain :ClassifiedThing ;
-    rdfs:range :Classifier ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "classified by"@en .
+              rdfs:subPropertyOf :classificationProperty ;
+              owl:inverseOf :classifies ;
+              rdfs:domain :ClassifiedThing ;
+              rdfs:range :Classifier ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "classified by"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/classifies
 :classifies rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Classifier ;
-    rdfs:range :ClassifiedThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "classifies"@en .
+            rdfs:subPropertyOf :classificationProperty ;
+            rdfs:domain :Classifier ;
+            rdfs:range :ClassifiedThing ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "classifies"@en .
 
-###  https://ceco.one/v/2026/06/01/foundation/codependentWith
-:codependentWith rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :merelogicalProperty ;
-    rdf:type owl:SymmetricProperty ;
-    rdfs:domain :StructuredThing ;
-    rdfs:range :StructuredThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "co-dependent with"@en .
 
 ###  https://ceco.one/v/2026/06/01/foundation/definesDuty
 :definesDuty rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    owl:inverseOf :performedInScope ;
-    rdfs:domain :Agreement ;
-    rdfs:range :Duty ;
-    <http://www.w3.org/2004/02/skos/core#altLabel> "defines the duty"@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "defines duty"@en .
+             rdfs:subPropertyOf :dutyProperty ;
+             owl:inverseOf :performedInScope ;
+             rdfs:domain :Agreement ;
+             rdfs:range :Duty ;
+             <http://www.w3.org/2004/02/skos/core#altLabel> "defines the duty"@en ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "defines duty"@en .
 
-###  https://ceco.one/v/2026/06/01/foundation/dependentUpon
-:dependentUpon rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :merelogicalProperty ;
-    owl:inverseOf :hasDependent ;
-    rdf:type owl:TransitiveProperty ;
-    rdfs:domain :StructuredThing ;
-    rdfs:range :StructuredThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "dependent upon"@en .
 
 ###  https://ceco.one/v/2026/06/01/foundation/dutyPerformedBy
 :dutyPerformedBy rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    owl:inverseOf :performsDuty ;
-    rdfs:domain :Duty ;
-    rdfs:range :Party ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "duty performed by"@en .
+                 rdfs:subPropertyOf :dutyProperty ;
+                 owl:inverseOf :performsDuty ;
+                 rdfs:domain :Duty ;
+                 rdfs:range :Party ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "duty performed by"@en .
 
-###  https://ceco.one/v/2026/06/01/foundation/hasDependent
-:hasDependent rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :merelogicalProperty ;
-    rdf:type owl:TransitiveProperty ;
-    rdfs:domain :StructuredThing ;
-    rdfs:range :StructuredThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "has dependent"@en .
 
-###  https://ceco.one/v/2026/06/01/foundation/hasDependentPart
-:hasDependentPart rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasPart ;
-    owl:inverseOf :isDependentPartOf ;
-    rdfs:domain :StructuredThing ;
-    rdfs:range :DependentThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "has dependent part"@en .
+###  https://ceco.one/v/2026/06/01/foundation/dutyProperty
+:dutyProperty rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :Duty
+                                          :Party
+                                        )
+                          ] ;
+              rdfs:range [ rdf:type owl:Class ;
+                           owl:unionOf ( :Duty
+                                         :Party
+                                       )
+                         ] ;
+              <http://www.w3.org/2004/02/skos/core#definition> "A property denoting either the definition of, application of, or requirement for, a *duty* within an *agreement *or process."@en ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "duty property"@en .
 
-###  https://ceco.one/v/2026/06/01/foundation/hasIdentifier
-:hasIdentifier rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty .
-
-###  https://ceco.one/v/2026/06/01/foundation/hasIndependentPart
-:hasIndependentPart rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasPart ;
-    owl:inverseOf :isIndependentPartOf ;
-    rdfs:domain :StructuredThing ;
-    rdfs:range :IndependentThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "has independent part"@en .
-
-###  https://ceco.one/v/2026/06/01/foundation/hasPart
-:hasPart rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :merelogicalProperty ;
-    rdf:type owl:TransitiveProperty ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "has part"@en .
 
 ###  https://ceco.one/v/2026/06/01/foundation/hasReference
 :hasReference rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    owl:inverseOf :refersTo ;
-    rdfs:domain :Referent ;
-    rdfs:range :Reference ;
-    <http://www.w3.org/2004/02/skos/core#definition> "Denotes that a *referent* has one or more *references*."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "has reference"@en .
+              rdfs:subPropertyOf :referenceProperty ;
+              owl:inverseOf :refersTo ;
+              rdfs:domain :Referent ;
+              rdfs:range :Reference ;
+              <http://www.w3.org/2004/02/skos/core#definition> "Denotes that a *referent* has one or more *references*."@en ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "has reference"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/hasUniqueReference
 :hasUniqueReference rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasReference ;
-    owl:inverseOf :uniquelyRefersTo ;
-    rdf:type owl:InverseFunctionalProperty ;
-    <http://www.w3.org/2004/02/skos/core#definition> "Denotes the case that a *referent* has a **uniquely** identifying *reference*."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "has unique reference" .
+                    rdfs:subPropertyOf :hasReference ;
+                    owl:inverseOf :uniquelyRefersTo ;
+                    rdf:type owl:InverseFunctionalProperty ;
+                    <http://www.w3.org/2004/02/skos/core#definition> "Denotes the case that a *referent* has a **uniquely** identifying *reference*."@en ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "has unique reference" .
+
+
+###  https://ceco.one/v/2026/06/01/foundation/identificationProperty
+:identificationProperty rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( :IdentifiedThing
+                                                    :Identifier
+                                                  )
+                                    ] ;
+                        rdfs:range [ rdf:type owl:Class ;
+                                     owl:unionOf ( :IdentifiedThing
+                                                   :Identifier
+                                                 )
+                                   ] ;
+                        <http://www.w3.org/2004/02/skos/core#definition> "A property whose domain or range is an *Identifier* or an *Identified thing*."@en ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "identification property"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/identifiedBy
 :identifiedBy rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty .
+              rdfs:subPropertyOf :identificationProperty ;
+              rdfs:domain :IdentifiedThing ;
+              rdfs:range :Identifier ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "identified by"@en .
+
+
+###  https://ceco.one/v/2026/06/01/foundation/identifies
+:identifies rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :identificationProperty ;
+            rdfs:domain :Identifier ;
+            rdfs:range :IdentifiedThing ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "identifies"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/inClassificationScheme
 :inClassificationScheme rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Classifier ;
-    rdfs:range :ClassificationScheme ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "in classification scheme"@en .
+                        rdfs:subPropertyOf :classificationProperty ;
+                        rdfs:domain :Classifier ;
+                        rdfs:range :ClassificationScheme ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "in classification scheme"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/inIdentificationScheme
 :inIdentificationScheme rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Identifier ;
-    rdfs:range :IdentificationScheme ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "in identification scheme"@en .
+                        rdfs:subPropertyOf :identificationProperty ;
+                        rdfs:domain :Identifier ;
+                        rdfs:range :IdentificationScheme ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "in identification scheme"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/inSpatialScheme
 :inSpatialScheme rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :SpatialReference ;
-    rdfs:range :SpatialReferenceScheme ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "in spatial scheme"@en .
+                 rdfs:subPropertyOf :spatialProperty ;
+                 rdfs:domain :SpatialReference ;
+                 rdfs:range :SpatialReferenceScheme ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "in spatial scheme"@en .
 
-###  https://ceco.one/v/2026/06/01/foundation/isDependentPartOf
-:isDependentPartOf rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :isPartOf ;
-    rdfs:domain :DependentThing ;
-    rdfs:range :StructuredThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "is dependent part of"@en .
 
-###  https://ceco.one/v/2026/06/01/foundation/isIndependentPartOf
-:isIndependentPartOf rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :isPartOf ;
-    rdfs:domain :IndependentThing ;
-    rdfs:range :StructuredThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "is independent part of"@en .
+###  https://ceco.one/v/2026/06/01/foundation/isIdentifiedBy
+:isIdentifiedBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :identificationProperty .
 
-###  https://ceco.one/v/2026/06/01/foundation/isPartOf
-:isPartOf rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :merelogicalProperty ;
-    owl:inverseOf :merelogicalProperty ;
-    rdf:type owl:TransitiveProperty ;
-    rdfs:domain :Thing ;
-    rdfs:range :Thing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "is part of"@en .
-
-###  https://ceco.one/v/2026/06/01/foundation/merelogicalProperty
-:merelogicalProperty rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Thing ;
-    rdfs:range :Thing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "merelogical property"@en .
 
 ###  https://ceco.one/v/2026/06/01/foundation/narrowerClassifier
 :narrowerClassifier rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Classifier ;
-    rdfs:range :Classifier ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "narrower classifier"@en .
+                    rdfs:subPropertyOf :classificationProperty ;
+                    rdfs:domain :Classifier ;
+                    rdfs:range :Classifier ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "narrower classifier"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/narrowerTransitiveClassifier
 :narrowerTransitiveClassifier rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :narrowerClassifier ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "narrower transitive classifier"@en .
+                              rdfs:subPropertyOf :narrowerClassifier ;
+                              <http://www.w3.org/2004/02/skos/core#prefLabel> "narrower transitive classifier"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/performedInScope
 :performedInScope rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Duty ;
-    rdfs:range :Agreement ;
-    <http://www.w3.org/2004/02/skos/core#altLabel> "performed in the scope of"@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "performed in scope"@en .
+                  rdfs:subPropertyOf :dutyProperty ;
+                  rdfs:domain :Duty ;
+                  rdfs:range :Agreement ;
+                  <http://www.w3.org/2004/02/skos/core#altLabel> "performed in the scope of"@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "performed in scope"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/performsDuty
 :performsDuty rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Party ;
-    rdfs:range :Duty ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "performs duty"@en .
+              rdfs:subPropertyOf :dutyProperty ;
+              rdfs:domain :Party ;
+              rdfs:range :Duty ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "performs duty"@en .
+
+
+###  https://ceco.one/v/2026/06/01/foundation/referenceProperty
+:referenceProperty rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Reference
+                                               :Referent
+                                             )
+                               ] ;
+                   rdfs:range [ rdf:type owl:Class ;
+                                owl:unionOf ( :Reference
+                                              :Referent
+                                            )
+                              ] ;
+                   <http://www.w3.org/2004/02/skos/core#definition> "A Property between *referents* and *references*"@en ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "reference property"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/refersTo
 :refersTo rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Reference ;
-    rdfs:range :Referent ;
-    <http://www.w3.org/2004/02/skos/core#definition> "Denotes the *referent* that this *reference* describes."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "refers to"@en .
+          rdfs:subPropertyOf :referenceProperty ;
+          rdfs:domain :Reference ;
+          rdfs:range :Referent ;
+          <http://www.w3.org/2004/02/skos/core#definition> "Denotes the *referent* that this *reference* describes."@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "refers to"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/spatialProperty
 :spatialProperty rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Thing ;
-    rdfs:range :SpatialReference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "spatial property"@en .
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Thing ;
+                 rdfs:range :SpatialReference ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "spatial property"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/temporalProperty
 :temporalProperty rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Thing ;
-    rdfs:range :TemporalReference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "temporal property"@en .
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Thing ;
+                  rdfs:range :TemporalReference ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "temporal property"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/temporalSpanEndEvent
 :temporalSpanEndEvent rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :temporalProperty ;
-    rdfs:domain :TemporalSpan ;
-    rdfs:range :TemporalEvent ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "temporal span start event"@en .
+                      rdfs:subPropertyOf :temporalProperty ;
+                      rdfs:domain :TemporalSpan ;
+                      rdfs:range :TemporalEvent ;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "temporal span start event"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/temporalSpanStartEvent
 :temporalSpanStartEvent rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :temporalProperty ;
-    rdfs:domain :TemporalSpan ;
-    rdfs:range :TemporalEvent ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "temporal span end event"@en .
+                        rdfs:subPropertyOf :temporalProperty ;
+                        rdfs:domain :TemporalSpan ;
+                        rdfs:range :TemporalEvent ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "temporal span end event"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/uniquelyRefersTo
 :uniquelyRefersTo rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf :refersTo ;
-    rdf:type owl:FunctionalProperty ;
-    <http://www.w3.org/2004/02/skos/core#definition> "Denotes the *referent* that this *functional reference* **uniquely** describes."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "uniquely refers to"@en .
+                  rdfs:subPropertyOf :refersTo ;
+                  rdf:type owl:FunctionalProperty ;
+                  <http://www.w3.org/2004/02/skos/core#definition> "Denotes the *referent* that this *functional reference* **uniquely** describes."@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "uniquely refers to"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://ceco.one/v/2026/06/01/foundation/codependentWith
+:codependentWith rdf:type owl:DatatypeProperty .
+
+
+###  https://ceco.one/v/2026/06/01/foundation/dependentUpon
+:dependentUpon rdf:type owl:DatatypeProperty .
+
+
+###  https://ceco.one/v/2026/06/01/foundation/hasDependent
+:hasDependent rdf:type owl:DatatypeProperty .
+
 
 #################################################################
 #    Classes
@@ -333,297 +379,389 @@
 ###  http://purl.org/dc/terms/Agent
 <http://purl.org/dc/terms/Agent> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/AgentClass
 <http://purl.org/dc/terms/AgentClass> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/BibliographicResource
 <http://purl.org/dc/terms/BibliographicResource> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/FileFormat
 <http://purl.org/dc/terms/FileFormat> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/Frequency
 <http://purl.org/dc/terms/Frequency> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/Jurisdiction
 <http://purl.org/dc/terms/Jurisdiction> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/LicenseDocument
 <http://purl.org/dc/terms/LicenseDocument> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/LinguisticSystem
 <http://purl.org/dc/terms/LinguisticSystem> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/Location
 <http://purl.org/dc/terms/Location> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/LocationPeriodOrJurisdiction
 <http://purl.org/dc/terms/LocationPeriodOrJurisdiction> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/MediaType
 <http://purl.org/dc/terms/MediaType> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/MediaTypeOrExtent
 <http://purl.org/dc/terms/MediaTypeOrExtent> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/MethodOfAccrual
 <http://purl.org/dc/terms/MethodOfAccrual> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/MethodOfInstruction
 <http://purl.org/dc/terms/MethodOfInstruction> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/PeriodOfTime
 <http://purl.org/dc/terms/PeriodOfTime> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/PhysicalMedium
 <http://purl.org/dc/terms/PhysicalMedium> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/PhysicalResource
 <http://purl.org/dc/terms/PhysicalResource> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/Policy
 <http://purl.org/dc/terms/Policy> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/ProvenanceStatement
 <http://purl.org/dc/terms/ProvenanceStatement> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/RightsStatement
 <http://purl.org/dc/terms/RightsStatement> rdf:type owl:Class .
+
 
 ###  http://purl.org/dc/terms/SizeOrDuration
 <http://purl.org/dc/terms/SizeOrDuration> rdf:type owl:Class .
 
+
 ###  http://purl.org/dc/terms/Standard
 <http://purl.org/dc/terms/Standard> rdf:type owl:Class .
 
+
 ###  https://ceco.one/v/2026/06/01/foundation/AbstractThing
 :AbstractThing rdf:type owl:Class ;
-    rdfs:subClassOf :Referent ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A *thing* that has no form, it exists only conceptually; it may be used to describe a *digital* or *physical* thing."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Abstract thing"@en .
+               rdfs:subClassOf :Referent ;
+               <http://www.w3.org/2004/02/skos/core#definition> "A *thing* that has no form, it exists only conceptually; it may be used to describe a *digital* or *physical* thing."@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Abstract thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Aggregate
 :Aggregate rdf:type owl:Class ;
-    rdfs:subClassOf :StructuredThing ;
-    owl:disjointWith :Composite ;
-    <http://www.w3.org/2004/02/skos/core#definition> "An aggregate thing is one where at least some of the parts of the whole remain somewhat distinct and removable from it."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Aggregate"@en .
+           rdfs:subClassOf :StructuredThing ;
+           owl:disjointWith :Composite ;
+           <http://www.w3.org/2004/02/skos/core#definition> "An aggregate thing is one where at least some of the parts of the whole remain somewhat distinct and removable from it."@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Aggregate"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Agreement
 :Agreement rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "An agreement is a mutual arrangement between two or more *parties* agreeing on certain *outcomes* or duties within certain *conditions*."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Agreement"@en .
+           rdfs:subClassOf :Thing ;
+           <http://www.w3.org/2004/02/skos/core#definition> "An agreement is a mutual arrangement between two or more *parties* agreeing on certain *outcomes* or duties within certain *conditions*."@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Agreement"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Artifact
 :Artifact rdf:type owl:Class ;
-    rdfs:subClassOf :Referent .
+          rdfs:subClassOf :Referent ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Artifact"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Atomic
 :Atomic rdf:type owl:Class ;
-    rdfs:subClassOf :PhysicalThing ;
-    owl:disjointWith :StructuredThing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "An atomic thing has no parts that from which it was made, or into which it may be decomposed. Atomic things are disjoint with structured things."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Atomic"@en .
+        rdfs:subClassOf :PhysicalThing ;
+        owl:disjointWith :StructuredThing ;
+        <http://www.w3.org/2004/02/skos/core#definition> "An atomic thing has no parts that from which it was made, or into which it may be decomposed. Atomic things are disjoint with structured things."@en ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Atomic"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/ClassificationScheme
 :ClassificationScheme rdf:type owl:Class ;
-    rdfs:subClassOf :Scheme ;
-    owl:disjointWith :IdentificationScheme ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A classification scheme provides a reference and scope for a set of *classifiers*."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Classification scheme"@en .
+                      rdfs:subClassOf :Scheme ;
+                      owl:disjointWith :IdentificationScheme ;
+                      <http://www.w3.org/2004/02/skos/core#definition> "A classification scheme provides a reference and scope for a set of *classifiers*."@en ;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Classification scheme"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/ClassifiedThing
 :ClassifiedThing rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Classified thing"@en .
+                 rdfs:subClassOf :Thing ;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A thing to which *classifiers* have been/may be attached."@en ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Classified thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Classifier
 :Classifier rdf:type owl:Class ;
-    rdfs:subClassOf :Reference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Classifier"@en .
+            rdfs:subClassOf :Reference ;
+            <http://www.w3.org/2004/02/skos/core#definition> "A *classifier* is used to denote a group to which one more *things* belongs, within some *classification scheme*."@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Classifier"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Composite
 :Composite rdf:type owl:Class ;
-    rdfs:subClassOf :StructuredThing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A composite thing is one where the parts, once included in the whole no longer have any distinction from the whole and may not be *meaningfully* removed from it."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Composite"@en .
+           rdfs:subClassOf :StructuredThing ;
+           <http://www.w3.org/2004/02/skos/core#definition> "A composite thing is one where the parts, once included in the whole no longer have any distinction from the whole and may not be *meaningfully* removed from it."@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Composite"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/DependentArtifact
 :DependentArtifact rdf:type owl:Class ;
-    rdfs:subClassOf :Artifact, :DependentThing ;
-    owl:disjointWith :IndependentArtifact ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Dependent artifact"@en .
+                   rdfs:subClassOf :Artifact ,
+                                   :DependentThing ;
+                   owl:disjointWith :IndependentArtifact ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Dependent artifact"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/DependentThing
 :DependentThing rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    owl:disjointWith :IndependentThing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A thing whose existence depends on the existence of some other thing; all parts of a composite are by nature dependent things."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Dependent thing"@en .
+                rdfs:subClassOf :Thing ;
+                owl:disjointWith :IndependentThing ;
+                <http://www.w3.org/2004/02/skos/core#definition> "A thing whose existence depends on the existence of some other thing; all parts of a composite are by nature dependent things."@en ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Dependent thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/DigitalThing
 :DigitalThing rdf:type owl:Class ;
-    rdfs:subClassOf :Referent ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A *thing* that only exists in digital form, even if it is a representation of a *physical thing*, or the physical thing is a realization of the digital thing."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Digital thing"@en .
+              rdfs:subClassOf :Referent ;
+              <http://www.w3.org/2004/02/skos/core#definition> "A *thing* that only exists in digital form, even if it is a representation of a *physical thing*, or the physical thing is a realization of the digital thing."@en ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Digital thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Document
 :Document rdf:type owl:Class ;
-    rdfs:subClassOf :IndependentArtifact ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Document"@en .
+          rdfs:subClassOf :IndependentArtifact ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Document"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Duty
 :Duty rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Duty"@en .
+      rdfs:subClassOf :Thing ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Duty"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/FunctionalIdentifier
 :FunctionalIdentifier rdf:type owl:Class ;
-    rdfs:subClassOf :Identifier ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Functional identifier"@en .
+                      rdfs:subClassOf :Identifier ;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Functional identifier"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/FunctionalReference
 :FunctionalReference rdf:type owl:Class ;
-    rdfs:subClassOf :Reference ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A reference that *uniquely* identifies it’s referent. It implies that when used as an object property that property should be a subtype of `owl:FunctionalProperty`."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Functional reference"@en .
+                     rdfs:subClassOf :Reference ;
+                     <http://www.w3.org/2004/02/skos/core#definition> "A *reference* that uniquely identifies it's referent; any unique value of a functional reference identifies **at most** one *referent*."@en ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Functional reference"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/IdentificationScheme
 :IdentificationScheme rdf:type owl:Class ;
-    rdfs:subClassOf :Scheme ;
-    <http://www.w3.org/2004/02/skos/core#definition> "An identification scheme provides a reference and scope for a set of *identifiers*."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Identification scheme"@en .
+                      rdfs:subClassOf :Scheme ;
+                      <http://www.w3.org/2004/02/skos/core#definition> "An identification scheme provides a reference and scope for a set of *identifiers*."@en ;
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Identification scheme"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/IdentifiedThing
 :IdentifiedThing rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Identified thing"@en .
+                 rdfs:subClassOf :Thing ;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A thing to which *identifiers* have been/may be attached."@en ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Identified thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Identifier
 :Identifier rdf:type owl:Class ;
-    rdfs:subClassOf :Reference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Identifier"@en .
+            rdfs:subClassOf :Reference ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Identifier"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/IndependentArtifact
 :IndependentArtifact rdf:type owl:Class ;
-    rdfs:subClassOf :Artifact, :IndependentThing ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Independent artifact"@en .
+                     rdfs:subClassOf :Artifact ,
+                                     :IndependentThing ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Independent artifact"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/IndependentThing
 :IndependentThing rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A thing whose existence is not dependent on the existence of some other thing; at least some parts of an aggregate are independent things."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Independent thing"@en .
+                  rdfs:subClassOf :Thing ;
+                  <http://www.w3.org/2004/02/skos/core#definition> "A thing whose existence is not dependent on the existence of some other thing; at least some parts of an aggregate are independent things."@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Independent thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Party
 :Party rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A participant within an *agreement* having one or more *duties* to perform."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Party"@en .
+       rdfs:subClassOf :Thing ;
+       <http://www.w3.org/2004/02/skos/core#definition> "A participant within an *agreement* having one or more *duties* to perform."@en ;
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Party"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/PhysicalThing
 :PhysicalThing rdf:type owl:Class ;
-    rdfs:subClassOf :Referent ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A thing that has a physical form, it has mass and dimensions."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Physical thing"@en .
+               rdfs:subClassOf :Referent ;
+               <http://www.w3.org/2004/02/skos/core#definition> "A thing that has a physical form, it has mass and dimensions."@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Physical thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Reference
 :Reference rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    owl:disjointWith :Referent ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A label used to *refer to a thing*, distinct from the *thing* itself."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Reference"@en .
+           rdfs:subClassOf :Thing ;
+           owl:disjointWith :Referent ;
+           <http://www.w3.org/2004/02/skos/core#definition> "A label used to *refer to a thing*, distinct from the *thing* itself."@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Reference"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Referent
 :Referent rdf:type owl:Class ;
-    rdfs:subClassOf :Thing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "An *actual thing* which exists regardless and independent of any particular labels used to describe, name, or identify it. It **is** the thing."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Referent"@en .
+          rdfs:subClassOf :Thing ;
+          <http://www.w3.org/2004/02/skos/core#definition> "An *actual thing* which exists regardless and independent of any particular labels used to describe, name, or identify it. It **is** the thing."@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Referent"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Scheme
 :Scheme rdf:type owl:Class ;
-    rdfs:subClassOf :Agreement ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Scheme"@en .
+        rdfs:subClassOf :Agreement ;
+        <http://www.w3.org/2004/02/skos/core#definition> "A *scheme* is an *agreement* to use a common format, a common style or namespace."@en ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Scheme"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/SpatialExtent
 :SpatialExtent rdf:type owl:Class ;
-    rdfs:subClassOf :SpatialReference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial extent"@en .
+               rdfs:subClassOf :SpatialReference ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial extent"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/SpatialLocation
 :SpatialLocation rdf:type owl:Class ;
-    rdfs:subClassOf :SpatialReference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial location"@en .
+                 rdfs:subClassOf :SpatialReference ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial location"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/SpatialObject
 :SpatialObject rdf:type owl:Class ;
-    rdfs:subClassOf :SpatialReference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial object"@en .
+               rdfs:subClassOf :SpatialReference ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial object"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/SpatialReference
 :SpatialReference rdf:type owl:Class ;
-    rdfs:subClassOf :Reference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial reference"@en .
+                  rdfs:subClassOf :Reference ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial reference"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/SpatialReferenceScheme
 :SpatialReferenceScheme rdf:type owl:Class ;
-    rdfs:subClassOf :Scheme ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial reference scheme"@en .
+                        rdfs:subClassOf :Scheme ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial reference scheme"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/SpatialRegion
 :SpatialRegion rdf:type owl:Class ;
-    rdfs:subClassOf :SpatialReference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial region"@en .
+               rdfs:subClassOf :SpatialReference ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Spatial region"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/StructuredThing
 :StructuredThing rdf:type owl:Class ;
-    rdfs:subClassOf :PhysicalThing ;
-    <http://www.w3.org/2004/02/skos/core#definition> "A thing that has some form of internal structure, it has parts whether it is a composite or aggregate thing. Structured things are disjoint with atomic things."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Structured thing"@en .
+                 rdfs:subClassOf :PhysicalThing ;
+                 <http://www.w3.org/2004/02/skos/core#definition> "A thing that has some form of internal structure, it has parts whether it is a composite or aggregate thing. Structured things are disjoint with atomic things."@en ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Structured thing"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/TemporalEvent
 :TemporalEvent rdf:type owl:Class ;
-    rdfs:subClassOf :TemporalReference ;
-    owl:disjointWith :TemporalSpan ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Temporal event"@en .
+               rdfs:subClassOf :TemporalReference ;
+               owl:disjointWith :TemporalSpan ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Temporal event"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/TemporalReference
 :TemporalReference rdf:type owl:Class ;
-    rdfs:subClassOf :Reference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Temporal reference"@en .
+                   rdfs:subClassOf :Reference ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Temporal reference"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/TemporalSpan
 :TemporalSpan rdf:type owl:Class ;
-    rdfs:subClassOf :TemporalReference ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Temporal span"@en .
+              rdfs:subClassOf :TemporalReference ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Temporal span"@en .
+
 
 ###  https://ceco.one/v/2026/06/01/foundation/Thing
-:Thing rdf:type owl:Class ;
-    <http://www.w3.org/2004/02/skos/core#definition> "a *thing* is."@en ;
-    <http://www.w3.org/2004/02/skos/core#prefLabel> "Thing"@en .
+:Thing rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://ceco.one/v/2026/06/01/foundation/
+<https://ceco.one/v/2026/06/01/foundation/> rdf:type owl:NamedIndividual ,
+                                                     <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                                            <http://www.w3.org/2004/02/skos/core#hasTopConcept> :Thing .
+
+
+###  https://ceco.one/v/2026/06/01/foundation/Thing
+:Thing rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:Thing <http://www.w3.org/2004/02/skos/core#definition> "a *thing* is."@en ;
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Thing"@en .
+
 
 #################################################################
 #    General axioms
 #################################################################
 
-[ rdf:type owl:AllDisjointClasses ; owl:members (
-        :AbstractThing
-        :DigitalThing
-        :PhysicalThing
-    ) ] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AbstractThing
+                :DigitalThing
+                :PhysicalThing
+              )
+] .
 
-[ rdf:type owl:AllDisjointClasses ; owl:members (
-        :SpatialExtent
-        :SpatialLocation
-        :SpatialObject
-        :SpatialRegion
-    ) ] .
 
-[ rdf:type owl:AllDisjointProperties ; owl:members (
-        :codependentWith
-        :dependentUpon
-        :hasDependent
-    ) ] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :SpatialExtent
+                :SpatialLocation
+                :SpatialObject
+                :SpatialRegion
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointProperties ;
+  owl:members ( :codependentWith
+                :dependentUpon
+                :hasDependent
+              )
+] .
+
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

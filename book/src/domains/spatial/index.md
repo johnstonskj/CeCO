@@ -23,9 +23,9 @@ Definition:
 OWL:
 
 ```turtle
-fnd:GeographicCoordinate a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "GeographicCoordinate"@en ;
+:GeographicCoordinate a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Geographic cordinate"@en ;
   skos:definition ""@en .
 ```
 
@@ -38,9 +38,9 @@ Definition:
 OWL:
 
 ```turtle
-fnd:GeographicCoordinateScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "GeographicCoordinateScheme"@en ;
+:Geographic coordinate scheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Geographic coordinate scheme"@en ;
   skos:definition ""@en .
 ```
 
@@ -53,9 +53,9 @@ Definition:
 OWL:
 
 ```turtle
-fnd:PostalAddress a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "PostalAddress"@en ;
+:PostalAddress a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Postal address"@en ;
   skos:definition ""@en .
 ```
 
@@ -68,9 +68,9 @@ Definition:
 OWL:
 
 ```turtle
-fnd:PostalAddressScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "PostalAddressScheme"@en ;
+:PostalAddressScheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Postal address scheme"@en ;
   skos:definition ""@en .
 ```
 
@@ -83,9 +83,9 @@ Definition:
 OWL:
 
 ```turtle
-fnd:PostalCode a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialLocation ;
-  skos:prefLabel "PostalCode"@en ;
+:PostalCode a owl:Class ;
+  rdfs:subClassOf :SpatialLocation ;
+  skos:prefLabel "Postal code"@en ;
   skos:definition ""@en .
 ```
 
@@ -98,9 +98,9 @@ Definition:
 OWL:
 
 ```turtle
-fnd:PostalCodeScheme a rdfs:Class ;
-  rdfs:subClassOf fnd:SpacialReferenceScheme ;
-  skos:prefLabel "PostalCodeScheme"@en ;
+:PostalCodeScheme a owl:Class ;
+  rdfs:subClassOf :SpatialReferenceScheme ;
+  skos:prefLabel "Postal code scheme"@en ;
   skos:definition ""@en .
 ```
 
@@ -115,10 +115,10 @@ Definition:
 OWL:
 
 ```turtle
-fnd:hasPostalCode a rdfs:Property ;
-  rdfs:domain fnd:PostalAddress ;
-  rdfs:range fnd:PostalCode ;
-  skos:prefLabel "hasPostalCode"@en ;
+:hasPostalCode a owl:ObjectProperty ;
+  rdfs:domain :PostalAddress ;
+  rdfs:range :PostalCode ;
+  skos:prefLabel "has postal code"@en ;
   skos:definition ""@en .
 ```
 
@@ -131,10 +131,10 @@ Definition:
 OWL:
 
 ```turtle
-fnd:inGeographicScheme a rdfs:Property ;
-  rdfs:subPropertyOf fnd:inScheme ;
-  rdfs:domain fnd:GeographicCoordinate ;
-  rdfs:range fnd:GeographicCoordinateScheme ;
-  skos:prefLabel "inGeographicScheme"@en ;
+:inGeographicScheme a owl:ObjectProperty ;
+  rdfs:subPropertyOf :inScheme ;
+  rdfs:domain :GeographicCoordinate ;
+  rdfs:range :GeographicCoordinateScheme ;
+  skos:prefLabel "in geographic scheme"@en ;
   skos:definition ""@en .
 ```

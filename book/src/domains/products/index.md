@@ -47,7 +47,7 @@ Definition:
 OWL:
 
 ```turtle
-fnd:ClassName a rdfs:Class ;
+:ClassName a owl:Class ;
   rdfs:subClassOf fnd:Thing ;
   skos:prefLabel "ClassName"@en ;
   skos:definition "..."@en .
@@ -62,7 +62,7 @@ Definition:
 > ...
 
 ```turtle
-fnd:aProperty a rdfs:Property ;
+:aProperty a owl:ObjectProperty ;
   rdfs:domain fnd:Thing ;
   rdfs:range fnd:Thing ;
   skos:prefLabel "a propery"@en ;
